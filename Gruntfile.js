@@ -1,7 +1,10 @@
 'use strict';
-var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
+var liveReloadPort = 35721;
+var serverPort = 9000;
+
+var lrSnippet = require('connect-livereload')({port: liveReloadPort});
 var mountFolder = function (connect, dir) {
-  return connect.static(require('path').resolve(dir));
+	return connect.static(require('path').resolve(dir));
 };
 
 module.exports = function (grunt) {
@@ -30,10 +33,17 @@ module.exports = function (grunt) {
         tasks: ['coffee:test']
       },
       compass: {
+	    options: {
+		  livereload: false
+	    },
         files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass']
       },
       livereload: {
+	    options: {
+		  livereload: liveReloadPort,
+		  nospawn: true
+	    },
         files: [
           '<%= yeoman.app %>/{,*/}*.html',
           '{.tmp,<%= yeoman.app %>}/styles/{,*/}*.css',
@@ -260,13 +270,10 @@ module.exports = function (grunt) {
     }
   });
 
-  grunt.renameTask('regarde', 'watch');
-
   grunt.registerTask('server', [
     'clean:server',
     'coffee:dist',
     'compass:server',
-    'livereload-start',
     'connect:livereload',
     'open',
     'watch'
