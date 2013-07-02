@@ -1,14 +1,24 @@
 <div class="row">
-	<div class="span3" ng-include="'sandbox/api-nav.tpl.html'"></div>
+	<div class="span3" ng-include="'sandbox/api-nav.tpl.html'" onload="afterPartialLoaded()"></div>
 	<div class="span9">
 		<section>
 			<div class="page-header">
 				<h2>{{currentDetail.name}}</h2>
 			</div>
 			<pre>{{currentDetail.type}} {{currentDetail.url}}</pre>
-			<p>Send:</p>
+			<pre class="prettyprint linenums">
+$http({method: 'GET', url: '/someUrl'}).
+  success(function(data, status, headers, config) {
+    // this callback will be called asynchronously
+    // when the response is available
+  }).
+  error(function(data, status, headers, config) {
+    // called asynchronously if an error occurs
+    // or server returns response with an error status.
+  });
+			</pre>
+			<button class="btn btn-primary" ng-click="sendCall()">Send call</button>
 			<pre style="height: 200px">{{currentDetail.params}}</pre>
-			<p>Recieved:</p>
 			<pre style="height: 200px">{{currentDetail.params}}</pre>
 		</section>
 	</div>
