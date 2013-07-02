@@ -16,10 +16,68 @@
 	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 	<!-- build:css styles/main.css -->
 	<link href="components/bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
-	<link rel="stylesheet" href="styles/main.css">
 	<link href="components/bootstrap/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+	<style type="text/css">
+	.com {
+		color: #93a1a1;
+	}
+
+	.lit {
+		color: #195f91;
+	}
+
+	.pun, .opn, .clo {
+		color: #93a1a1;
+	}
+
+	.fun {
+		color: #dc322f;
+	}
+
+	.str, .atv {
+		color: #D14;
+	}
+
+	.kwd, .linenums .tag {
+		color: #1e347b;
+	}
+
+	.typ, .atn, .dec, .var {
+		color: teal;
+	}
+
+	.pln {
+		color: #48484c;
+	}
+
+	.prettyprint {
+		padding: 8px;
+		background-color: #f7f7f9;
+		border: 1px solid #e1e1e8;
+	}
+
+	.prettyprint.linenums {
+		-webkit-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+		-moz-box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+		box-shadow: inset 40px 0 0 #fbfbfc, inset 41px 0 0 #ececf0;
+	}
+
+	ol.linenums {
+		margin: 0 0 0 33px;
+	}
+
+	ol.linenums li {
+		padding-left: 12px;
+		color: #bebec5;
+		line-height: 18px;
+		text-shadow: 0 1px 0 #fff;
+	}
+	</style>
+	<link href="styles/main.css" rel="stylesheet">
 	<!-- endbuild -->
 </head>
+<!--
+<body ng-app="mfApiExampleApp" data-target=".bs-docs-sidebar" data-spy="scroll"-->
 <body ng-app="mfApiExampleApp">
 <!--[if lt IE 7]>
 <p class="chromeframe">You are using an outdated browser. <a href="http://browsehappy.com/">Upgrade your browser
@@ -33,7 +91,8 @@
 <![endif]-->
 
 
-<div ng-include="'navigation/mainNavigation.html'"></div>
+<div ng-include="'navigation/navigation.tpl.html'"></div>
+<div class="clear-navbar"></div>
 
 <header>
 	<div class="container">
@@ -45,27 +104,43 @@
 <!-- Add your site or application content here -->
 <div class="container" ng-view></div>
 
+<script src="components/jquery/jquery.min.js"></script>
 <script src="components/angular/angular.js"></script>
 <script src="components/angular-resource/angular-resource.js"></script>
 <script src="components/angular-cookies/angular-cookies.js"></script>
 <script src="components/angular-sanitize/angular-sanitize.js"></script>
+<script src="components/angular-bootstrap-prettify/angular-bootstrap-prettify.js"></script>
 
 <!-- build:js scripts/scripts.js -->
-<script src="scripts/app.js"></script>
-<script src="scripts/controllers/main.js"></script>
+<script src="app.js"></script>
+<script src="sandbox/sandbox.js"></script>
 <!-- endbuild -->
 
+
+<script>
+  !function ($) {
+	  $(function(){
+		  setTimeout(function() {
+			  window.prettyPrint && prettyPrint()
+		  }, 100);
+	  })
+  }(window.jQuery)
+</script>
+
 <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <script>
-      var _gaq = [
-		  ['_setAccount', 'UA-XXXXX-X'],
-		  ['_trackPageview']
-	  ];
-	  (function(d, t) {
-		  var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
-		  g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
-		  s.parentNode.insertBefore(g, s)
-	  }(document, 'script'));
-    </script>
+<script>
+  var _gaq = [
+	  ['_setAccount', 'UA-XXXXX-X'],
+	  ['_trackPageview']
+  ];
+  (function(d, t) {
+	  var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+	  g.src = ('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js';
+	  s.parentNode.insertBefore(g, s)
+  }(document, 'script'));
+</script>
+
 </body>
+
+
 </html>
