@@ -17,7 +17,14 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 
 	$scope.currentDetail = $scope.apiList[6];
 
-	$scope.changeDetail = function(api) {s
+	$scope.viewModel = {
+		showError: false
+	};
+
+	$scope.errorInfo = {};
+
+	$scope.changeDetail = function(api) {
+		$scope.errorInfo = {};
 		$scope.currentDetail = api;
 	};
 
@@ -33,12 +40,21 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 				console.log(data);
 			}).
 			error(function(data, status, headers, config) {
-				console.log('some error');
+				$scope.errorInfo.status = status;
+				$scope.errorInfo.data = data;
 			});
 
 		//curl -G -H "Content-Type: application/json" -H "x-mindflash-apikey: 32bbb158dbd24c3f853aed577b415dc0" "http://iverson.mftdev.com/api/v1/course"
 		//curl -G -H "Content-Type: application/json" -H "x-mindflash-apikey: 32bbb158dbd24c3f853aed577b415dc0" "http://10.0.1.2:6500/api/v1/course"
 	};
+
+	var errorInfoListener = $scope.$watch('errorInfo', function() {
+		$scope.viewModel.showError = !_.isEmpty($scope.errorInfo);
+	}, true);
+
+	$scope.$on('$destroy', function() {
+		errorInfoListener();
+	});
 });
 
 

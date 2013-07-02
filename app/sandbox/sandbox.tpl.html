@@ -1,5 +1,5 @@
 <div class="row">
-	<div class="span3" ng-include="'sandbox/api-nav.tpl.html'" onload="afterPartialLoaded()"></div>
+	<div class="span3" ng-include="'sandbox/side-nav.tpl.html'"></div>
 	<div class="span9">
 		<section>
 			<div class="page-header">
@@ -19,7 +19,7 @@ $http({method: 'GET', url: '/someUrl'}).
 			</pre>
 			<button class="btn btn-primary" ng-click="sendCall()">Send call</button>
 			<pre style="height: 200px">{{currentDetail.params}}</pre>
-			<pre style="height: 200px">{{currentDetail.params}}</pre>
+			<pre ng-show="viewModel.showError" style="height: 100px">Status: {{errorInfo.status}}<br/>{{errorInfo.data}}</pre>
 		</section>
 	</div>
 </div>
