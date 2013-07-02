@@ -32,10 +32,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     function initialize() {
 
         // for testing
-        $scope.currentDetail = $scope.apiList[6];
-        $scope.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
-        $http.defaults.headers.common['x-mindflash-apikey'] = $scope.apiKey;
-        $scope.viewModel.keySaved = true;
+
     }
 
     $scope.saveAPIKey = function() {
