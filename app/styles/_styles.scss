@@ -6,3 +6,7 @@ body {
 .clear-navbar {
   margin-top: 40px;
 }
+
+.btn:focus {
+  outline: none;
+}

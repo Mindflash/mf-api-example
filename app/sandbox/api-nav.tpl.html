@@ -1,5 +1,5 @@
 <ul class="nav nav-list">
-	<li ng-repeat="api in apiList">
+	<li ng-repeat="api in apiList" ng-class="navClass(api)">
 		<a href ng-click="changeDetail(api)">{{api.name}}</a>
 	</li>
 </ul>
