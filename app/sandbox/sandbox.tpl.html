@@ -4,8 +4,8 @@
 		<form class="form-inline">
 			<label for="apikeyTxt">API Key:</label>
 			<input id="apikeyTxt" type="text" placeholder="Enter api key..." ng-model="apiKey" ng-readonly="viewModel.keySaved" class="span6"/>
-			<button class="btn btn-primary" ng-hide="viewModel.keySaved" ng-click="saveAPIKey()">Save</button>
-			<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="editAPIKey()">Edit</button>
+			<button class="btn btn-primary" ng-hide="viewModel.keySaved" ng-click="enterAPIKey('save')">Save</button>
+			<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="enterAPIKey('edit')">Edit</button>
 		</form>
 		<section ng-show="currentDetail">
 			<div class="page-header">

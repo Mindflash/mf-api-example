@@ -43,21 +43,23 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 //        $scope.currentDetail = $scope.apiList[0];
     }
 
-    $scope.saveAPIKey = function() {
-        if(!$scope.apiKey)
+    $scope.enterAPIKey = function(type) {
+        if(type == 'edit') {
+            $scope.viewModel.keySaved = false;
             return;
+        }
+        if(!$scope.apiKey) return;
+
         $scope.viewModel.keySaved = true;
         $http.defaults.headers.common['x-mindflash-apikey'] = $scope.apiKey;
-    };
-
-    $scope.editAPIKey = function() {
-        $scope.viewModel.keySaved = false;
     };
 
 	$scope.changeDetail = function(api) {
 		$scope.resultInfo = {};
 		$scope.currentDetail = api;
         $scope.currentRepeater = angular.copy($scope.currentDetail.tokens);
+
+        console.log($scope.currentRepeater);
 	};
 
 	$scope.sendCall = function() {

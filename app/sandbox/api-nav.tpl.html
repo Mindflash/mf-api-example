@@ -1,4 +1,6 @@
-<ul class="nav nav-list">
+<input type="text" placeholder="search the docs" class="search-query">
+<div class="spacer"></div>
+<ul class="nav nav-list well" style="border-color: #d3d3d3;padding-top: 0;padding-bottom: 0;margin-bottom: 15px;">
 	<li ng-repeat="api in apiList" ng-class="navClass(api)">
 		<a href ng-click="changeDetail(api)">{{api.name}}</a>
 	</li>
