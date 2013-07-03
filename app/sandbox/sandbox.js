@@ -29,7 +29,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
             tokens: {'version': '','seriesId':''} }
 	];
 
-	$scope.currentDetail = $scope.apiList[0];
+	$scope.currentDetail = null;
 
 	$scope.viewModel = {
 		showError: false,
@@ -40,13 +40,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     $scope.apiKey = '';
 
     function initialize() {
-
-        // for testing
-        $scope.currentDetail = $scope.apiList[6];
-        $scope.currentRepeater = angular.copy($scope.currentDetail.tokens);
-        $scope.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
-        $http.defaults.headers.common['x-mindflash-apikey'] = $scope.apiKey;
-        $scope.viewModel.keySaved = true;
+//        $scope.currentDetail = $scope.apiList[0];
     }
 
     $scope.saveAPIKey = function() {

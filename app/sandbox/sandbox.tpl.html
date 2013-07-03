@@ -7,7 +7,7 @@
 			<button class="btn btn-primary" ng-hide="viewModel.keySaved" ng-click="saveAPIKey()">Save</button>
 			<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="editAPIKey()">Edit</button>
 		</form>
-		<section>
+		<section ng-show="currentDetail">
 			<div class="page-header">
 				<h2>{{currentDetail.name}}</h2>
 			</div>
