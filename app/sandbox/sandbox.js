@@ -38,7 +38,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 //    req.assert('groupIds').isIntOrEmptyArray();
 //    req.assert('clientDatestamp').notEmpty().regex(/\d{4}\-\d{1,2}\-\d{1,2}/g); // 2013-6-24 or 2013-12-24
 
-	$scope.currentAPI = null;
+	$scope.currentApi = null;
 
 	$scope.viewModel = {
 		showError: false,
@@ -52,7 +52,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 //        $scope.currentAPI = $scope.apiList[0];
     }
 
-    $scope.enterAPIKey = function(type) {
+    $scope.enterApiKey = function(type) {
         if(type == 'edit') {
             $scope.viewModel.keySaved = false;
             return;
@@ -60,17 +60,17 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         if(!$scope.apiKey) return;
 
         $scope.viewModel.keySaved = true;
-        $http.defaults.headers.common['x-mindflash-apikey'] = $scope.apiKey;
+        $http.defaults.headers.common['x-mindflash-Apikey'] = $scope.apiKey;
     };
 
-	$scope.selectAPI = function(api) {
+	$scope.selectApi = function(api) {
 		$scope.resultInfo = {};
-		$scope.currentAPI = api;
-        $scope.currentRepeater = angular.copy($scope.currentAPI.tokens);
+		$scope.currentApi = api;
+        $scope.currentRepeater = angular.copy($scope.currentApi.tokens);
 	};
 
 	$scope.sendCall = function() {
-        var formattedUrl = formatFilter($scope.currentAPI.url, $scope.currentAPI.tokens);
+        var formattedUrl = formatFilter($scope.currentApi.url, $scope.currentApi.tokens);
 		$http({method: 'GET', url: (baseUrl + formattedUrl)}).
 			success(function(data, status, headers, config) {
                 $scope.resultInfo.data = data;
@@ -85,7 +85,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     $scope.navClass = function(api) {
         return {
             last: this.$last,
-            active: $scope.currentAPI == api
+            active: $scope.currentApi == api
         };
     };
 
