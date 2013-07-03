@@ -10,7 +10,8 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 		{ name: 'authorizeUser', type: 'GET', url: '/api/:version/auth/loginUser',
             tokens: {'version': ''} },
 		{ name: 'addUsers', type: 'POST', url: '/api/:version/user',
-            tokens: {'version': ''} },
+            tokens: {'version': ''},
+            query: {'users': '', 'requiredCourseIds': '', 'courseIds': '', 'seriesIds': '', 'groupIds': '', 'clientDatestamp': ''} },
 		{ name: 'archiveUser', type: 'POST', url: '/api/:version/user/:userId/archive',
             tokens: {'version': '','userId':''} },
 		{ name: 'inviteTraineeToCourse', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite',
@@ -28,6 +29,14 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user',
             tokens: {'version': '','seriesId':''} }
 	];
+
+
+//    req.assert('users').arrayNotEmpty();
+//    req.assert('requiredCourseIds').isIntOrEmptyArray();
+//    req.assert('courseIds').isIntOrEmptyArray();
+//    req.assert('seriesIds').isIntOrEmptyArray();
+//    req.assert('groupIds').isIntOrEmptyArray();
+//    req.assert('clientDatestamp').notEmpty().regex(/\d{4}\-\d{1,2}\-\d{1,2}/g); // 2013-6-24 or 2013-12-24
 
 	$scope.currentDetail = null;
 

@@ -7,7 +7,8 @@
 			<button class="btn btn-primary" ng-hide="viewModel.keySaved" ng-click="enterAPIKey('save')">Save</button>
 			<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="enterAPIKey('edit')">Edit</button>
 		</form>
-		<section ng-show="currentDetail">
+
+		<section class="content" ng-show="currentDetail">
 			<div class="page-header">
 				<h2>{{currentDetail.name}}</h2>
 			</div>
@@ -15,6 +16,7 @@
 				<h3>Description</h3>
 				<p>Max needs to add some documentation.</p>
 			</div>
+			<h3>Usage</h3>
 			<pre>{{currentDetail.type}} {{currentDetail.url}}</pre>
 
 			<pre>{{ currentDetail.url | format : currentDetail.tokens }}</pre>
