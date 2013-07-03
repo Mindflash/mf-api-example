@@ -3,6 +3,6 @@
 <ul class="nav nav-list well api-list-container">
 	<div class="nav-header">API Calls</div>
 	<li ng-repeat="api in apiList" ng-class="navClass(api)">
-		<a href ng-click="changeDetail(api)">{{api.name}}</a>
+		<a href ng-click="selectAPI(api)">{{api.name}}</a>
 	</li>
 </ul>

@@ -8,26 +8,26 @@
 			<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="enterAPIKey('edit')">Edit</button>
 		</form>
 
-		<section class="content" ng-show="currentDetail">
+		<section class="content" ng-show="currentAPI">
 			<div class="page-header">
-				<h2>{{currentDetail.name}}</h2>
+				<h2>{{currentAPI.name}}</h2>
 			</div>
 			<div class="description">
 				<h3>Description</h3>
 				<p>Max needs to add some documentation.</p>
 			</div>
 			<h3>Usage</h3>
-			<pre>{{currentDetail.type}} {{currentDetail.url}}</pre>
+			<pre>{{currentAPI.type}} {{currentAPI.url}}</pre>
 
-			<pre>{{ currentDetail.url | format : currentDetail.tokens }}</pre>
+			<pre>{{ currentAPI.url | format : currentAPI.tokens }}</pre>
 
 			<div class="row">
 				<div class="span2" ng-repeat="(key, value) in currentRepeater">
-					<input ng-model="currentDetail.tokens[key]" class="span2" type="text" placeholder=":{{key}}"/>
+					<input ng-model="currentAPI.tokens[key]" class="span2" type="text" placeholder=":{{key}}"/>
 				</div>
 			</div>
 
-			<pre>tokens: {{ currentDetail.tokens | json }}</pre>
+			<pre>tokens: {{ currentAPI.tokens | json }}</pre>
 
 			<form class="form-inline">
 				<button class="btn btn-primary" ng-click="sendCall()">Fetch</button>
