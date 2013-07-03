@@ -58,8 +58,6 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 		$scope.resultInfo = {};
 		$scope.currentDetail = api;
         $scope.currentRepeater = angular.copy($scope.currentDetail.tokens);
-
-        console.log($scope.currentRepeater);
 	};
 
 	$scope.sendCall = function() {
