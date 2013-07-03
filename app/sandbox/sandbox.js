@@ -1,21 +1,32 @@
 'use strict';
 
-angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $http) {
+angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $http, $filter) {
 
     var apiVersion = 'v2';
     var baseUrl = 'http://10.0.1.2:6500';
+    var formatFilter = $filter('format');
 
 	$scope.apiList = [
-		{ name: 'authorizeUser', type: 'GET', url: '/api/:version/auth/loginUser', params: {}},
-		{ name: 'addUsers', type: 'POST', url: '/api/:version/user', params: {} },
-		{ name: 'archiveUser', type: 'POST', url: '/api/:version/user/:userId/archive', params: {} },
-		{ name: 'inviteTraineeToCourse', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite', params: {} },
-		{ name: 'inviteTraineesToCourse', type: 'POST', url: '/api/:version/course/:courseId/invite', params: {} },
-		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/course/:courseId/user', params: {} },
-		{ name: 'getCourses', type: 'GET', url: '/api/:version/course', params: [] },
-		{ name: 'inviteTraineeToSeries', type: 'POST', url: '/api/:version/user/:userId/series/:seriesId/invite', params: {} },
-		{ name: 'inviteTraineesToSeries', type: 'POST', url: '/api/:version/series/:seriesId/invite', params: {} },
-		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user', params: {} }
+		{ name: 'authorizeUser', type: 'GET', url: '/api/:version/auth/loginUser',
+            tokens: {'version': ''} },
+		{ name: 'addUsers', type: 'POST', url: '/api/:version/user',
+            tokens: {'version': ''} },
+		{ name: 'archiveUser', type: 'POST', url: '/api/:version/user/:userId/archive',
+            tokens: {'version': '','userId':''} },
+		{ name: 'inviteTraineeToCourse', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite',
+            tokens: {'version':'','userId':'','courseId':''} },
+		{ name: 'inviteTraineesToCourse', type: 'POST', url: '/api/:version/course/:courseId/invite',
+            tokens: {'version': '','courseId':''} },
+		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/course/:courseId/user',
+            tokens: {'version': '','courseId':''} },
+		{ name: 'getCourses', type: 'GET', url: '/api/:version/course',
+            tokens: {'version': ''} },
+		{ name: 'inviteTraineeToSeries', type: 'POST', url: '/api/:version/user/:userId/series/:seriesId/invite',
+            tokens: {'version': '','userId':'','seriesId':''} },
+		{ name: 'inviteTraineesToSeries', type: 'POST', url: '/api/:version/series/:seriesId/invite',
+            tokens: {'version': '','seriesId':''} },
+		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user',
+            tokens: {'version': '','seriesId':''} }
 	];
 
 	$scope.currentDetail = $scope.apiList[0];
@@ -26,13 +37,16 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 	};
 
     $scope.resultInfo = {};
-	$scope.errorInfo = {};
     $scope.apiKey = '';
 
     function initialize() {
 
         // for testing
-
+        $scope.currentDetail = $scope.apiList[6];
+        $scope.currentRepeater = angular.copy($scope.currentDetail.tokens);
+        $scope.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
+        $http.defaults.headers.common['x-mindflash-apikey'] = $scope.apiKey;
+        $scope.viewModel.keySaved = true;
     }
 
     $scope.saveAPIKey = function() {
@@ -47,25 +61,22 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     };
 
 	$scope.changeDetail = function(api) {
-
-		$scope.errorInfo = {};
+		$scope.resultInfo = {};
 		$scope.currentDetail = api;
+        $scope.currentRepeater = angular.copy($scope.currentDetail.tokens);
 	};
 
 	$scope.sendCall = function() {
-        var url = baseUrl + $scope.currentDetail.url;
-		$http({method: 'GET', url: url.replace(':version', apiVersion)}).
+        var formattedUrl = formatFilter($scope.currentDetail.url, $scope.currentDetail.tokens);
+		$http({method: 'GET', url: (baseUrl + formattedUrl)}).
 			success(function(data, status, headers, config) {
                 $scope.resultInfo.data = data;
                 $scope.resultInfo.status = status;
 			}).
 			error(function(data, status, headers, config) {
-				$scope.errorInfo.data = data;
-				$scope.errorInfo.status = status;
+                $scope.resultInfo.data = data;
+                $scope.resultInfo.status = status;
 			});
-
-		//curl -G -H "Content-Type: application/json" -H "x-mindflash-apikey: 32bbb158dbd24c3f853aed577b415dc0" "http://iverson.mftdev.com/api/v1/course"
-		//curl -G -H "Content-Type: application/json" -H "x-mindflash-apikey: 32bbb158dbd24c3f853aed577b415dc0" "http://10.0.1.2:6500/api/v1/course"
 	};
 
     $scope.navClass = function(api) {
@@ -85,6 +96,3 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 
     initialize();
 });
-
-
-//app.post('/api/:version/enable', notTrainee('apiUpdateApiAvailability'));
