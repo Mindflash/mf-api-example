@@ -2,10 +2,13 @@
 	<div class="span4" ng-include="'sandbox/side-nav.tpl.html'"></div>
 	<div class="span8">
 		<form class="form-inline">
+			<!-- Key -->
 			<label for="apikeyTxt">API Key:</label>
-			<input id="apikeyTxt" type="text" placeholder="Enter api key..." ng-model="apiKey" ng-readonly="viewModel.keySaved" class="span6"/>
-			<button class="btn btn-primary" ng-hide="viewModel.keySaved" ng-click="enterApiKey('save')">Save</button>
-			<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="enterApiKey('edit')">Edit</button>
+			<input id="apikeyTxt" type="text" placeholder="Enter api key..." ng-model="apiModel.apiKey" ng-readonly="viewModel.keySaved" class="span4"/>
+			<label for="apiVersionTxt">API Version:</label>
+			<input id="apiVersionTxt" type="text" ng-model="apiModel.version" ng-readonly="true" class="span1">
+			<button class="btn btn-primary" ng-hide="viewModel.keySaved" ng-click="enterApiInfo('save')">Save</button>
+			<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="enterApiInfo('edit')">Edit</button>
 		</form>
 
 		<section class="content" ng-show="currentApi">
@@ -16,9 +19,10 @@
 				<h3>Description</h3>
 				<p>Max needs to add some documentation.</p>
 			</div>
-			<h3>Usage</h3>
+			<h4>Usage</h4>
 			<pre>{{currentApi.type}} {{currentApi.url}}</pre>
 
+			<h4>Generated</h4>
 			<pre>{{ currentApi.url | format : currentApi.tokens }}</pre>
 
 			<div class="row">
@@ -29,11 +33,13 @@
 
 			<pre>tokens: {{ currentApi.tokens | json }}</pre>
 
+			<textarea class="prettyprint">Send data: {{ currentApi.query | json }}</textarea>
+
 			<form class="form-inline">
 				<button class="btn btn-primary" ng-click="sendCall()">Fetch</button>
 			</form>
 			<pre>HTTP Status Code: {{resultInfo.status}}</pre>
-			<pre>HTTP Response Data: {{resultInfo.data | json}}</pre>
+			<pre class=".pre-scrollable">HTTP Response Data: {{resultInfo.data | json}}</pre>
 		</section>
 	</div>
 </div>

@@ -2,32 +2,24 @@
 
 angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $http, $filter) {
 
-    var apiVersion = 'v2';
     var baseUrl = 'http://10.0.1.2:6500';
     var formatFilter = $filter('format');
+//    var tokenRegEx = /(\:\w+)(\/{0,1})/gi;
+    var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
+
 
 	$scope.apiList = [
-		{ name: 'authorizeUser', type: 'GET', url: '/api/:version/auth/loginUser',
-            tokens: {'version': ''} },
-		{ name: 'addUsers', type: 'POST', url: '/api/:version/user',
-            tokens: {'version': ''},
-            query: {'users': '', 'requiredCourseIds': '', 'courseIds': '', 'seriesIds': '', 'groupIds': '', 'clientDatestamp': ''} },
-		{ name: 'archiveUser', type: 'POST', url: '/api/:version/user/:userId/archive',
-            tokens: {'version': '','userId':''} },
-		{ name: 'inviteTraineeToCourse', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite',
-            tokens: {'version':'','userId':'','courseId':''} },
-		{ name: 'inviteTraineesToCourse', type: 'POST', url: '/api/:version/course/:courseId/invite',
-            tokens: {'version': '','courseId':''} },
-		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/course/:courseId/user',
-            tokens: {'version': '','courseId':''} },
-		{ name: 'getCourses', type: 'GET', url: '/api/:version/course',
-            tokens: {'version': ''} },
-		{ name: 'inviteTraineeToSeries', type: 'POST', url: '/api/:version/user/:userId/series/:seriesId/invite',
-            tokens: {'version': '','userId':'','seriesId':''} },
-		{ name: 'inviteTraineesToSeries', type: 'POST', url: '/api/:version/series/:seriesId/invite',
-            tokens: {'version': '','seriesId':''} },
-		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user',
-            tokens: {'version': '','seriesId':''} }
+		{ name: 'Authorize user', type: 'GET', url: '/api/:version/auth/loginUser' },
+		{ name: 'Add users', type: 'POST', url: '/api/:version/user',
+            query: {'users': [], 'requiredCourseIds': [], 'courseIds': [], 'seriesIds': [], 'groupIds': [], 'clientDatestamp': ''} },
+		{ name: 'Archive user', type: 'POST', url: '/api/:version/user/:userId/archive' },
+		{ name: 'Invite a trainee to a course', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite' },
+		{ name: 'Invite trainees to a course', type: 'POST', url: '/api/:version/course/:courseId/invite' },
+		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/course/:courseId/user' },
+		{ name: 'getCourses', type: 'GET', url: '/api/:version/course' },
+		{ name: 'inviteTraineeToSeries', type: 'POST', url: '/api/:version/user/:userId/series/:seriesId/invite' },
+		{ name: 'inviteTraineesToSeries', type: 'POST', url: '/api/:version/series/:seriesId/invite' },
+		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user' }
 	];
 
 
@@ -38,29 +30,47 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 //    req.assert('groupIds').isIntOrEmptyArray();
 //    req.assert('clientDatestamp').notEmpty().regex(/\d{4}\-\d{1,2}\-\d{1,2}/g); // 2013-6-24 or 2013-12-24
 
+
+    $scope.items = ['v2'];
+
 	$scope.currentApi = null;
 
 	$scope.viewModel = {
-		showError: false,
         keySaved: false
 	};
 
     $scope.resultInfo = {};
-    $scope.apiKey = '';
+
+    $scope.apiModel = {
+        apiKey: '',
+        version: 'v2'
+    };
 
     function initialize() {
 //        $scope.currentAPI = $scope.apiList[0];
+        // populate the tokens
+        _.each($scope.apiList, function(item) {
+            item.tokens = getMatches(item.url, tokenRegEx, 2);
+        });
+
+        // for testing
+        $scope.currentApi = $scope.apiList[7];
+        $scope.currentRepeater = angular.copy($scope.currentApi.tokens);
+
+        $scope.apiModel.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
+        $http.defaults.headers.common['x-mindflash-apikey'] = $scope.apiModel.apiKey;
+        $scope.viewModel.keySaved = true;
     }
 
-    $scope.enterApiKey = function(type) {
+    $scope.enterApiInfo = function(type) {
         if(type == 'edit') {
             $scope.viewModel.keySaved = false;
             return;
         }
-        if(!$scope.apiKey) return;
+        if(!$scope.apiModel.apiKey) return;
 
         $scope.viewModel.keySaved = true;
-        $http.defaults.headers.common['x-mindflash-Apikey'] = $scope.apiKey;
+        $http.defaults.headers.common['x-mindflash-Apikey'] = $scope.apiModel.apiKey;
     };
 
 	$scope.selectApi = function(api) {
@@ -89,13 +99,31 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         };
     };
 
-    var errorInfoListener = $scope.$watch('errorInfo', function() {
-		$scope.viewModel.showError = !_.isEmpty($scope.errorInfo);
-	}, true);
+    $scope.$on('$destroy', function() {
 
-	$scope.$on('$destroy', function() {
-		errorInfoListener();
 	});
+
+
+//    function getMatches(string, regex, index) {
+//        index || (index = 1); // default to the first capturing group
+//        var matches = [];
+//        var match;
+//        while (match = regex.exec(string)) {
+//            console.log(match);
+//            matches.push(match[index]);
+//        }
+//        return matches;
+//    }
+
+    function getMatches(string, regex, index) {
+        index || (index = 1); // default to the first capturing group
+        var matches = {};
+        var match;
+        while (match = regex.exec(string)) {
+            matches[match[index]] = '';
+        }
+        return matches;
+    }
 
     initialize();
 });
