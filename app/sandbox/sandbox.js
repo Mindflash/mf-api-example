@@ -2,7 +2,7 @@
 
 angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $http, $filter) {
 
-    var baseUrl = 'http://10.0.1.2:6500';
+    var baseUrl = 'http://localhost:6500';
     var formatFilter = $filter('format');
 //    var tokenRegEx = /(\:\w+)(\/{0,1})/gi;
     var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
@@ -49,21 +49,19 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     };
 
     function initialize() {
-//        $scope.currentAPI = $scope.apiList[0];
-        // populate the tokens
         _.each($scope.apiList, function(item) {
             item.usageUrl = item.url;
             item.url = item.url.replace(':version', $scope.apiModel.version);
             item.tokens = getMatches(item.url, tokenRegEx, 2);
         });
 
-        // for testing
-        $scope.currentApi = $scope.apiList[7];
-        $scope.currentRepeater = angular.copy($scope.currentApi.tokens);
+        // for testing only uncomment out this section and add your api key -- don't commit
+//        $scope.currentApi = $scope.apiList[7];
+//        $scope.currentRepeater = angular.copy($scope.currentApi.tokens);
 
-        $scope.apiModel.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
-        $http.defaults.headers.common['x-mindflash-apikey'] = $scope.apiModel.apiKey;
-        $scope.viewModel.keySaved = true;
+//        $scope.apiModel.apiKey = '';
+//        $http.defaults.headers.common['x-mindflash-apikey'] = $scope.apiModel.apiKey;
+//        $scope.viewModel.keySaved = true;
     }
 
     $scope.enterApiInfo = function(type) {
