@@ -33,7 +33,10 @@
 
 			<pre>tokens: {{ currentApi.tokens | json }}</pre>
 
-			<textarea class="prettyprint">Send data: {{ currentApi.query | json }}</textarea>
+			<div ng-show="currentApi.query">
+				<h5>Edit Query Data:</h5>
+				<textarea class="span8 textarea-code" rows="10">{{ currentApi.query | json }}</textarea>
+			</div>
 
 			<form class="form-inline">
 				<button class="btn btn-primary" ng-click="sendCall()">Fetch</button>
