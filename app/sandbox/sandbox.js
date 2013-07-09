@@ -31,8 +31,6 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 //    req.assert('clientDatestamp').notEmpty().regex(/\d{4}\-\d{1,2}\-\d{1,2}/g); // 2013-6-24 or 2013-12-24
 
 
-    $scope.items = ['v2'];
-
 	$scope.currentApi = null;
 
 	$scope.viewModel = {
@@ -50,6 +48,8 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 //        $scope.currentAPI = $scope.apiList[0];
         // populate the tokens
         _.each($scope.apiList, function(item) {
+            item.usageUrl = item.url;
+            item.url = item.url.replace(':version', $scope.apiModel.version);
             item.tokens = getMatches(item.url, tokenRegEx, 2);
         });
 
