@@ -11,7 +11,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 	$scope.apiList = [
 		{ name: 'Authorize user', type: 'GET', url: '/api/:version/auth/loginUser' },
 		{ name: 'Add users', type: 'POST', url: '/api/:version/user',
-            query: {'users': [], 'requiredCourseIds': [], 'courseIds': [], 'seriesIds': [], 'groupIds': [], 'clientDatestamp': ''} },
+            query: {'users': [{'firstName':'',lastName:'', 'email':''}], 'requiredCourseIds': [], 'courseIds': [], 'seriesIds': [], 'groupIds': [], 'clientDatestamp': ''} },
 		{ name: 'Archive user', type: 'POST', url: '/api/:version/user/:userId/archive' },
 		{ name: 'Invite a trainee to a course', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite' },
 		{ name: 'Invite trainees to a course', type: 'POST', url: '/api/:version/course/:courseId/invite' },
@@ -22,6 +22,10 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user' }
 	];
 
+
+//    firstName: joi.types.String().max(35).required(),
+//        lastName: joi.types.String().max(35).required(),
+//        email: joi.types.String().nullOk().emptyOk().email().max(254).optional(),
 
 //    req.assert('users').arrayNotEmpty();
 //    req.assert('requiredCourseIds').isIntOrEmptyArray();
@@ -80,8 +84,9 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 	};
 
 	$scope.sendCall = function() {
+        console.log(angular.element('#dataMessage'));
         var formattedUrl = formatFilter($scope.currentApi.url, $scope.currentApi.tokens);
-		$http({method: 'GET', url: (baseUrl + formattedUrl)}).
+		$http({method: $scope.currentApi.type, url: (baseUrl + formattedUrl), data:$scope.currentApi.query}).
 			success(function(data, status, headers, config) {
                 $scope.resultInfo.data = data;
                 $scope.resultInfo.status = status;
@@ -102,6 +107,10 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     $scope.$on('$destroy', function() {
 
 	});
+
+    $scope.changeData = function($event) {
+        console.log($event);
+    };
 
 
 //    function getMatches(string, regex, index) {
