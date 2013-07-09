@@ -33,9 +33,20 @@
 
 			<pre>tokens: {{ currentApi.tokens | json }}</pre>
 
-			<div ng-show="currentApi.query">
+			<h5>Query params:</h5>
+			<div class="row">
+				<div class="span2" ng-repeat="(key, value) in currentRepeaterParams">
+					<input ng-model="currentApi.tokenParams[key]" class="span2" type="text" placeholder="{{key}}"/>
+				</div>
+			</div>
+
+			<pre>params: {{ currentApi.tokenParams | json }}</pre>
+
+
+
+			<div ng-show="currentApi.data">
 				<h5>Edit message data:</h5>
-				<textarea ng-model="currentApi.editMessage" class="span8 textarea-code" rows="10">{{ currentApi.query | json }}</textarea>
+				<textarea class="span8 textarea-code" rows="10">{{ currentApi.data | json }}</textarea>
 			</div>
 
 			<form class="form-inline">

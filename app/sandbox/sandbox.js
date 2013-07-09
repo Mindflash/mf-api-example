@@ -9,9 +9,10 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 
 
 	$scope.apiList = [
-		{ name: 'Authorize user', type: 'GET', url: '/api/:version/auth/loginUser' },
+		{ name: 'Authorize user', type: 'GET', url: '/api/:version/auth',
+            params: {'id':'', 'courses':'', 'email':'', 'username':''} },
 		{ name: 'Add users', type: 'POST', url: '/api/:version/user',
-            query: {'users': [{'firstName':'',lastName:'', 'email':''}], 'requiredCourseIds': [], 'courseIds': [], 'seriesIds': [], 'groupIds': [], 'clientDatestamp': ''} },
+            data: {'users': [{'firstName':'',lastName:'', 'email':''}], 'requiredCourseIds': [], 'courseIds': [], 'seriesIds': [], 'groupIds': [], 'clientDatestamp': ''} },
 		{ name: 'Archive user', type: 'POST', url: '/api/:version/user/:userId/archive' },
 		{ name: 'Invite a trainee to a course', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite' },
 		{ name: 'Invite trainees to a course', type: 'POST', url: '/api/:version/course/:courseId/invite' },
@@ -21,19 +22,6 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 		{ name: 'inviteTraineesToSeries', type: 'POST', url: '/api/:version/series/:seriesId/invite' },
 		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user' }
 	];
-
-
-//    firstName: joi.types.String().max(35).required(),
-//        lastName: joi.types.String().max(35).required(),
-//        email: joi.types.String().nullOk().emptyOk().email().max(254).optional(),
-
-//    req.assert('users').arrayNotEmpty();
-//    req.assert('requiredCourseIds').isIntOrEmptyArray();
-//    req.assert('courseIds').isIntOrEmptyArray();
-//    req.assert('seriesIds').isIntOrEmptyArray();
-//    req.assert('groupIds').isIntOrEmptyArray();
-//    req.assert('clientDatestamp').notEmpty().regex(/\d{4}\-\d{1,2}\-\d{1,2}/g); // 2013-6-24 or 2013-12-24
-
 
 	$scope.currentApi = null;
 
@@ -53,12 +41,14 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
             item.usageUrl = item.url;
             item.url = item.url.replace(':version', $scope.apiModel.version);
             item.tokens = getMatches(item.url, tokenRegEx, 2);
+            item.tokenParams = angular.copy(item.params);
         });
 
         // for testing only uncomment out this section and add your api key -- don't commit
 //        $scope.currentApi = $scope.apiList[7];
 //        $scope.currentRepeater = angular.copy($scope.currentApi.tokens);
-
+//        $scope.currentRepeaterParams = angular.copy($scope.currentApi.tokenParams);
+//
 //        $scope.apiModel.apiKey = '';
 //        $http.defaults.headers.common['x-mindflash-apikey'] = $scope.apiModel.apiKey;
 //        $scope.viewModel.keySaved = true;
@@ -79,12 +69,15 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 		$scope.resultInfo = {};
 		$scope.currentApi = api;
         $scope.currentRepeater = angular.copy($scope.currentApi.tokens);
+        $scope.currentRepeaterParams = angular.copy($scope.currentApi.params);
+        $scope.currentApi.tokenParams = angular.copy($scope.currentApi.params);
 	};
 
 	$scope.sendCall = function() {
-        console.log(angular.element('#dataMessage'));
         var formattedUrl = formatFilter($scope.currentApi.url, $scope.currentApi.tokens);
-		$http({method: $scope.currentApi.type, url: (baseUrl + formattedUrl), data:$scope.currentApi.query}).
+//        $http({method: $scope.currentApi.type, url: (baseUrl + formattedUrl), data:$scope.currentApi.data}).
+        console.log($scope.currentApi.tokenParams);
+        $http({method: $scope.currentApi.type, url: (baseUrl + formattedUrl), params:$scope.currentApi.tokenParams}).
 			success(function(data, status, headers, config) {
                 $scope.resultInfo.data = data;
                 $scope.resultInfo.status = status;
