@@ -28,25 +28,25 @@
 			<!-- tokens -->
 			<div class="row">
 				<div class="span2" ng-repeat="(key, value) in repeater.tokens">
-					<input ng-model="editMethod.tokens[key]" class="span2" type="text" placeholder=":{{key}}"/>
+					<input ng-model="currentConfig.tokens[key]" class="span2" type="text" placeholder=":{{key}}"/>
 				</div>
 			</div>
-			<pre>tokens: {{editMethod.tokens | json}}</pre>
+			<pre>tokens: {{currentConfig.tokens | json}}</pre>
 
 			<!-- params -->
 			<h5>Query params:</h5>
 			<div class="row">
 				<div class="span2" ng-repeat="(key, value) in repeater.params">
-					<input ng-model="editMethod.params[key]" class="span2" type="text" placeholder="&{{key}}"/>
+					<input ng-model="currentConfig.params[key]" class="span2" type="text" placeholder="&{{key}}"/>
 				</div>
 			</div>
-			<pre>params: {{editMethod.params | json}}</pre>
+			<pre>params: {{currentConfig.params | json}}</pre>
 
 
 			<!-- data -->
 			<div ng-show="currentMethod.data">
 				<h5>Edit message data:</h5>
-				<textarea class="span8 textarea-code" rows="10">{{editMethod.data | json}}</textarea>
+				<textarea class="span8 textarea-code" rows="10">{{currentConfig.data | json}}</textarea>
 			</div>
 
 			<form class="form-inline">

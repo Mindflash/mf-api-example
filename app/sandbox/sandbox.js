@@ -65,23 +65,24 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 		$scope.resultInfo = {};
 		$scope.currentMethod = method;
 
-        $scope.editMethod = {
+        $scope.currentConfig = {
             tokens: angular.copy($scope.currentMethod.tokens),
             params: angular.copy($scope.currentMethod.params),
             data: angular.copy($scope.currentMethod.data) || {}
         };
 
+        // use repeater so that there is no double binding in key,value
         $scope.repeater = {
             tokens: angular.copy($scope.currentMethod.tokens),
             params: angular.copy($scope.currentMethod.params),
-            data: angular.copy($scope.currentMethod.data)
+            data: angular.copy($scope.currentMethod.data) || {}
         };
 	};
 
 	$scope.sendCall = function() {
-        var formattedUrl = formatFilter($scope.currentMethod.url, $scope.editMethod.tokens);
+        var formattedUrl = formatFilter($scope.currentMethod.url, $scope.currentConfig.tokens);
 //        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), data:$scope.currentMethod.editable.data}).
-        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), params:$scope.editMethod.params}).
+        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), params:$scope.currentConfig.params}).
 			success(function(data, status, headers, config) {
                 $scope.resultInfo.data = data;
                 $scope.resultInfo.status = status;
