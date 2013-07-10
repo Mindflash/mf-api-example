@@ -65,7 +65,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 		$scope.resultInfo = {};
 		$scope.currentMethod = method;
 
-        $scope.currentMethod.editable = {
+        $scope.editMethod = {
             tokens: angular.copy($scope.currentMethod.tokens),
             params: angular.copy($scope.currentMethod.params),
             data: angular.copy($scope.currentMethod.data) || {}
@@ -79,9 +79,9 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 	};
 
 	$scope.sendCall = function() {
-        var formattedUrl = formatFilter($scope.currentMethod.url, $scope.currentMethod.editable.tokens);
+        var formattedUrl = formatFilter($scope.currentMethod.url, $scope.editMethod.tokens);
 //        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), data:$scope.currentMethod.editable.data}).
-        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), params:$scope.currentMethod.editable.params}).
+        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), params:$scope.editMethod.params}).
 			success(function(data, status, headers, config) {
                 $scope.resultInfo.data = data;
                 $scope.resultInfo.status = status;

@@ -23,30 +23,30 @@
 			<pre>{{currentMethod.type}} {{currentMethod.usageUrl}}</pre>
 
 			<h4>Generated</h4>
-			<pre>{{currentMethod.url | format : currentMethod.editable.tokens}}</pre>
+			<pre>{{currentMethod.url | format : currentMethod.tokens}}</pre>
 
 			<!-- tokens -->
 			<div class="row">
 				<div class="span2" ng-repeat="(key, value) in repeater.tokens">
-					<input ng-model="currentMethod.editable.tokens[key]" class="span2" type="text" placeholder=":{{key}}"/>
+					<input ng-model="editMethod.tokens[key]" class="span2" type="text" placeholder=":{{key}}"/>
 				</div>
 			</div>
-			<pre>tokens: {{currentMethod.editable.tokens | json}}</pre>
+			<pre>tokens: {{editMethod.tokens | json}}</pre>
 
 			<!-- params -->
 			<h5>Query params:</h5>
 			<div class="row">
 				<div class="span2" ng-repeat="(key, value) in repeater.params">
-					<input ng-model="currentMethod.editable.params[key]" class="span2" type="text" placeholder="&{{key}}"/>
+					<input ng-model="editMethod.params[key]" class="span2" type="text" placeholder="&{{key}}"/>
 				</div>
 			</div>
-			<pre>params: {{currentMethod.editable.params | json}}</pre>
+			<pre>params: {{editMethod.params | json}}</pre>
 
 
 			<!-- data -->
 			<div ng-show="currentMethod.data">
 				<h5>Edit message data:</h5>
-				<textarea class="span8 textarea-code" rows="10">{{currentMethod.editable.data | json}}</textarea>
+				<textarea class="span8 textarea-code" rows="10">{{editMethod.data | json}}</textarea>
 			</div>
 
 			<form class="form-inline">
