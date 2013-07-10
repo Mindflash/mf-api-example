@@ -13,9 +13,10 @@
 			<div class="page-header">
 				<h2>{{currentMethod.name}}</h2>
 			</div>
+
 			<div class="description">
 				<h3>Description</h3>
-				<p>Max needs to add some documentation.</p>
+				<div ng-include="currentMethod.doc"></div>
 			</div>
 			<h4>Usage</h4>
 			<pre>{{currentMethod.type}} {{currentMethod.usageUrl}}</pre>

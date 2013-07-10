@@ -8,7 +8,8 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 
 	$scope.apiMethods = [
 		{ name: 'Authorize user', type: 'GET', url: '/api/:version/auth',
-            params: {'id':'', 'courses':'', 'email':'', 'username':''} },
+            params: {'id':'', 'courses':'', 'email':'', 'username':''},
+            doc: 'docs/some-api.html' },
 		{ name: 'Add users', type: 'POST', url: '/api/:version/user',
             data: {'users': [{'firstName':'',lastName:'', 'email':''}], 'requiredCourseIds': [], 'courseIds': [], 'seriesIds': [], 'groupIds': [], 'clientDatestamp': ''} },
 		{ name: 'Archive user', type: 'POST', url: '/api/:version/user/:userId/archive' },
