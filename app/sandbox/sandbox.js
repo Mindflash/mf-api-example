@@ -8,7 +8,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
 
-	$scope.apiList = [
+	$scope.apiTemplates = [
 		{ name: 'Authorize user', type: 'GET', url: '/api/:version/auth',
             params: {'id':'', 'courses':'', 'email':'', 'username':''} },
 		{ name: 'Add users', type: 'POST', url: '/api/:version/user',
@@ -24,6 +24,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 	];
 
 	$scope.currentApi = null;
+    $scope.repeater = {};
 
 	$scope.viewModel = {
         keySaved: false
@@ -37,21 +38,16 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     };
 
     function initialize() {
-        _.each($scope.apiList, function(item) {
+        _.each($scope.apiTemplates, function(item) {
             item.usageUrl = item.url;
             item.url = item.url.replace(':version', $scope.apiModel.version);
-            item.tokens = getMatches(item.url, tokenRegEx, 2);
-            item.tokenParams = angular.copy(item.params);
+            item.tokens = getMatches(item.url, tokenRegEx, 2)
         });
 
         // for testing only uncomment out this section and add your api key -- don't commit
-//        $scope.currentApi = $scope.apiList[7];
-//        $scope.currentRepeater = angular.copy($scope.currentApi.tokens);
-//        $scope.currentRepeaterParams = angular.copy($scope.currentApi.tokenParams);
-//
-//        $scope.apiModel.apiKey = '';
-//        $http.defaults.headers.common['x-mindflash-apikey'] = $scope.apiModel.apiKey;
-//        $scope.viewModel.keySaved = true;
+        $scope.apiModel.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
+        $scope.enterApiInfo();
+        $scope.selectTemplate($scope.apiTemplates[6]);
     }
 
     $scope.enterApiInfo = function(type) {
@@ -65,19 +61,27 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         $http.defaults.headers.common['x-mindflash-Apikey'] = $scope.apiModel.apiKey;
     };
 
-	$scope.selectApi = function(api) {
+	$scope.selectTemplate = function(api) {
 		$scope.resultInfo = {};
 		$scope.currentApi = api;
-        $scope.currentRepeater = angular.copy($scope.currentApi.tokens);
-        $scope.currentRepeaterParams = angular.copy($scope.currentApi.params);
-        $scope.currentApi.tokenParams = angular.copy($scope.currentApi.params);
+
+        $scope.currentApi.editable = {
+            tokens: angular.copy($scope.currentApi.tokens),
+            params: angular.copy($scope.currentApi.params),
+            data: angular.copy($scope.currentApi.data) || {}
+        };
+
+        $scope.repeater = {
+            tokens: angular.copy($scope.currentApi.tokens),
+            params: angular.copy($scope.currentApi.params),
+            data: angular.copy($scope.currentApi.data)
+        };
 	};
 
 	$scope.sendCall = function() {
-        var formattedUrl = formatFilter($scope.currentApi.url, $scope.currentApi.tokens);
-//        $http({method: $scope.currentApi.type, url: (baseUrl + formattedUrl), data:$scope.currentApi.data}).
-        console.log($scope.currentApi.tokenParams);
-        $http({method: $scope.currentApi.type, url: (baseUrl + formattedUrl), params:$scope.currentApi.tokenParams}).
+        var formattedUrl = formatFilter($scope.currentApi.url, $scope.currentApi.editable.tokens);
+//        $http({method: $scope.currentApi.type, url: (baseUrl + formattedUrl), data:$scope.currentApi.editable.data}).
+        $http({method: $scope.currentApi.type, url: (baseUrl + formattedUrl), params:$scope.currentApi.editable.params}).
 			success(function(data, status, headers, config) {
                 $scope.resultInfo.data = data;
                 $scope.resultInfo.status = status;
@@ -96,24 +100,8 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     };
 
     $scope.$on('$destroy', function() {
-
+        // clean up
 	});
-
-    $scope.changeData = function($event) {
-        console.log($event);
-    };
-
-
-//    function getMatches(string, regex, index) {
-//        index || (index = 1); // default to the first capturing group
-//        var matches = [];
-//        var match;
-//        while (match = regex.exec(string)) {
-//            console.log(match);
-//            matches.push(match[index]);
-//        }
-//        return matches;
-//    }
 
     function getMatches(string, regex, index) {
         index || (index = 1); // default to the first capturing group
