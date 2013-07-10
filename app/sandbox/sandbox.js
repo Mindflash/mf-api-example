@@ -4,7 +4,6 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 
     var baseUrl = 'http://localhost:6500';
     var formatFilter = $filter('format');
-//    var tokenRegEx = /(\:\w+)(\/{0,1})/gi;
     var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
 	$scope.apiMethods = [
@@ -44,9 +43,9 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         });
 
         // for testing only uncomment out this section and add your api key -- don't commit
-        $scope.apiModel.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
-        $scope.enterApiInfo();
-        $scope.selectMethod($scope.apiMethods[1]);
+//        $scope.apiModel.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
+//        $scope.enterApiInfo();
+//        $scope.selectMethod($scope.apiMethods[1]);
     }
 
     $scope.enterApiInfo = function(type) {
@@ -81,20 +80,15 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 	$scope.sendCall = function() {
         var formattedUrl = formatFilter($scope.currentMethod.url, $scope.currentConfig.tokens);
         var d = getData();
-        var p = $scope.currentConfig.params;
-//        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), data:$scope.currentMethod.editable.data}).
-        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), data:d}).
+        var p = getParams();
+        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), params:p}).
 			success(function(data, status, headers, config) {
                 $scope.resultInfo.data = data;
                 $scope.resultInfo.status = status;
 			}).
 			error(function(data, status, headers, config) {
-                console.log(data);
-                console.log(status);
-                console.log(headers);
-                console.log(config);
-//                $scope.resultInfo.data = data;
-//                $scope.resultInfo.status = status;
+                $scope.resultInfo.data = data;
+                $scope.resultInfo.status = status;
 			});
 	};
 
@@ -116,9 +110,14 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     }
 
     function getData() {
+        // TODO: fix post data
         var d = angular.fromJson($scope.currentConfig.data);
-
         return d;
+    }
+
+    function getParams() {
+        // TODO: clear out empty params
+        return $scope.currentConfig.params;
     }
 
     $scope.$on('$destroy', function() {

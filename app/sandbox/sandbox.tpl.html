@@ -5,8 +5,6 @@
 			<!-- Key -->
 			<label for="apikeyTxt">API Key:</label>
 			<input id="apikeyTxt" type="text" placeholder="Enter api key..." ng-model="apiModel.apiKey" ng-readonly="viewModel.keySaved" class="span4"/>
-			<label for="apiVersionTxt">API Version:</label>
-			<input id="apiVersionTxt" type="text" ng-model="apiModel.version" ng-readonly="true" class="span1">
 			<button class="btn btn-primary" ng-hide="viewModel.keySaved" ng-click="enterApiInfo('save')">Save</button>
 			<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="enterApiInfo('edit')">Edit</button>
 		</form>
