@@ -46,7 +46,7 @@
 			<!-- data -->
 			<div ng-show="currentMethod.data">
 				<h5>Edit message data:</h5>
-				<textarea class="span8 textarea-code" rows="10">{{currentConfig.data | json}}</textarea>
+				<textarea ng-model="currentConfig.data" class="span8 textarea-code" rows="10"></textarea>
 			</div>
 
 			<form class="form-inline">

@@ -7,7 +7,6 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 //    var tokenRegEx = /(\:\w+)(\/{0,1})/gi;
     var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
-
 	$scope.apiMethods = [
 		{ name: 'Authorize user', type: 'GET', url: '/api/:version/auth',
             params: {'id':'', 'courses':'', 'email':'', 'username':''} },
@@ -47,7 +46,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         // for testing only uncomment out this section and add your api key -- don't commit
         $scope.apiModel.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
         $scope.enterApiInfo();
-        $scope.selectMethod($scope.apiMethods[6]);
+        $scope.selectMethod($scope.apiMethods[1]);
     }
 
     $scope.enterApiInfo = function(type) {
@@ -68,7 +67,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         $scope.currentConfig = {
             tokens: angular.copy($scope.currentMethod.tokens),
             params: angular.copy($scope.currentMethod.params),
-            data: angular.copy($scope.currentMethod.data) || {}
+            data: angular.toJson(angular.copy($scope.currentMethod.data), true) || {}
         };
 
         // use repeater so that there is no double binding in key,value
@@ -81,15 +80,21 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 
 	$scope.sendCall = function() {
         var formattedUrl = formatFilter($scope.currentMethod.url, $scope.currentConfig.tokens);
+        var d = getData();
+        var p = $scope.currentConfig.params;
 //        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), data:$scope.currentMethod.editable.data}).
-        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), params:$scope.currentConfig.params}).
+        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), data:d}).
 			success(function(data, status, headers, config) {
                 $scope.resultInfo.data = data;
                 $scope.resultInfo.status = status;
 			}).
 			error(function(data, status, headers, config) {
-                $scope.resultInfo.data = data;
-                $scope.resultInfo.status = status;
+                console.log(data);
+                console.log(status);
+                console.log(headers);
+                console.log(config);
+//                $scope.resultInfo.data = data;
+//                $scope.resultInfo.status = status;
 			});
 	};
 
@@ -100,10 +105,6 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         };
     };
 
-    $scope.$on('$destroy', function() {
-        // clean up
-	});
-
     function getMatches(string, regex, index) {
         index || (index = 1); // default to the first capturing group
         var matches = {};
@@ -113,6 +114,16 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         }
         return matches;
     }
+
+    function getData() {
+        var d = angular.fromJson($scope.currentConfig.data);
+
+        return d;
+    }
+
+    $scope.$on('$destroy', function() {
+        // clean up
+    });
 
     initialize();
 });
