@@ -8,7 +8,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
 
-	$scope.apiTemplates = [
+	$scope.apiMethods = [
 		{ name: 'Authorize user', type: 'GET', url: '/api/:version/auth',
             params: {'id':'', 'courses':'', 'email':'', 'username':''} },
 		{ name: 'Add users', type: 'POST', url: '/api/:version/user',
@@ -23,7 +23,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user' }
 	];
 
-	$scope.currentApi = null;
+	$scope.currentMethod = null;
     $scope.repeater = {};
 
 	$scope.viewModel = {
@@ -38,7 +38,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     };
 
     function initialize() {
-        _.each($scope.apiTemplates, function(item) {
+        _.each($scope.apiMethods, function(item) {
             item.usageUrl = item.url;
             item.url = item.url.replace(':version', $scope.apiModel.version);
             item.tokens = getMatches(item.url, tokenRegEx, 2)
@@ -47,7 +47,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         // for testing only uncomment out this section and add your api key -- don't commit
         $scope.apiModel.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
         $scope.enterApiInfo();
-        $scope.selectTemplate($scope.apiTemplates[6]);
+        $scope.selectMethod($scope.apiMethods[6]);
     }
 
     $scope.enterApiInfo = function(type) {
@@ -61,27 +61,27 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         $http.defaults.headers.common['x-mindflash-Apikey'] = $scope.apiModel.apiKey;
     };
 
-	$scope.selectTemplate = function(api) {
+	$scope.selectMethod = function(method) {
 		$scope.resultInfo = {};
-		$scope.currentApi = api;
+		$scope.currentMethod = method;
 
-        $scope.currentApi.editable = {
-            tokens: angular.copy($scope.currentApi.tokens),
-            params: angular.copy($scope.currentApi.params),
-            data: angular.copy($scope.currentApi.data) || {}
+        $scope.currentMethod.editable = {
+            tokens: angular.copy($scope.currentMethod.tokens),
+            params: angular.copy($scope.currentMethod.params),
+            data: angular.copy($scope.currentMethod.data) || {}
         };
 
         $scope.repeater = {
-            tokens: angular.copy($scope.currentApi.tokens),
-            params: angular.copy($scope.currentApi.params),
-            data: angular.copy($scope.currentApi.data)
+            tokens: angular.copy($scope.currentMethod.tokens),
+            params: angular.copy($scope.currentMethod.params),
+            data: angular.copy($scope.currentMethod.data)
         };
 	};
 
 	$scope.sendCall = function() {
-        var formattedUrl = formatFilter($scope.currentApi.url, $scope.currentApi.editable.tokens);
-//        $http({method: $scope.currentApi.type, url: (baseUrl + formattedUrl), data:$scope.currentApi.editable.data}).
-        $http({method: $scope.currentApi.type, url: (baseUrl + formattedUrl), params:$scope.currentApi.editable.params}).
+        var formattedUrl = formatFilter($scope.currentMethod.url, $scope.currentMethod.editable.tokens);
+//        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), data:$scope.currentMethod.editable.data}).
+        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), params:$scope.currentMethod.editable.params}).
 			success(function(data, status, headers, config) {
                 $scope.resultInfo.data = data;
                 $scope.resultInfo.status = status;
@@ -95,7 +95,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     $scope.navClass = function(api) {
         return {
             last: this.$last,
-            active: $scope.currentApi == api
+            active: $scope.currentMethod == api
         };
     };
 

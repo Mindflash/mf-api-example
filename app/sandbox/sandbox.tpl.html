@@ -11,42 +11,42 @@
 			<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="enterApiInfo('edit')">Edit</button>
 		</form>
 
-		<section class="content" ng-show="currentApi">
+		<section class="content" ng-show="currentMethod">
 			<div class="page-header">
-				<h2>{{currentApi.name}}</h2>
+				<h2>{{currentMethod.name}}</h2>
 			</div>
 			<div class="description">
 				<h3>Description</h3>
 				<p>Max needs to add some documentation.</p>
 			</div>
 			<h4>Usage</h4>
-			<pre>{{currentApi.type}} {{currentApi.usageUrl}}</pre>
+			<pre>{{currentMethod.type}} {{currentMethod.usageUrl}}</pre>
 
 			<h4>Generated</h4>
-			<pre>{{ currentApi.url | format : currentApi.editable.tokens }}</pre>
+			<pre>{{currentMethod.url | format : currentMethod.editable.tokens}}</pre>
 
 			<!-- tokens -->
 			<div class="row">
 				<div class="span2" ng-repeat="(key, value) in repeater.tokens">
-					<input ng-model="currentApi.editable.tokens[key]" class="span2" type="text" placeholder=":{{key}}"/>
+					<input ng-model="currentMethod.editable.tokens[key]" class="span2" type="text" placeholder=":{{key}}"/>
 				</div>
 			</div>
-			<pre>tokens: {{ currentApi.editable.tokens | json }}</pre>
+			<pre>tokens: {{currentMethod.editable.tokens | json}}</pre>
 
 			<!-- params -->
 			<h5>Query params:</h5>
 			<div class="row">
 				<div class="span2" ng-repeat="(key, value) in repeater.params">
-					<input ng-model="currentApi.editable.params[key]" class="span2" type="text" placeholder="&{{key}}"/>
+					<input ng-model="currentMethod.editable.params[key]" class="span2" type="text" placeholder="&{{key}}"/>
 				</div>
 			</div>
-			<pre>params: {{ currentApi.editable.params | json }}</pre>
+			<pre>params: {{currentMethod.editable.params | json}}</pre>
 
 
 			<!-- data -->
-			<div ng-show="currentApi.data">
+			<div ng-show="currentMethod.data">
 				<h5>Edit message data:</h5>
-				<textarea class="span8 textarea-code" rows="10">{{ currentApi.editable.data | json }}</textarea>
+				<textarea class="span8 textarea-code" rows="10">{{currentMethod.editable.data | json}}</textarea>
 			</div>
 
 			<form class="form-inline">

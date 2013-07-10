@@ -2,7 +2,7 @@
 <div class="spacer"></div>
 <ul class="nav nav-list well api-list-container">
 	<div class="nav-header">Course</div>
-	<li ng-repeat="api in apiTemplates" ng-class="navClass(api)">
-		<a href ng-click="selectTemplate(api)">{{api.name}}</a>
+	<li ng-repeat="method in apiMethods" ng-class="navClass(method)">
+		<a href ng-click="selectMethod(method)">{{method.name}}</a>
 	</li>
 </ul>
