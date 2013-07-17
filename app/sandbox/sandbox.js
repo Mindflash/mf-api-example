@@ -44,9 +44,9 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         });
 
         // for testing only uncomment out this section and add your api key -- don't commit
-//        $scope.apiModel.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
-//        $scope.enterApiInfo();
-//        $scope.selectMethod($scope.apiMethods[1]);
+        $scope.apiModel.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
+        $scope.enterApiInfo();
+        $scope.selectMethod($scope.apiMethods[1]);
     }
 
     $scope.enterApiInfo = function(type) {
@@ -82,7 +82,15 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         var formattedUrl = formatFilter($scope.currentMethod.url, $scope.currentConfig.tokens);
         var d = getData();
         var p = getParams();
-        $http({method: $scope.currentMethod.type, url: (baseUrl + formattedUrl), params:p}).
+        var httpConfig = {
+            method: $scope.currentMethod.type,
+            url: baseUrl + formattedUrl
+        };
+
+        if(d) httpConfig.data = d;
+        if(p) httpConfig.params = p;
+
+        $http(httpConfig).
 			success(function(data, status, headers, config) {
                 $scope.resultInfo.data = data;
                 $scope.resultInfo.status = status;
@@ -117,8 +125,13 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     }
 
     function getParams() {
-        // TODO: clear out empty params
-        return $scope.currentConfig.params;
+        var p = angular.copy($scope.currentConfig.params);
+        _.each(p, function(v, k) { if(!v) delete p[k]; });
+
+        if(_.isEmpty(p))
+            return null;
+
+        return p;
     }
 
     $scope.$on('$destroy', function() {
