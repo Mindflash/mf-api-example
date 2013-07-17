@@ -1,0 +1,206 @@
+<p>
+	Use this endpoint to get user information. By omitting the <b>:userId</b> parameter, a full list of all users in
+	the organization is returned. By supplying the <b>:userId</b> parameter, a specific user is returned. When a single
+	user is returned, much more detailed information comes with it including group information and course enrollment
+	information.
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>:userId</b></td>
+			<td>URL</td>
+			<td>YES</td>
+			<td>The <i>Mindflash</i> ID of the user to search for.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Get a list of all users in organization
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v2/user</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+[
+  {
+    "id": 111,
+    "firstName": "Joe",
+    "lastName": "Black",
+    "email": "jblack@yourorg.com",
+    "userName": "jblack",
+    "status": "Active",
+    "type": "Administrator"
+  },
+  {
+    "id": 222,
+    "firstName": "John",
+    "lastName": "Doe",
+    "email": "jdoe@yourorg.com",
+    "userName": "jdoe",
+    "status": "Active",
+    "type": "Trainer"
+  },
+  {
+    "id": 333,
+    "firstName": "Sandy",
+    "lastName": "Eggo",
+    "email": "seggo@yourorg.com",
+    "userName": null,
+    "status": "Archived",
+    "type": "Trainee"
+  }
+]</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 2 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
+				Example: Get a specific user
+			</a>
+		</div>
+		<div id="example2" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v2/user/333</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  "id": 333,
+  "name": "Eggo, Sandy",
+  "firstName": "Sandy",
+  "lastName": "Eggo",
+  "username": null,
+  "email": "seggo@yourorg.com",
+  "status": "Active",
+  "type": "Trainee",
+  "isOwner": 0,
+  "groups": [],
+  "series": [
+    {
+      "id": 1662438388,
+      "name": "Series 1",
+      "type": "Series",
+      "status": "Completed",
+      "required": 1,
+      "lastActivity": "2013-07-15T18:47:59.000Z",
+      "invitedByUserId": 111,
+      "invitedBy": "Joe Black",
+      "invitedByEmail": "jblack@mindflash.com",
+      "completionDeadline": null,
+      "progress": null,
+      "duration": 18000,
+      "invited": "2013-07-15T18:47:52.000Z",
+      "invitationEmailSent": "2013-07-15T18:47:52.000Z",
+      "invitationEmailRespondedDate": null,
+      "reminderEmailSent": null,
+      "pokeReminderEmailSent": null,
+      "completed": "2013-07-15T21:33:00.000Z",
+      "completionEmailSent": null,
+      "finalGrade": 100,
+      "gradeStatus": "Passed"
+    },
+    {
+      "id": 1662469696,
+      "name": "Series 2",
+      "type": "Series",
+      "status": "Invited",
+      "required": 1,
+      "lastActivity": null,
+      "invitedByUserId": 111,
+      "invitedBy": "Joe Black",
+      "invitedByEmail": "jblack@yourorg.com",
+      "completionDeadline": null,
+      "progress": null,
+      "duration": null,
+      "invited": "2013-07-15T21:34:58.000Z",
+      "invitationEmailSent": "2013-07-15T21:34:58.000Z",
+      "invitationEmailRespondedDate": null,
+      "reminderEmailSent": null,
+      "pokeReminderEmailSent": null,
+      "completed": null,
+      "completionEmailSent": null,
+      "finalGrade": null,
+      "gradeStatus": "None"
+    }
+  ],
+  "courses": [
+    {
+      "id": 1662438386,
+      "name": "Course A",
+      "type": "Online",
+      "status": "Completed",
+      "required": 1,
+      "lastActivity": "2013-07-15T21:32:17.000Z",
+      "invitedByUserId": 111,
+      "invitedBy": "Joe Black",
+      "invitedByEmail": "jblack@yourorg.com",
+      "completionDeadline": null,
+      "progress": null,
+      "duration": 12000,
+      "invited": "2013-07-15T18:47:52.000Z",
+      "invitationEmailSent": "2013-07-15T18:47:52.000Z",
+      "invitationEmailRespondedDate": null,
+      "reminderEmailSent": null,
+      "pokeReminderEmailSent": null,
+      "completed": "2013-07-15T21:31:57.000Z",
+      "completionEmailSent": "2013-07-15T21:31:58.000Z",
+      "finalGrade": 100,
+      "gradeStatus": "Passed"
+    },
+    {
+      "id": 1662438387,
+      "name": "Course B",
+      "type": "Online",
+      "status": "Completed",
+      "required": 1,
+      "lastActivity": "2013-07-15T21:33:25.000Z",
+      "invitedByUserId": 111,
+      "invitedBy": "Joe Black",
+      "invitedByEmail": "jblack@yourorg.com",
+      "completionDeadline": null,
+      "progress": null,
+      "duration": 8000,
+      "invited": "2013-07-15T18:47:52.000Z",
+      "invitationEmailSent": "2013-07-15T18:47:52.000Z",
+      "invitationEmailRespondedDate": null,
+      "reminderEmailSent": null,
+      "pokeReminderEmailSent": null,
+      "completed": "2013-07-15T21:33:00.000Z",
+      "completionEmailSent": "2013-07-15T21:33:00.000Z",
+      "finalGrade": 50,
+      "gradeStatus": "Failed"
+    }
+  ]
+}</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- end of examples -->
+
+</div>

@@ -6,21 +6,34 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
     var formatFilter = $filter('format');
     var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
+	var today = new Date();
+	var dd = today.getDate();
+	var mm = today.getMonth()+1; //January is 0!
+	var yyyy = today.getFullYear();
+	if(dd<10){dd='0'+dd;}
+	if(mm<10){mm='0'+mm;}
+	today = yyyy+'-'+mm+'-'+dd;
+
 	$scope.apiMethods = [
-		{ name: 'Authorize user', type: 'GET', url: '/api/:version/auth',
+		{ name: 'Authorize User', type: 'GET', url: '/api/:version/auth',
             params: {'id':'', 'courses':'', 'email':'', 'username':''},
-            doc: 'docs/auth-api.html' },
-		{ name: 'Add users', type: 'POST', url: '/api/:version/user',
-            data: {'users': [{'firstName':'',lastName:'', 'email':''}], 'requiredCourseIds': [], 'courseIds': [], 'seriesIds': [], 'groupIds': [], 'clientDatestamp': ''} },
-		{ name: 'Archive user', type: 'POST', url: '/api/:version/user/:userId/archive' },
-		{ name: 'Invite a trainee to a course', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite' },
-		{ name: 'Invite trainees to a course', type: 'POST', url: '/api/:version/course/:courseId/invite' },
-		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/course/:courseId/user' },
-		{ name: 'getCourses', type: 'GET', url: '/api/:version/course' },
-		{ name: 'inviteTraineeToSeries', type: 'POST', url: '/api/:version/user/:userId/series/:seriesId/invite' },
-		{ name: 'inviteTraineesToSeries', type: 'POST', url: '/api/:version/series/:seriesId/invite' },
-		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user' }
+            doc: 'docs/auth-api.html', header: "users" },
+		{ name: 'Get User Info', type: 'GET', url: '/api/:version/user/:userId',
+			doc: 'docs/get-user-api.html', header: "users" },
+		{ name: 'Add Users', type: 'POST', url: '/api/:version/user',
+            data: {'users': [{'firstName':'',lastName:'', 'email':''}], 'requiredCourseIds': [], 'courseIds': [], 'seriesIds': [], 'groupIds': [], 'clientDatestamp': today, 'batchId' : '1'},
+			doc: 'docs/add-user-api.html', header: "users"},
+		{ name: 'Archive user', type: 'POST', url: '/api/:version/user/:userId/archive', header: "users" },
+		{ name: 'Invite a trainee to a course', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite', header: "courses" },
+		{ name: 'Invite trainees to a course', type: 'POST', url: '/api/:version/course/:courseId/invite', header: "courses" },
+		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/course/:courseId/user', header: "courses" },
+		{ name: 'getCourses', type: 'GET', url: '/api/:version/course', header: "courses" },
+		{ name: 'inviteTraineeToSeries', type: 'POST', url: '/api/:version/user/:userId/series/:seriesId/invite', header: "series" },
+		{ name: 'inviteTraineesToSeries', type: 'POST', url: '/api/:version/series/:seriesId/invite', header: "series" },
+		{ name: 'seriesTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user', header: "series" }
 	];
+
+	$scope.methodGroups = _.groupBy($scope.apiMethods, function(method) { return method.header; });
 
 	$scope.currentMethod = null;
     $scope.repeater = {};
