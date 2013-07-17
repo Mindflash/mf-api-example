@@ -1,25 +1,27 @@
 <div class="row">
 	<div class="span4" ng-include="'sandbox/side-nav.tpl.html'"></div>
 	<div class="span8">
-		<form class="form-inline">
-			<!-- Key -->
-			<label for="apikeyTxt">API Key:</label>
-			<input id="apikeyTxt" type="text" placeholder="Enter api key..." ng-model="apiModel.apiKey" ng-readonly="viewModel.keySaved" class="span4"/>
-			<button class="btn btn-primary" ng-hide="viewModel.keySaved" ng-click="enterApiInfo('save')">Save</button>
-			<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="enterApiInfo('edit')">Edit</button>
-		</form>
-
 		<section class="content" ng-show="currentMethod">
 			<div class="page-header">
 				<h2>{{currentMethod.name}}</h2>
 			</div>
 
-			<div class="description">
-				<h3>Description</h3>
-				<div ng-include="currentMethod.doc"></div>
-			</div>
 			<h4>Usage</h4>
 			<pre>{{currentMethod.type}} {{currentMethod.usageUrl}}</pre>
+
+			<div class="description">
+				<h4>Description</h4>
+				<div ng-include="currentMethod.doc"></div>
+			</div>
+			<h3>Try it!</h3>
+
+			<form class="form-inline">
+				<!-- Key -->
+				<label for="apikeyTxt">API Key:</label>
+				<input id="apikeyTxt" type="text" placeholder="Enter api key..." ng-model="apiModel.apiKey" ng-readonly="viewModel.keySaved" class="span4"/>
+				<button class="btn btn-primary" ng-hide="viewModel.keySaved" ng-click="enterApiInfo('save')">Save</button>
+				<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="enterApiInfo('edit')">Edit</button>
+			</form>
 
 			<h4>Generated</h4>
 			<pre>{{currentMethod.url | format : currentConfig.tokens}}</pre>
