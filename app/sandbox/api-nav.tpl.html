@@ -5,6 +5,10 @@
 	<li ng-repeat="method in methodGroups['users']" ng-class="navClass(method)">
 		<a href ng-click="selectMethod(method)">{{method.name}}</a>
 	</li>
+	<div class="nav-header">User Groups</div>
+	<li ng-repeat="method in methodGroups['groups']" ng-class="navClass(method)">
+		<a href ng-click="selectMethod(method)">{{method.name}}</a>
+	</li>
 	<div class="nav-header">Courses</div>
 	<li ng-repeat="method in methodGroups['courses']" ng-class="navClass(method)">
 		<a href ng-click="selectMethod(method)">{{method.name}}</a>
