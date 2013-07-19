@@ -46,10 +46,18 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 			data: {'userIds': []},
 			doc: 'docs/remove-users-group-api.html', header: "groups"},
 		// Courses
-		{ name: 'Invite a trainee to a course', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite', header: "courses" },
-		{ name: 'Invite trainees to a course', type: 'POST', url: '/api/:version/course/:courseId/invite', header: "courses" },
-		{ name: 'courseTraineesAndStatuses', type: 'GET', url: '/api/:version/course/:courseId/user', header: "courses" },
-		{ name: 'getCourses', type: 'GET', url: '/api/:version/course', header: "courses" },
+		{ name: 'Get Course Info', type: 'GET', url: '/api/:version/course/:courseId',
+			params: {'type':''},
+			doc: 'docs/get-course-api.html', header: "courses" },
+		{ name: 'Get Course Enrollment Info for User', type: 'GET', url: '/api/:version/course/:courseId/user/:userId',
+			doc: 'docs/get-course-user-status-api.html', header: "courses" },
+		{ name: 'Get Course Enrollment Info for All Users', type: 'GET', url: '/api/:version/course/:courseId/user',
+			doc: 'docs/get-course-users-status-api.html', header: "courses" },
+		{ name: 'Invite User to Course', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite',
+			doc: 'docs/invite-user-course-api.html', header: "courses" },
+		{ name: 'Invite Users to Course', type: 'POST', url: '/api/:version/course/:courseId/invite',
+			doc: 'docs/invite-users-course-api.html', header: "courses" },
+		// Series
 		{ name: 'inviteTraineeToSeries', type: 'POST', url: '/api/:version/user/:userId/series/:seriesId/invite', header: "series" },
 		{ name: 'inviteTraineesToSeries', type: 'POST', url: '/api/:version/series/:seriesId/invite', header: "series" },
 		{ name: 'seriesTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user', header: "series" }
