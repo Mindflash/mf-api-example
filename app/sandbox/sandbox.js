@@ -51,7 +51,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 			doc: 'docs/get-course-api.html', header: "courses" },
 		{ name: 'Get Course Enrollment Info for User', type: 'GET', url: '/api/:version/course/:courseId/user/:userId',
 			doc: 'docs/get-course-user-status-api.html', header: "courses" },
-		{ name: 'Get Course Enrollment Info for All Users', type: 'GET', url: '/api/:version/course/:courseId/user',
+		{ name: 'Get All Users in a Course', type: 'GET', url: '/api/:version/course/:courseId/user',
 			doc: 'docs/get-course-users-status-api.html', header: "courses" },
 		{ name: 'Invite User to Course', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite',
 			doc: 'docs/invite-user-course-api.html', header: "courses" },
