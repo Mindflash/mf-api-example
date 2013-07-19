@@ -38,10 +38,12 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 		{ name: 'Add User to Group', type: 'POST', url: '/api/:version/group/:groupId/user/:userId',
 			doc: 'docs/add-user-group-api.html', header: "groups"},
 		{ name: 'Add Users to Group', type: 'POST', url: '/api/:version/group/:groupId/user',
+			data: {'userIds': []},
 			doc: 'docs/add-users-group-api.html', header: "groups"},
 		{ name: 'Remove User from Group', type: 'DELETE', url: '/api/:version/group/:groupId/user/:userId',
 			doc: 'docs/remove-user-group-api.html', header: "groups"},
 		{ name: 'Remove Users from Group', type: 'DELETE', url: '/api/:version/group/:groupId/user',
+			data: {'userIds': []},
 			doc: 'docs/remove-users-group-api.html', header: "groups"},
 		// Courses
 		{ name: 'Invite a trainee to a course', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite', header: "courses" },
