@@ -30,12 +30,12 @@ Response:
 Authentication
 --------------
 In order to use the Mindflash API you must first contact customer support to get an API key. This key will allow
-you to make secure calls to the API by placing the key in the request header. A sample request header should look
-like this:
+you to make secure calls to the API by placing the key in the request header as the `x-mindflash-apikey` field.
+A sample request header should look like this:
 
 	Accept:application/json, text/plain, */*
 	Accept-Encoding:gzip,deflate,sdch
-	<b>x-mindflash-apikey:8442c90ef89745e28620e406</b>
+	x-mindflash-apikey:8442c90ef89745e28620e406
 
 Single-Sign On
 --------------
