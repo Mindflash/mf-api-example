@@ -1,4 +1,4 @@
-<b>Note:</b> This example application can be run interactively at: https://api.mindflash.com/api-docs
+<b>Note:</b> This example application can be run interactively at: http://mindflash.github.io/mf-api-example
 
 Mindflash Public API - Documentation
 ==============
@@ -64,4 +64,4 @@ to the URL, so user is automatically authenticated and logged into the Mindflash
 
 More Documentation
 ------------------
-If you would like call-by-call documentation with examples, please go to https://api.mindflash.com/api-docs.
+If you would like call-by-call documentation with examples, please go to http://mindflash.github.io/mf-api-example.
