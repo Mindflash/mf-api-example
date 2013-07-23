@@ -6,7 +6,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 	var formatFilter = $filter('format');
 	var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
-	today = yyyy+'-'+mm+'-'+dd;
+	var today = $filter('date')(new Date(), 'yyyy-MM-dd');
 	
 	$scope.apiMethods = [
 		// Users
