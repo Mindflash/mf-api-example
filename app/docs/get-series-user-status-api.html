@@ -1,0 +1,114 @@
+<p>
+	Use this endpoint to get detailed course enrollment information for a specific user in a specific series.
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>:seriesId</b></td>
+			<td>URL</td>
+			<td>NO</td>
+			<td>The <i>Mindflash</i> ID of the series the user is enrolled in.</td>
+		</tr>
+		<tr>
+			<td><b>:userId</b></td>
+			<td>URL</td>
+			<td>NO</td>
+			<td>The <i>Mindflash</i> ID of the user to get information for.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Get a users series enrollment information.
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v2/series/1662438388/user/1662427377</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+  "courseStatus": "Completed",
+  "required": 1,
+  "lastActivity": "2013-07-15T18:47:59.000Z",
+  "invitedByUserId": 1662427377,
+  "invitedBy": "Joe Black",
+  "invitedByEmail": "jblack@yourorg.com",
+  "completionDeadline": null,
+  "progress": null,
+  "duration": 18000,
+  "invited": "2013-07-15T18:47:52.000Z",
+  "invitationEmailSent": "2013-07-15T18:47:52.000Z",
+  "invitationEmailRespondedDate": null,
+  "reminderEmailSent": null,
+  "pokeReminderEmailSent": null,
+  "completed": "2013-07-15T21:33:00.000Z",
+  "completionEmailSent": null,
+  "courses": [
+    {
+      "id": 1662438386,
+      "name": "Course A",
+      "seriesCourseSequence": 0,
+      "courseStatus": "Completed",
+      "required": 1,
+      "lastActivity": "2013-07-15T21:32:17.000Z",
+      "invitedByUserId": 1662427377,
+      "invitedBy": "Jow Black",
+      "invitedByEmail": "jblack@yourorg.com",
+      "completionDeadline": null,
+      "progress": null,
+      "duration": 12000,
+      "invited": "2013-07-15T18:47:52.000Z",
+      "invitationEmailSent": "2013-07-15T18:47:52.000Z",
+      "invitationEmailRespondedDate": null,
+      "reminderEmailSent": null,
+      "pokeReminderEmailSent": null,
+      "completed": "2013-07-15T21:31:57.000Z",
+      "completionEmailSent": "2013-07-15T21:31:58.000Z"
+    },
+    {
+      "id": 1662438387,
+      "name": "Course B",
+      "seriesCourseSequence": 1,
+      "courseStatus": "Completed",
+      "required": 1,
+      "lastActivity": "2013-07-15T21:33:25.000Z",
+      "invitedByUserId": 1662427377,
+      "invitedBy": "Joe Black",
+      "invitedByEmail": "jblack@yourorg.com",
+      "completionDeadline": null,
+      "progress": null,
+      "duration": 8000,
+      "invited": "2013-07-15T18:47:52.000Z",
+      "invitationEmailSent": "2013-07-15T18:47:52.000Z",
+      "invitationEmailRespondedDate": null,
+      "reminderEmailSent": null,
+      "pokeReminderEmailSent": null,
+      "completed": "2013-07-15T21:33:00.000Z",
+      "completionEmailSent": "2013-07-15T21:33:00.000Z"
+    }
+  ]
+}</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- end of examples -->
+
+</div>

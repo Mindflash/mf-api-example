@@ -52,15 +52,30 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
 		{ name: 'Get Course Enrollment Info for User', type: 'GET', url: '/api/:version/course/:courseId/user/:userId',
 			doc: 'docs/get-course-user-status-api.html', header: "courses" },
 		{ name: 'Get All Users in a Course', type: 'GET', url: '/api/:version/course/:courseId/user',
+			params: {'status':''},
 			doc: 'docs/get-course-users-status-api.html', header: "courses" },
-		{ name: 'Invite User to Course', type: 'POST', url: '/api/:version/user/:userId/course/:courseId/invite',
+		{ name: 'Invite User to Course', type: 'POST', url: '/api/:version/course/:courseId/user/:userId/invite',
+			data: {'clientDatestamp': today, 'required': false},
 			doc: 'docs/invite-user-course-api.html', header: "courses" },
 		{ name: 'Invite Users to Course', type: 'POST', url: '/api/:version/course/:courseId/invite',
+			data: {'userIds': [], 'clientDatestamp': today, 'required': false},
 			doc: 'docs/invite-users-course-api.html', header: "courses" },
 		// Series
-		{ name: 'inviteTraineeToSeries', type: 'POST', url: '/api/:version/user/:userId/series/:seriesId/invite', header: "series" },
-		{ name: 'inviteTraineesToSeries', type: 'POST', url: '/api/:version/series/:seriesId/invite', header: "series" },
-		{ name: 'seriesTraineesAndStatuses', type: 'GET', url: '/api/:version/series/:seriesId/user', header: "series" }
+		{ name: 'Get Series Info', type: 'GET', url: '/api/:version/series/:seriesId',
+			doc: 'docs/get-series-api.html', header: "series" },
+		{ name: 'Get Courses in a Series', type: 'GET', url: '/api/:version/series/:seriesId/course/:courseId',
+			doc: 'docs/get-series-courses-api.html', header: "series" },
+		{ name: 'Get Series Enrollment Info for User', type: 'GET', url: '/api/:version/series/:seriesId/user/:userId',
+			doc: 'docs/get-series-user-status-api.html', header: "series" },
+		{ name: 'Get All Users in a Series', type: 'GET', url: '/api/:version/series/:seriesId/user',
+			params: {'status':''},
+			doc: 'docs/get-series-users-status-api.html', header: "series" },
+		{ name: 'Invite User to Series', type: 'POST', url: '/api/:version/series/:seriesId/user/:userId/invite',
+			data: {'clientDatestamp': today, 'required': false},
+			doc: 'docs/invite-user-series-api.html', header: "series" },
+		{ name: 'Invite Users to Series', type: 'POST', url: '/api/:version/series/:seriesId/invite',
+			data: {'userIds': [], 'clientDatestamp': today, 'required': false},
+			doc: 'docs/invite-users-series-api.html', header: "series" }
 	];
 
 	$scope.methodGroups = _.groupBy($scope.apiMethods, function(method) { return method.header; });

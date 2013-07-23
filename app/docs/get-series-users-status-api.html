@@ -1,6 +1,6 @@
 <p>
-	Use this endpoint to get a list of all users enrolled in a specific course. Some extra information will be returned including
-	the status in the course and basic completion information if applicable.
+	Use this endpoint to get a list of all users enrolled in a specific series. Some extra information will be returned including
+	the status in the series and basic completion information if applicable.
 </p>
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
@@ -14,7 +14,7 @@
 		</thead>
 		<tbody>
 		<tr>
-			<td><b>:courseId</b></td>
+			<td><b>:seriesId</b></td>
 			<td>URL</td>
 			<td>NO</td>
 			<td>The <i>Mindflash</i> ID of the course the to query for user information.</td>
@@ -23,7 +23,7 @@
 			<td><b>status</b></td>
 			<td>Querystring</td>
 			<td>YES</td>
-			<td>Filter results by course status. Can be one of:<br/>Completed<br/>Invited<br/>Passed<br/>Failed<br/>Started</td>
+			<td>Filter results by series status. Can be one of:<br/>Completed<br/>Invited<br/>Passed<br/>Failed<br/>Started</td>
 		</tr>
 		</tbody>
 	</table>
@@ -35,13 +35,13 @@
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
-				Example: Get a list of users enrolled in a specific course.
+				Example: Get a list of users enrolled in a specific series.
 			</a>
 		</div>
 		<div id="example1" class="accordion-body collapse">
 			<div class="accordion-inner">
 				<div class="bs-docs-example bs-docs-example-tag">
-					<pre>GET https://api.mindflash.com/api/v2/course/1662438386/user</pre>
+					<pre>GET https://api.mindflash.com/api/v2/series/1662438388/user</pre>
 				</div>
 				<pre class="prettyprint">
 Response: 200
@@ -84,7 +84,7 @@ Response: 200
 		<div id="example2" class="accordion-body collapse">
 			<div class="accordion-inner">
 				<div class="bs-docs-example bs-docs-example-tag">
-					<pre>GET https://api.mindflash.com/api/v2/course/1662438386/user?status=Completed</pre>
+					<pre>GET https://api.mindflash.com/api/v2/series/1662438388/user?status=Completed</pre>
 				</div>
 				<pre class="prettyprint">
 Response: 200
