@@ -9,20 +9,23 @@ information. These requests are based on very simple HTTP protocol rules in conj
 A sample request and response could look like this:
 
 Request:
+
 	GET https://api.mindflash.com/api/v2/user/333
+
 Response:
+
 	{
-      "id": 333,
-      "name": "Eggo, Sandy",
-      "firstName": "Sandy",
-      "lastName": "Eggo",
-      "username": null,
-      "email": "seggo@yourorg.com",
-      "status": "Active",
-      "type": "Trainee",
-      "isOwner": 0,
-      "groups": []
-    }
+	  "id": 333,
+	  "name": "Eggo, Sandy",
+	  "firstName": "Sandy",
+	  "lastName": "Eggo",
+	  "username": null,
+	  "email": "seggo@yourorg.com",
+	  "status": "Active",
+	  "type": "Trainee",
+	  "isOwner": 0,
+	  "groups": []
+	}
 
 Authentication
 --------------
