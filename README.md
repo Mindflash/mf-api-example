@@ -16,11 +16,11 @@ Response:
 
 	{
 	  "id": 333,
-	  "name": "Eggo, Sandy",
-	  "firstName": "Sandy",
-	  "lastName": "Eggo",
-	  "username": null,
-	  "email": "seggo@yourorg.com",
+	  "name": "Doe, John",
+	  "firstName": "John",
+	  "lastName": "Doe",
+	  "username": "jdoe",
+	  "email": "jdoe@yourorg.com",
 	  "status": "Active",
 	  "type": "Trainee",
 	  "isOwner": 0,
@@ -33,7 +33,9 @@ In order to use the Mindflash API you must first contact customer support to get
 you to make secure calls to the API by placing the key in the request header. A sample request header should look
 like this:
 
-	TODO: another example
+	Accept:application/json, text/plain, */*
+	Accept-Encoding:gzip,deflate,sdch
+	<b>x-mindflash-apikey:8442c90ef89745e28620e406</b>
 
 Single-Sign On
 --------------
