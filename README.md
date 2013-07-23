@@ -43,7 +43,7 @@ Mindflash offers a useful mechanism that allows clients to log their own trainer
 application by simply requesting a session directly. This allows users to log into Mindflash using their own list of
 users and credentials on their own internal network. Here is a sample workflow:
 
-	TODO: yet another example
+![SSO Simple Example](https://github.com/Mindflash/mf-api-example/blob/master/api-sso-simple.png)
 
 More Documentation
 ------------------
