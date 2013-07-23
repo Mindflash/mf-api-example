@@ -20,10 +20,10 @@
 			<td>The <i>Mindflash</i> ID of the course to search for.</td>
 		</tr>
 		<tr>
-			<td><b>type</b></td>
+			<td><b>status</b></td>
 			<td>Querystring</td>
 			<td>YES</td>
-			<td>Filter results by course state. Can be one of:<br/>Active<br/>Archive<br/>Draft<br/>All <i>(Default)</i></td>
+			<td>Filter results by course status. Can be one of:<br/>Active<br/>Archive<br/>Draft<br/>All <i>(Default)</i></td>
 		</tr>
 		</tbody>
 	</table>
@@ -51,14 +51,14 @@ Response: 200
     "name": "Course A",
     "description": "This is a description for course A.",
     "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
-    "type": "Active"
+    "status": "Active"
   },
   {
     "id": 1662438387,
     "name": "Course B",
     "description": "",
     "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
-    "type": "Draft"
+    "status": "Draft"
   }
 ]</pre>
 			</div>
@@ -85,7 +85,7 @@ Response: 200
   "name": "Course A",
   "description": "This is a description for course A.",
   "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
-  "type": "Active"
+  "status": "Active"
 }</pre>
 			</div>
 		</div>
@@ -102,7 +102,7 @@ Response: 200
 		<div id="example3" class="accordion-body collapse">
 			<div class="accordion-inner">
 				<div class="bs-docs-example bs-docs-example-tag">
-					<pre>GET https://api.mindflash.com/api/v2/course?type=Active</pre>
+					<pre>GET https://api.mindflash.com/api/v2/course?status=Active</pre>
 				</div>
 				<pre class="prettyprint">
 Response: 200
@@ -112,7 +112,7 @@ Response: 200
     "name": "Course A",
     "description": "This is a description for course A.",
     "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
-    "type": "Active"
+    "status": "Active"
   }
 ]</pre>
 			</div>
