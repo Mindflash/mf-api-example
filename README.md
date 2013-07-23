@@ -58,7 +58,7 @@ and URL for user to login to the Mindflash application. The request and response
 	  dashboardUrl: "http://yourorg.mindflash.com/CreateCookie.aspx?sessionID2=AcAVGBh34343SD"
 	}
 
-<b>3.</b> Webserver serves page to intranet user which contains a the link returned by the Mindflash API.
+<b>3.</b> Webserver serves page to intranet user which contains a the link returned by the Mindflash API.  
 <b>4.</b> Intranet user clicks link, which directs browser to the Mindflash application. The Mindflash session is attached
 to the URL, so user is automatically authenticated and logged into the Mindflash application.
 
