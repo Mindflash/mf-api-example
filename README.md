@@ -1,3 +1,5 @@
+<b>Note:</b> This example application can be run interactively at: https://api.mindflash.com/api-docs
+
 Mindflash Public API - Documentation
 ==============
 
@@ -6,7 +8,21 @@ such as managing users, managing user groups, enrolling trainees in courses/seri
 information. These requests are based on very simple HTTP protocol rules in conjunction with the JSON data format.
 A sample request and response could look like this:
 
-	TODO: example here
+Request:
+	GET https://api.mindflash.com/api/v2/user/333
+Response:
+	{
+      "id": 333,
+      "name": "Eggo, Sandy",
+      "firstName": "Sandy",
+      "lastName": "Eggo",
+      "username": null,
+      "email": "seggo@yourorg.com",
+      "status": "Active",
+      "type": "Trainee",
+      "isOwner": 0,
+      "groups": []
+    }
 
 Authentication
 --------------
@@ -24,3 +40,6 @@ users and credentials on their own internal network. Here is a sample workflow:
 
 	TODO: yet another example
 
+More Documentation
+------------------
+If you would like call-by-call documentation with examples, please go to https://api.mindflash.com/api-docs.
