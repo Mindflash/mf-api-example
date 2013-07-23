@@ -28,7 +28,7 @@
 
 			<!-- tokens -->
 			<div class="row">
-				<div class="span2" ng-repeat="(key, value) in repeater.tokens">
+				<div class="span2" ng-repeat="key in repeater.tokenNames">
 					<input ng-model="currentConfig.tokens[key]" class="span2" type="text" placeholder=":{{key}}"/>
 				</div>
 			</div>
@@ -37,7 +37,7 @@
 			<!-- params -->
 			<h5>Query params:</h5>
 			<div class="row">
-				<div class="span2" ng-repeat="(key, value) in repeater.params">
+				<div class="span2" ng-repeat="key in repeater.qs">
 					<input ng-model="currentConfig.params[key]" ng-change="updateQuery()" class="span2" type="text" placeholder="&{{key}}"/>
 				</div>
 			</div>
