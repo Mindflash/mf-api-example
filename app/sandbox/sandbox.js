@@ -20,6 +20,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
             params: {'id':'', 'courses':'', 'email':'', 'username':''},
             doc: 'docs/auth-api.html', header: "users" },
 		{ name: 'Get User Info', type: 'GET', url: '/api/:version/user/:userId',
+			params: {'_type':'','_status':''},
 			doc: 'docs/get-user-api.html', header: "users" },
 		{ name: 'Add Users', type: 'POST', url: '/api/:version/user',
             data: {'users': [{'firstName':'',lastName:'', 'email':''}], 'requiredCourseIds': [], 'courseIds': [], 'seriesIds': [], 'groupIds': [], 'clientDatestamp': today, 'batchId' : '1'},
@@ -94,6 +95,8 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         version: 'v2'
     };
 
+	$scope.queryString = "";
+	
     function initialize() {
         _.each($scope.apiMethods, function(item) {
             item.usageUrl = item.url;
@@ -118,6 +121,17 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function($scope, $ht
         $http.defaults.headers.common['x-mindflash-Apikey'] = $scope.apiModel.apiKey;
     };
 
+	$scope.updateQuery = function() {
+		var p = getParams();
+		if(p) {
+			var parts = [];
+			_.each(p, function(v, k) { parts.push(k + "=" + encodeURIComponent(v));});
+			$scope.queryString = "?" + parts.join("&");
+		}  else {
+			$scope.queryString = "";
+		}
+	}
+	
 	$scope.selectMethod = function(method) {
 		$scope.resultInfo = {};
 		$scope.currentMethod = method;
