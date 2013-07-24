@@ -94,6 +94,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 	};
 
 	$scope.queryString = "";
+	$scope.currentUsage = "";
 
 	function initialize() {
 		_.each($scope.apiMethods, function (item) {
@@ -135,7 +136,8 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 	$scope.selectMethod = function (method) {
 		$scope.resultInfo = {};
 		$scope.currentMethod = method;
-
+		$scope.currentUsage = formatFilter($scope.currentMethod.url, {version: "v2"});
+		
 		var queryParams = {};
 		_.each($scope.currentMethod.qs, function (p) {
 			queryParams[p] = "";
