@@ -7,14 +7,14 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 	var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
 	var today = $filter('date')(new Date(), 'yyyy-MM-dd');
-	
+
 	$scope.apiMethods = [
 		// Users
 		{ name: 'Authorize User', type: 'GET', url: '/api/:version/auth',
-			qs: [ 'id','username','email','courses' ],
+			qs: [ 'id', 'username', 'email', 'courses' ],
 			doc: 'docs/auth-api.html', header: "users" },
 		{ name: 'Get User Info', type: 'GET', url: '/api/:version/user/:userId',
-			qs: [ '_type','_status' ],
+			qs: [ '_type', '_status' ],
 			doc: 'docs/get-user-api.html', header: "users" },
 		{ name: 'Add Users', type: 'POST', url: '/api/:version/user',
 			data: {'users': [
@@ -94,7 +94,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 	};
 
 	$scope.queryString = "";
-	
+
 	function initialize() {
 		_.each($scope.apiMethods, function (item) {
 			item.usageUrl = item.url;
@@ -103,7 +103,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 		});
 
 		// for testing only uncomment out this section and add your api key -- don't commit
-		$scope.apiModel.apiKey = '32bbb158dbd24c3f853aed577b415dc0';
+		$scope.apiModel.apiKey = '';
 		$scope.enterApiInfo();
 		$scope.selectMethod($scope.apiMethods[1]);
 	}
@@ -119,27 +119,33 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 		$http.defaults.headers.common['x-mindflash-Apikey'] = $scope.apiModel.apiKey;
 	};
 
-	$scope.updateQuery = function() {
+	$scope.updateQuery = function () {
 		var p = getParams();
-		if(p) {
+		if (p) {
 			var parts = [];
-			_.each(p, function(v, k) { parts.push(k + "=" + encodeURIComponent(v));});
+			_.each(p, function (v, k) {
+				parts.push(k + "=" + encodeURIComponent(v));
+			});
 			$scope.queryString = "?" + parts.join("&");
-		}  else {
+		} else {
 			$scope.queryString = "";
 		}
 	}
-	
+
 	$scope.selectMethod = function (method) {
 		$scope.resultInfo = {};
 		$scope.currentMethod = method;
 
 		var queryParams = {};
-		_.each($scope.currentMethod.qs, function(p) {queryParams[p] = "";});
-		
+		_.each($scope.currentMethod.qs, function (p) {
+			queryParams[p] = "";
+		});
+
 		var tokens = {};
-		_.each($scope.currentMethod.tokenNames, function(p) {tokens[p] = "";});
-		
+		_.each($scope.currentMethod.tokenNames, function (p) {
+			tokens[p] = "";
+		});
+
 		$scope.currentConfig = {
 			tokens: tokens,
 			params: queryParams,
@@ -189,7 +195,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 		var matches = [];
 		var match;
 		while (match = regex.exec(string)) {
-		matches.push(match[index]);
+			matches.push(match[index]);
 		}
 		return matches;
 	}
