@@ -6,24 +6,15 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 	var formatFilter = $filter('format');
 	var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
-	var today = new Date();
-	var dd = today.getDate();
-	var mm = today.getMonth() + 1; //January is 0!
-	var yyyy = today.getFullYear();
-	if (dd < 10) {
-		dd = '0' + dd;
-	}
-	if (mm < 10) {
-		mm = '0' + mm;
-	}
-	today = yyyy + '-' + mm + '-' + dd;
-
+	var today = $filter('date')(new Date(), 'yyyy-MM-dd');
+	
 	$scope.apiMethods = [
 		// Users
 		{ name: 'Authorize User', type: 'GET', url: '/api/:version/auth',
-			params: {'id': '', 'courses': '', 'email': '', 'username': ''},
+			qs: [ 'id','username','email','courses' ],
 			doc: 'docs/auth-api.html', header: "users" },
 		{ name: 'Get User Info', type: 'GET', url: '/api/:version/user/:userId',
+			qs: [ '_type','_status' ],
 			doc: 'docs/get-user-api.html', header: "users" },
 		{ name: 'Add Users', type: 'POST', url: '/api/:version/user',
 			data: {'users': [
@@ -53,12 +44,12 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 			doc: 'docs/remove-users-group-api.html', header: "groups"},
 		// Courses
 		{ name: 'Get Course Info', type: 'GET', url: '/api/:version/course/:courseId',
-			params: {'type': ''},
+			qs: [ 'type' ],
 			doc: 'docs/get-course-api.html', header: "courses" },
 		{ name: 'Get Course Enrollment Info for User', type: 'GET', url: '/api/:version/course/:courseId/user/:userId',
 			doc: 'docs/get-course-user-status-api.html', header: "courses" },
 		{ name: 'Get All Users in a Course', type: 'GET', url: '/api/:version/course/:courseId/user',
-			params: {'status': ''},
+			qs: [ 'status' ],
 			doc: 'docs/get-course-users-status-api.html', header: "courses" },
 		{ name: 'Invite User to Course', type: 'POST', url: '/api/:version/course/:courseId/user/:userId/invite',
 			data: {'clientDatestamp': today, 'required': false},
@@ -74,7 +65,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 		{ name: 'Get Series Enrollment Info for User', type: 'GET', url: '/api/:version/series/:seriesId/user/:userId',
 			doc: 'docs/get-series-user-status-api.html', header: "series" },
 		{ name: 'Get All Users in a Series', type: 'GET', url: '/api/:version/series/:seriesId/user',
-			params: {'status': ''},
+			qs: [ 'status' ],
 			doc: 'docs/get-series-users-status-api.html', header: "series" },
 		{ name: 'Invite User to Series', type: 'POST', url: '/api/:version/series/:seriesId/user/:userId/invite',
 			data: {'clientDatestamp': today, 'required': false},
@@ -102,11 +93,13 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 		version: 'v2'
 	};
 
+	$scope.queryString = "";
+	
 	function initialize() {
 		_.each($scope.apiMethods, function (item) {
 			item.usageUrl = item.url;
 			item.url = item.url.replace(':version', $scope.apiModel.version);
-			item.tokens = getMatches(item.url, tokenRegEx, 2)
+			item.tokenNames = getMatches(item.url, tokenRegEx, 2)
 		});
 
 		// for testing only uncomment out this section and add your api key -- don't commit
@@ -126,20 +119,37 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 		$http.defaults.headers.common['x-mindflash-Apikey'] = $scope.apiModel.apiKey;
 	};
 
+	$scope.updateQuery = function() {
+		var p = getParams();
+		if(p) {
+			var parts = [];
+			_.each(p, function(v, k) { parts.push(k + "=" + encodeURIComponent(v));});
+			$scope.queryString = "?" + parts.join("&");
+		}  else {
+			$scope.queryString = "";
+		}
+	}
+	
 	$scope.selectMethod = function (method) {
 		$scope.resultInfo = {};
 		$scope.currentMethod = method;
 
+		var queryParams = {};
+		_.each($scope.currentMethod.qs, function(p) {queryParams[p] = "";});
+		
+		var tokens = {};
+		_.each($scope.currentMethod.tokenNames, function(p) {tokens[p] = "";});
+		
 		$scope.currentConfig = {
-			tokens: angular.copy($scope.currentMethod.tokens),
-			params: angular.copy($scope.currentMethod.params),
+			tokens: tokens,
+			params: queryParams,
 			data: angular.toJson(angular.copy($scope.currentMethod.data), true) || {}
 		};
 
 		// use repeater so that there is no double binding in key,value
 		$scope.repeater = {
-			tokens: angular.copy($scope.currentMethod.tokens),
-			params: angular.copy($scope.currentMethod.params),
+			tokenNames: angular.copy($scope.currentMethod.tokenNames),
+			qs: angular.copy($scope.currentMethod.qs),
 			data: angular.copy($scope.currentMethod.data) || {}
 		};
 	};
@@ -176,10 +186,10 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 
 	function getMatches(string, regex, index) {
 		index || (index = 1); // default to the first capturing group
-		var matches = {};
+		var matches = [];
 		var match;
 		while (match = regex.exec(string)) {
-			matches[match[index]] = '';
+		matches.push(match[index]);
 		}
 		return matches;
 	}
