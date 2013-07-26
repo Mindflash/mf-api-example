@@ -2,7 +2,7 @@
 
 angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $http, $filter) {
 
-	var baseUrl = 'https://api.mftqa.com';
+	var baseUrl = 'https://api.mindflash.com';
 	var formatFilter = $filter('format');
 	var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
@@ -137,7 +137,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 		$scope.resultInfo = {};
 		$scope.currentMethod = method;
 		$scope.currentUsage = formatFilter($scope.currentMethod.url, {version: "v2"});
-		
+
 		var queryParams = {};
 		_.each($scope.currentMethod.qs, function (p) {
 			queryParams[p] = "";
