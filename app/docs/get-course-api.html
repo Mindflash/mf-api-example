@@ -1,6 +1,8 @@
 <p>
-	Use this endpoint to get course information. By omitting the <b>:courseId</b> parameter, a full list of all courses in
-	the organization is returned. By supplying the <b>:courseId</b> parameter, more specific data to a course is returned.
+	Use this endpoint to get course information. By omitting the <b>:courseId</b> parameter, a full list of all courses
+	in
+	the organization is returned. By supplying the <b>:courseId</b> parameter, more specific data to a course is
+	returned.
 </p>
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
@@ -23,7 +25,8 @@
 			<td><b>status</b></td>
 			<td>Querystring</td>
 			<td>YES</td>
-			<td>Filter results by course status. Can be one of:<br/>Active<br/>Archive<br/>Draft<br/>All <i>(Default)</i></td>
+			<td>Filter results by course status. Can be one of:<br/>Active<br/>Archive<br/>Draft<br/>All
+				<i>(Default)</i></td>
 		</tr>
 		</tbody>
 	</table>
@@ -51,14 +54,18 @@ Response: 200
     "name": "Course A",
     "description": "This is a description for course A.",
     "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
-    "status": "Active"
+    "status": "Active",
+	"trainerName": "Test Trainer 0",
+	"trainerEmail": "trainer0@test.com"
   },
   {
     "id": 1662438387,
     "name": "Course B",
     "description": "",
     "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
-    "status": "Draft"
+    "status": "Draft",
+	"trainerName": "Test Trainer 1",
+	"trainerEmail": "trainer1@test.com"
   }
 ]</pre>
 			</div>
@@ -85,7 +92,9 @@ Response: 200
   "name": "Course A",
   "description": "This is a description for course A.",
   "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
-  "status": "Active"
+  "status": "Active",
+  "trainerName": "Test Trainer 0",
+  "trainerEmail": "trainer0@test.com"
 }</pre>
 			</div>
 		</div>
@@ -112,7 +121,9 @@ Response: 200
     "name": "Course A",
     "description": "This is a description for course A.",
     "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
-    "status": "Active"
+    "status": "Active",
+    "trainerName": "Test Trainer 0",
+    "trainerEmail": "trainer0@test.com"
   }
 ]</pre>
 			</div>
