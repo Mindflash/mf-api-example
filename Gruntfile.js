@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
 	// configurable paths
-	var yeomanConfig = {
+	var yeomanConfig =  {
 		app: 'app',
 		dist: 'dist'
 	};
