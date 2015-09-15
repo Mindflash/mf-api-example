@@ -1,6 +1,6 @@
 <b>Note:</b> This example application can be run interactively at: http://mindflash.github.io/mf-api-example
 
-Mindflash Public API - Documentation
+Mindflash Public API - Documentation 
 ==============
 
 The Mindflash API is a simple REST service that allows clients to carry out simple tasks within their own account

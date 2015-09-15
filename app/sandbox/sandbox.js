@@ -131,7 +131,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 		} else {
 			$scope.queryString = "";
 		}
-	}
+	};
 
 	$scope.selectMethod = function (method) {
 		$scope.resultInfo = {};

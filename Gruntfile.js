@@ -1,5 +1,5 @@
 'use strict';
-var liveReloadPort = 35721;
+var liveReloadPort = 35723;
 var serverPort = 9000;
 
 var lrSnippet = require('connect-livereload')({port: liveReloadPort});
@@ -12,7 +12,7 @@ module.exports = function (grunt) {
 	require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
 	// configurable paths
-	var yeomanConfig = {
+	var yeomanConfig =  {
 		app: 'app',
 		dist: 'dist'
 	};
