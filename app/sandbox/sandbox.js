@@ -2,7 +2,7 @@
 
 angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $http, $filter) {
 
-	var baseUrl = 'https://api.mftdev.com';
+	var baseUrl = 'https://api.mindflash.com';
 	var formatFilter = $filter('format');
 	var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
