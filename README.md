@@ -62,6 +62,10 @@ and URL for user to login to the Mindflash application. The request and response
 <b>4.</b> Intranet user clicks link, which directs browser to the Mindflash application. The Mindflash session is attached
 to the URL, so user is automatically authenticated and logged into the Mindflash application.
 
+Request Limits
+--------------
+API usage is subject to rate limits of 10 requests per 10 seconds per API key.
+
 More Documentation
 ------------------
 If you would like call-by-call documentation with examples, please go to http://mindflash.github.io/mf-api-example.
