@@ -39,7 +39,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 			doc: 'docs/add-users-group-api.html', header: "groups"},
 		{ name: 'Remove User from Group', type: 'DELETE', url: '/api/:version/group/:groupId/user/:userId',
 			doc: 'docs/remove-user-group-api.html', header: "groups"},
-		{ name: 'Remove Users from Group', type: 'DELETE', url: '/api/:version/group/:groupId/user',
+		{ name: 'Remove Users from Group', type: 'POST', url: '/api/:version/group/:groupId/user/action/delete',
 			data: {'userIds': []},
 			doc: 'docs/remove-users-group-api.html', header: "groups"},
 		// Courses
