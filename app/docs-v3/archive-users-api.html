@@ -1,0 +1,62 @@
+<p>
+	Use this endpoint to archive multiple users. Archived users will be unable to take courses or login to the Mindflash site.
+</p>
+<div class="bs-docs-example bs-docs-post-tag">
+	<pre>
+{
+  "userIds": []
+}</pre>
+	<div class="well">
+		<span class="label label-info">Note</span> When posting json data in the body of the request,
+		the <code style="background-color: #FFFFFF;">Content-Type</code> must be set to <code style="background-color: #FFFFFF;">application/json</code>.
+	</div>
+</div>
+<div class="prettyprint">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Field</th>
+			<th>Optional</th>
+			<th>Notes</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>userIds</b></td>
+			<td>NO</td>
+			<td>An array of Mindflash user IDs to archive.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Archive 3 users.
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>
+POST https://api.mindflash.com/api/v2/user/archive
+
+{
+  "userIds": [4567, 7898, 9988]
+}
+					</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+</pre>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- end examples -->
+</div>

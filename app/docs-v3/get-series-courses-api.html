@@ -1,0 +1,96 @@
+<p>
+	Use this endpoint to get a list of courses in a specific series. By omitting the <b>:courseId</b> parameter, a full list of all courses in
+	the series is returned. By supplying the <b>:courseId</b> parameter, more specific data to the course is returned.
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>:seriesId</b></td>
+			<td>URL</td>
+			<td>NO</td>
+			<td>The <i>Mindflash</i> ID of the series to get a list of courses for.</td>
+		</tr>
+		<tr>
+			<td><b>:courseId</b></td>
+			<td>URL</td>
+			<td>YES</td>
+			<td>The <i>Mindflash</i> ID of the course in the series to get information for. The course must already be part of the series.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Get all courses in a series.
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v2/series/1662438388/course</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+[
+  {
+    "id": 1662438386,
+    "name": "Course A",
+    "description": "",
+    "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
+    "status": "Active"
+  },
+  {
+    "id": 1662438387,
+    "name": "Course B",
+    "description": "",
+    "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
+    "status": "Active"
+  }
+]</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 2 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
+				Example: Get a specific course in a series.
+			</a>
+		</div>
+		<div id="example2" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v2/series/1662438388/course/1662438387</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  "id": 1662438387,
+  "name": "Course B",
+  "description": "",
+  "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
+  "status": "Active"
+}</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- end of examples -->
+
+</div>

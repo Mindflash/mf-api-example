@@ -1,0 +1,51 @@
+<p>
+	Use this endpoint to archive a user. Archived users will be unable to take courses or login to the Mindflash site.
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>:userId</b></td>
+			<td>URL</td>
+			<td>NO</td>
+			<td>The <i>Mindflash</i> ID of the user to archive.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Archive a user.
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>
+POST https://api.mindflash.com/api/v2/user/333/archive
+
+					</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+</pre>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- end examples -->
+</div>

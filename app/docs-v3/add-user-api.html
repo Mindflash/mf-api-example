@@ -1,0 +1,192 @@
+<p>
+	Use this endpoint to add users to the Mindflash system. The user information supplied must contain the basic
+	information, but can optionally include group information and course/series enrollment information.
+	<br/><b>Note:</b> A maximum of <b>200</b> users may be added per api call.
+</p>
+<div class="bs-docs-example bs-docs-post-tag">
+	<pre>
+{
+  "users": [
+    {
+      "firstName": "",
+      "lastName": "",
+      "email": ""
+    }
+  ],
+  "requiredCourseIds": [],
+  "courseIds": [],
+  "seriesIds": [],
+  "groupIds": [],
+  "clientDatestamp": "",
+  "batchId" : 1
+}
+	</pre>
+	<div class="well">
+		<span class="label label-info">Note</span> When posting json data in the body of the request,
+		the <code style="background-color: #FFFFFF;">Content-Type</code> must be set to <code style="background-color: #FFFFFF;">application/json</code>.
+	</div>
+</div>
+<div class="prettyprint">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Field</th>
+			<th>Optional</th>
+			<th>Notes</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td rowspan="2"><b>users</b></td>
+			<td>NO</td>
+			<td>A list of all users information to be added to the Mindflash system.</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<table class="table table-condensed table-bordered">
+					<thead>
+					<tr>
+						<th>Field</th>
+						<th>Optional</th>
+						<th>Max Length</th>
+						<th>Notes</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td><i>firstName</i></td>
+						<td>NO</td>
+						<td>35</td>
+						<td>Users first name.</td>
+					</tr>
+					<tr>
+						<td><i>lastName</i></td>
+						<td>NO</td>
+						<td>35</td>
+						<td>Users last name.</td>
+					</tr>
+					<tr>
+						<td><i>email</i></td>
+						<td>YES*</td>
+						<td>254</td>
+						<td>Users email address.</td>
+					</tr>
+					<tr>
+						<td><i>username</i></td>
+						<td>YES*</td>
+						<td>254</td>
+						<td>Unique username for user.</td>
+					</tr>
+					<tr>
+						<td><i>permissions</i></td>
+						<td>YES</td>
+						<td>N/A</td>
+						<td>One of:<br/>administrator<br/>manager<br/>trainer<br/>trainee <i>(Default)</i></td>
+					</tr>
+					<tr>
+						<td><i>yammerId</i></td>
+						<td>YES</td>
+						<td>N/A</td>
+						<td>Yammer ID of user.</td>
+					</tr>
+					<tr>
+						<td><i>password</i></td>
+						<td>YES</td>
+						<td>35</td>
+						<td>A login password. Passwords allow the user to login via the Mindflash website.</td>
+					</tr>
+					<tr>
+						<td colspan="4"><b>* Note:</b> At least one of <i>email</i> or <i>username</i> must be supplied.
+							Both may be supplied.</td>
+					</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td><b>requiredCourseIds</b></td>
+			<td>YES</td>
+			<td>A list of Mindflash course IDs to enroll the users in. All users will be enrolled in these courses with
+			the <i>required</i> option enabled.</td>
+		</tr>
+		<tr>
+			<td><b>courseIds</b></td>
+			<td>YES</td>
+			<td>A list of Mindflash course IDs to enroll the users in. All users will be enrolled in these courses with
+				the <i>required</i> option disabled.</td>
+		</tr>
+		<tr>
+			<td><b>seriesIds</b></td>
+			<td>YES</td>
+			<td>A list of Mindflash series IDs to enroll the users in. All users will be enrolled in these series.</td>
+		</tr>
+		<tr>
+			<td><b>groupIds</b></td>
+			<td>YES</td>
+			<td>A list of Mindflash group IDs to place the users in. All users will be placed into these groups.</td>
+		</tr>
+		<tr>
+			<td><b>clientDatestamp</b></td>
+			<td>NO</td>
+			<td>The current date. All dates must be in the format <i>YYYY-MM-DD</i>.</td>
+		</tr>
+		<tr>
+			<td><b>batchId</b></td>
+			<td>YES</td>
+			<td>This must be a unique number (preferably sequential) you must generate to identify this specific api call.
+			Upon success, this number will be returned in the response.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<br/>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Add 2 trainees and enroll in 3 courses, 1 which is required.
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>
+POST https://api.mindflash.com/api/v2/user
+
+{
+  "users": [
+    {
+      "firstName": "Tom",
+      "lastName": "Jones",
+      "email": "tjones@yourorg.com"
+    },
+    {
+      "firstName": "Rumple",
+      "lastName": "Stilskin",
+      "email": "rumple@yourorg.com"
+    }
+  ],
+  "requiredCourseIds": [ 1234 ],
+  "courseIds": [ 6789, 6543 ],
+  "seriesIds": [],
+  "groupIds": [],
+  "clientDatestamp": "2013-07-17",
+  "batchId" : 122
+}
+					</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  "batchId": 122
+}</pre>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- end examples -->
+</div>
