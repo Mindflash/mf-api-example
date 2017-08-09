@@ -1,6 +1,6 @@
 <p>
 	Use this endpoint to add users to the Mindflash system. The user information supplied must contain the basic
-	information, but can optionally include group information and course/series enrollment information.
+	information, but can optionally include group information and course enrollment information.
 	<br/><b>Note:</b> A maximum of <b>200</b> users may be added per api call.
 </p>
 <div class="bs-docs-example bs-docs-post-tag">
@@ -15,7 +15,6 @@
   ],
   "requiredCourseIds": [],
   "courseIds": [],
-  "seriesIds": [],
   "groupIds": [],
   "clientDatestamp": "",
   "batchId" : 1
@@ -116,11 +115,6 @@
 				the <i>required</i> option disabled.</td>
 		</tr>
 		<tr>
-			<td><b>seriesIds</b></td>
-			<td>YES</td>
-			<td>A list of Mindflash series IDs to enroll the users in. All users will be enrolled in these series.</td>
-		</tr>
-		<tr>
 			<td><b>groupIds</b></td>
 			<td>YES</td>
 			<td>A list of Mindflash group IDs to place the users in. All users will be placed into these groups.</td>
@@ -154,7 +148,7 @@
 			<div class="accordion-inner">
 				<div class="bs-docs-example bs-docs-example-tag">
 					<pre>
-POST https://api.mindflash.com/api/v2/user
+POST https://api.mindflash.com/api/v3/user
 
 {
   "users": [
@@ -171,7 +165,6 @@ POST https://api.mindflash.com/api/v2/user
   ],
   "requiredCourseIds": [ 1234 ],
   "courseIds": [ 6789, 6543 ],
-  "seriesIds": [],
   "groupIds": [],
   "clientDatestamp": "2013-07-17",
   "batchId" : 122

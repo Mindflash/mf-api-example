@@ -40,19 +40,19 @@
 		<div id="example1" class="accordion-body collapse">
 			<div class="accordion-inner">
 				<div class="bs-docs-example bs-docs-example-tag">
-					<pre>GET https://api.mindflash.com/api/v2/course/1662438386/user/1662427377</pre>
+					<pre>GET https://api.mindflash.com/api/v3/course/1662438386/user/1662427377</pre>
 				</div>
 				<pre class="prettyprint">
 Response: 200
 {
-  "courseStatus": "Invited",
+  "courseStatus": "Started",
   "required": 1,
   "lastActivity": "2013-07-15T21:32:17.000Z",
   "invitedByUserId": 1662427377,
   "invitedBy": "John Doe",
   "invitedByEmail": "jdoe@yourorg.com",
   "completionDeadline": null,
-  "progress": null,
+  "progress": 50,
   "duration": 12000,
   "invited": "2013-07-15T18:47:52.000Z",
   "invitationEmailSent": "2013-07-15T18:47:52.000Z",
@@ -61,14 +61,37 @@ Response: 200
   "pokeReminderEmailSent": null,
   "completed": "2013-07-15T21:31:57.000Z",
   "completionEmailSent": "2013-07-15T21:31:58.000Z",
-  "finalGrade": 100,
-  "quizScores": [
+  "finalGrade": null,
+  "cModules": [
     {
-      "quizId": 1662438588,
-      "quizName": "How To Succeed",
-      "score": 100,
-      "gradeStatus": "Passed",
-      "quizCompleted": "2013-07-15T21:31:57.000Z"
+      "cModuleStatus": "Passed",
+      "courseCModuleSequence": 0,
+      "required": 1,
+      "lastActivity": "2013-07-15T21:32:17.000Z",
+      "progress": 100,
+      "duration": 12000,
+      "completed": "2013-07-15T21:31:57.000Z",
+      "finalGrade": 100,
+      "quizScores": [
+        {
+          "quizId": 1662438588,
+          "quizName": "How To Succeed",
+          "score": 100,
+          "gradeStatus": "Passed",
+          "quizCompleted": "2013-07-15T21:31:57.000Z"
+        }
+      ]
+    },
+    {
+      "cModuleStatus": "Started",
+      "courseCModuleSequence": 1,
+      "required": 1,
+      "lastActivity": "2013-07-15T21:32:17.000Z",
+      "progress": 10,
+      "duration": 12000,
+      "completed": null,
+      "finalGrade": null,
+      "quizScores": []
     }
   ]
 }</pre>

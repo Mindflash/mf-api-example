@@ -19,7 +19,7 @@ angular.module('mfApiExampleApp').controller('V3Ctrl', function ($scope, $http, 
 		{ name: 'Add Users', type: 'POST', url: '/api/:version/user',
 			data: {'users': [
 				{'firstName': '', lastName: '', 'email': ''}
-			], 'requiredCourseIds': [], 'courseIds': [], 'seriesIds': [], 'groupIds': [], 'clientDatestamp': today, 'batchId': '1'},
+			], 'requiredCourseIds': [], 'courseIds': [], 'groupIds': [], 'clientDatestamp': today, 'batchId': '1'},
 			doc: 'docs-v3/add-user-api.html', header: "users"},
 		{ name: 'Edit User', type: 'POST', url: '/api/:version/user/:userId',
 			data: {'firstName': '', lastName: '', 'email': ''},
@@ -57,22 +57,6 @@ angular.module('mfApiExampleApp').controller('V3Ctrl', function ($scope, $http, 
 		{ name: 'Invite Users to Course', type: 'POST', url: '/api/:version/course/:courseId/invite',
 			data: {'userIds': [], 'clientDatestamp': today, 'required': false},
 			doc: 'docs-v3/invite-users-course-api.html', header: "courses" },
-		// Series
-		{ name: 'Get Series Info', type: 'GET', url: '/api/:version/series/:seriesId',
-			doc: 'docs-v3/get-series-api.html', header: "series" },
-		{ name: 'Get Courses in a Series', type: 'GET', url: '/api/:version/series/:seriesId/course/:courseId',
-			doc: 'docs-v3/get-series-courses-api.html', header: "series" },
-		{ name: 'Get Series Enrollment Info for User', type: 'GET', url: '/api/:version/series/:seriesId/user/:userId',
-			doc: 'docs-v3/get-series-user-status-api.html', header: "series" },
-		{ name: 'Get All Users in a Series', type: 'GET', url: '/api/:version/series/:seriesId/user',
-			qs: [ 'status' ],
-			doc: 'docs-v3/get-series-users-status-api.html', header: "series" },
-		{ name: 'Invite User to Series', type: 'POST', url: '/api/:version/series/:seriesId/user/:userId/invite',
-			data: {'clientDatestamp': today, 'required': false},
-			doc: 'docs-v3/invite-user-series-api.html', header: "series" },
-		{ name: 'Invite Users to Series', type: 'POST', url: '/api/:version/series/:seriesId/invite',
-			data: {'userIds': [], 'clientDatestamp': today, 'required': false},
-			doc: 'docs-v3/invite-users-series-api.html', header: "series" }
 	];
 
 	$scope.methodGroups = _.groupBy($scope.apiMethods, function (method) {
@@ -90,7 +74,7 @@ angular.module('mfApiExampleApp').controller('V3Ctrl', function ($scope, $http, 
 
 	$scope.apiModel = {
 		apiKey: '',
-		version: 'v2'
+		version: 'v3'
 	};
 
 	$scope.queryString = "";

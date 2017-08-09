@@ -44,7 +44,7 @@
 		<div id="example1" class="accordion-body collapse">
 			<div class="accordion-inner">
 				<div class="bs-docs-example bs-docs-example-tag">
-					<pre>GET https://api.mindflash.com/api/v2/course</pre>
+					<pre>GET https://api.mindflash.com/api/v3/course</pre>
 				</div>
 				<pre class="prettyprint">
 Response: 200
@@ -55,8 +55,10 @@ Response: 200
     "description": "This is a description for course A.",
     "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
     "status": "Active",
-	"trainerName": "Test Trainer 0",
-	"trainerEmail": "trainer0@test.com"
+    "trainerName": "Test Trainer 0",
+    "trainerEmail": "trainer0@test.com",
+    "cModuleOrderEnforced": 0,
+    "cModuleFailureEnforced": 0
   },
   {
     "id": 1662438387,
@@ -64,8 +66,10 @@ Response: 200
     "description": "",
     "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
     "status": "Draft",
-	"trainerName": "Test Trainer 1",
-	"trainerEmail": "trainer1@test.com"
+    "trainerName": "Test Trainer 1",
+    "trainerEmail": "trainer1@test.com",
+    "cModuleOrderEnforced": 0,
+    "cModuleFailureEnforced": 0
   }
 ]</pre>
 			</div>
@@ -83,7 +87,7 @@ Response: 200
 		<div id="example2" class="accordion-body collapse">
 			<div class="accordion-inner">
 				<div class="bs-docs-example bs-docs-example-tag">
-					<pre>GET https://api.mindflash.com/api/v2/course/1662438386</pre>
+					<pre>GET https://api.mindflash.com/api/v3/course/1662438386</pre>
 				</div>
 				<pre class="prettyprint">
 Response: 200
@@ -94,7 +98,27 @@ Response: 200
   "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
   "status": "Active",
   "trainerName": "Test Trainer 0",
-  "trainerEmail": "trainer0@test.com"
+  "trainerEmail": "trainer0@test.com",
+  "cModuleOrderEnforced": 0,
+  "cModuleFailureEnforced": 0,
+  "cModules": [
+    {
+      "id": 1662438387,
+      "name": "Module A",
+      "description": "This is a description for module A.",
+      "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
+      "status": "Active",
+      "sequenceNumber": 0
+    },
+    {
+      "id": 1662438388,
+      "name": "Module B",
+      "description": "This is a description for module B.",
+      "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
+      "status": "Active",
+      "sequenceNumber": 1
+    },
+  ]
 }</pre>
 			</div>
 		</div>
@@ -111,7 +135,7 @@ Response: 200
 		<div id="example3" class="accordion-body collapse">
 			<div class="accordion-inner">
 				<div class="bs-docs-example bs-docs-example-tag">
-					<pre>GET https://api.mindflash.com/api/v2/course?status=Active</pre>
+					<pre>GET https://api.mindflash.com/api/v3/course?status=Active</pre>
 				</div>
 				<pre class="prettyprint">
 Response: 200
@@ -123,7 +147,9 @@ Response: 200
     "thumbUrl": "https://d1b.cloudfront.net/ipad/placeholder_icon_400x300_generic.png",
     "status": "Active",
     "trainerName": "Test Trainer 0",
-    "trainerEmail": "trainer0@test.com"
+    "trainerEmail": "trainer0@test.com",
+    "cModuleOrderEnforced": 0,
+    "cModuleFailureEnforced": 0,
   }
 ]</pre>
 			</div>
