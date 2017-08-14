@@ -2,7 +2,7 @@
 
 angular.module('mfApiExampleApp').controller('V3Ctrl', function ($scope, $http, $filter) {
 
-	var baseUrl = 'https://api.mindflash.com';
+	$scope.baseUrl = 'https://api-pa.mindflash.com';
 	var formatFilter = $filter('format');
 	var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
@@ -152,7 +152,7 @@ angular.module('mfApiExampleApp').controller('V3Ctrl', function ($scope, $http, 
 		var p = getParams();
 		var httpConfig = {
 			method: $scope.currentMethod.type,
-			url: baseUrl + formattedUrl
+			url: $scope.baseUrl + formattedUrl
 		};
 
 		if (d) httpConfig.data = d;
