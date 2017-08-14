@@ -1,0 +1,201 @@
+<p>
+	The Authorize User endpoint will allow your organization to request pre-formed URLs that will automatically log any user
+	into the Mindflash application. One typical use of this is when an organization has an intranet of their own that would
+	want to allow their employees to log into Mindflash using their internal login (usually called <b>Single Sign On</b>, or
+	<b>Federated login</b>). THIS IS V3
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+			<tr>
+				<th>Name</th>
+				<th>Type</th>
+				<th>Optional</th>
+				<th>Value</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><b>id</b></td>
+				<td>Querystring</td>
+				<td>YES</td>
+				<td>The <i>Mindflash</i> ID of the user to be logged in.</td>
+			</tr>
+			<tr>
+				<td><b>username</b></td>
+				<td>Querystring</td>
+				<td>YES</td>
+				<td>The <i>Mindflash</i> username of the user to be logged in.</td>
+			</tr>
+			<tr>
+				<td><b>email</b></td>
+				<td>Querystring</td>
+				<td>YES</td>
+				<td>The email address of of the user to be logged in. (Must match the email in their Mindflash account)</td>
+			</tr>
+			<tr>
+				<td><b>courses</b></td>
+				<td>Querystring</td>
+				<td>YES</td>
+				<td>A comma delimited list of Mindflash course IDs. Specifying this will return links that will enroll
+				the user into these courses if they are clicked. They will be placed directly into the course.</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<p class="prettyprint">
+	<b>Note:</b> The auth endpoint <i>requires</i> at least one of <b>id</b>, <b>username</b> or <b>email</b> be supplied.
+</p>
+<br/>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Simple authorization by user id
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/auth?id=9999</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  userId: 9999,
+  userDisplayName: "Joe Black",
+  userEmail: "joe.black@yourorganization.com",
+  dashboardUrl: "http://yourorg.mindflash.com/CreateCookie.aspx?sessionID2=AcAVGBh34343SD"
+}</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 2 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
+				Example: Simple authorization by user name
+			</a>
+		</div>
+		<div id="example2" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/auth?username=jblack</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  userId: 9999,
+  userDisplayName: "Joe Black",
+  userEmail: "joe.black@yourorganization.com",
+  dashboardUrl: "http://yourorg.mindflash.com/CreateCookie.aspx?sessionID2=AcAVGBh34343SD"
+}</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 3 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example3" href="#example3">
+				Example: Authorization for course enrollment
+			</a>
+		</div>
+		<div id="example3" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/auth?id=9999&courses=123,567</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  userId: 9999,
+  userDisplayName: "Joe Black",
+  userEmail: "joe.black@yourorganization.com",
+  dashboardUrl: "http://yourorg.mindflash.com/CreateCookie.aspx?sessionID2=AcAVGBh34343SD"
+  courses: [
+    {
+      id: 123,
+      name: "How To Screw In A Lightbulb",
+      url: "http://yourorg.mindflash.com/CreateCookie.aspx?sessionID2=rSZ0jtvJykTqm0keTL"
+    },
+    {
+      id: 567,
+      name: "How To Change A Tire",
+      url: "http://yourorg.mindflash.com/CreateCookie.aspx?sessionID2=rSZ0jtvJykTqmAdsdA"
+    }
+  ]
+}</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 4 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example4" href="#example4">
+				Example: Missing user error
+			</a>
+		</div>
+		<div id="example4" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/auth?id=888</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 401
+{
+  code: "user_not_exist",
+  message: "A user with that id, email or username does not exist.",
+  type: "not_authorized"
+}</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 5 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example5" href="#example5">
+				Example: Missing course
+			</a>
+		</div>
+		<div id="example5" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/auth?id=9999&courses=123,999</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  userId: 9999,
+  userDisplayName: "Joe Black",
+  userEmail: "joe.black@yourorganization.com",
+  dashboardUrl: "http://yourorg.mindflash.com/CreateCookie.aspx?sessionID2=AcAVGBh34343SD"
+  courses: [
+    {
+      id: 123,
+      name: "How To Screw In A Lightbulb",
+      url: "http://yourorg.mindflash.com/CreateCookie.aspx?sessionID2=rSZ0jtvJykTqm0keTL"
+    },
+    {
+      id: 999,
+      error: "That course does not exist or is unavailable"
+    }
+  ]
+}</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- end of examples -->
+
+</div>

@@ -1,4 +1,4 @@
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavController">
     <div class="navbar-inner">
         <div class="container">
             <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -6,12 +6,12 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="brand" href="http://www.mindflash.com">Mindflash.com</a>
+            <a class="brand" href="http://www.mindflash.com">Mindflash.com API</a>
 
             <div class="nav-collapse collapse">
                 <ul class="nav">
-                    <li class="active"><a href="#">API Sandbox</a></li>
-                    <li class="divider-vertical"></li>
+                    <li ng-class="{ active: isActive('/v2')}"><a href="#/v2">Version 2</a></li>
+                    <!-- <li ng-class="{ active: isActive('/v3')}"><a href="#/v3">Version 3</a></li> -->
                 </ul>
             </div>
         </div>

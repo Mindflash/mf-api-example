@@ -1,0 +1,81 @@
+<p>
+	Use this endpoint to remove multiple users from a group.
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>:groupId</b></td>
+			<td>URL</td>
+			<td>NO</td>
+			<td>The <i>Mindflash</i> ID of the group to remove the users from.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<div class="bs-docs-example bs-docs-post-tag">
+	<pre>
+{
+  "userIds": []
+}</pre>
+	<div class="well">
+		<span class="label label-info">Note</span> When posting json data in the body of the request,
+		the <code style="background-color: #FFFFFF;">Content-Type</code> must be set to <code style="background-color: #FFFFFF;">application/json</code>.
+	</div>
+</div>
+<div class="prettyprint">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Field</th>
+			<th>Optional</th>
+			<th>Notes</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>userIds</b></td>
+			<td>NO</td>
+			<td>An array of Mindflash user IDs to remove from the group.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Remove 2 users from a group.
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+<pre>POST https://api.mindflash.com/api/v3/group/1662730985/user/action/delete
+
+{
+  "userIds" : [1234, 6789]
+}
+</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- end of examples -->
+
+</div>

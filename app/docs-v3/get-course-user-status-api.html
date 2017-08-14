@@ -1,0 +1,104 @@
+<p>
+	Use this endpoint to get detailed course enrollment information for a specific user in a specific course.
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>:courseId</b></td>
+			<td>URL</td>
+			<td>NO</td>
+			<td>The <i>Mindflash</i> ID of the course the user is enrolled in.</td>
+		</tr>
+		<tr>
+			<td><b>:userId</b></td>
+			<td>URL</td>
+			<td>NO</td>
+			<td>The <i>Mindflash</i> ID of the user to get information for.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Get a users course enrollment information.
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/course/1662438386/user/1662427377</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  "courseStatus": "Started",
+  "required": 1,
+  "lastActivity": "2013-07-15T21:32:17.000Z",
+  "invitedByUserId": 1662427377,
+  "invitedBy": "John Doe",
+  "invitedByEmail": "jdoe@yourorg.com",
+  "completionDeadline": null,
+  "progress": 50,
+  "duration": 12000,
+  "invited": "2013-07-15T18:47:52.000Z",
+  "invitationEmailSent": "2013-07-15T18:47:52.000Z",
+  "invitationEmailRespondedDate": null,
+  "reminderEmailSent": null,
+  "pokeReminderEmailSent": null,
+  "completed": "2013-07-15T21:31:57.000Z",
+  "completionEmailSent": "2013-07-15T21:31:58.000Z",
+  "finalGrade": null,
+  "cModules": [
+    {
+      "cModuleStatus": "Passed",
+      "courseCModuleSequence": 0,
+      "required": 1,
+      "lastActivity": "2013-07-15T21:32:17.000Z",
+      "progress": 100,
+      "duration": 12000,
+      "completed": "2013-07-15T21:31:57.000Z",
+      "finalGrade": 100,
+      "quizScores": [
+        {
+          "quizId": 1662438588,
+          "quizName": "How To Succeed",
+          "score": 100,
+          "gradeStatus": "Passed",
+          "quizCompleted": "2013-07-15T21:31:57.000Z"
+        }
+      ]
+    },
+    {
+      "cModuleStatus": "Started",
+      "courseCModuleSequence": 1,
+      "required": 1,
+      "lastActivity": "2013-07-15T21:32:17.000Z",
+      "progress": 10,
+      "duration": 12000,
+      "completed": null,
+      "finalGrade": null,
+      "quizScores": []
+    }
+  ]
+}</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- end of examples -->
+
+</div>
