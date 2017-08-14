@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $http, $filter) {
+angular.module('mfApiExampleApp').controller('V3Ctrl', function ($scope, $http, $filter) {
 
-	var baseUrl = 'https://api.mindflash.com';
+	$scope.baseUrl = 'https://api-pa.mindflash.com';
 	var formatFilter = $filter('format');
 	var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
@@ -12,67 +12,51 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 		// Users
 		{ name: 'Authorize User', type: 'GET', url: '/api/:version/auth',
 			qs: [ 'id', 'username', 'email', 'courses' ],
-			doc: 'docs/auth-api.html', header: "users" },
+			doc: 'docs-v3/auth-api.html', header: "users" },
 		{ name: 'Get User Info', type: 'GET', url: '/api/:version/user/:userId',
 			qs: [ '_type', '_status' ],
-			doc: 'docs/get-user-api.html', header: "users" },
+			doc: 'docs-v3/get-user-api.html', header: "users" },
 		{ name: 'Add Users', type: 'POST', url: '/api/:version/user',
 			data: {'users': [
 				{'firstName': '', lastName: '', 'email': ''}
-			], 'requiredCourseIds': [], 'courseIds': [], 'seriesIds': [], 'groupIds': [], 'clientDatestamp': today, 'batchId': '1'},
-			doc: 'docs/add-user-api.html', header: "users"},
+			], 'requiredCourseIds': [], 'courseIds': [], 'groupIds': [], 'clientDatestamp': today, 'batchId': '1'},
+			doc: 'docs-v3/add-user-api.html', header: "users"},
 		{ name: 'Edit User', type: 'POST', url: '/api/:version/user/:userId',
 			data: {'firstName': '', lastName: '', 'email': ''},
-			doc: 'docs/edit-user-api.html', header: "users"},
+			doc: 'docs-v3/edit-user-api.html', header: "users"},
 		{ name: 'Archive User', type: 'POST', url: '/api/:version/user/:userId/archive',
-			doc: 'docs/archive-user-api.html', header: "users"},
+			doc: 'docs-v3/archive-user-api.html', header: "users"},
 		{ name: 'Archive Users', type: 'POST', url: '/api/:version/user/archive',
 			data: {'userIds': []},
-			doc: 'docs/archive-users-api.html', header: "users"},
+			doc: 'docs-v3/archive-users-api.html', header: "users"},
 		// Groups
 		{ name: 'Get User Groups', type: 'GET', url: '/api/:version/group/:groupId',
-			doc: 'docs/get-group-api.html', header: "groups"},
+			doc: 'docs-v3/get-group-api.html', header: "groups"},
 		{ name: 'Add User to Group', type: 'POST', url: '/api/:version/group/:groupId/user/:userId',
-			doc: 'docs/add-user-group-api.html', header: "groups"},
+			doc: 'docs-v3/add-user-group-api.html', header: "groups"},
 		{ name: 'Add Users to Group', type: 'POST', url: '/api/:version/group/:groupId/user',
 			data: {'userIds': []},
-			doc: 'docs/add-users-group-api.html', header: "groups"},
+			doc: 'docs-v3/add-users-group-api.html', header: "groups"},
 		{ name: 'Remove User from Group', type: 'DELETE', url: '/api/:version/group/:groupId/user/:userId',
-			doc: 'docs/remove-user-group-api.html', header: "groups"},
+			doc: 'docs-v3/remove-user-group-api.html', header: "groups"},
 		{ name: 'Remove Users from Group', type: 'POST', url: '/api/:version/group/:groupId/user/action/delete',
 			data: {'userIds': []},
-			doc: 'docs/remove-users-group-api.html', header: "groups"},
+			doc: 'docs-v3/remove-users-group-api.html', header: "groups"},
 		// Courses
 		{ name: 'Get Course Info', type: 'GET', url: '/api/:version/course/:courseId',
 			qs: [ 'type' ],
-			doc: 'docs/get-course-api.html', header: "courses" },
+			doc: 'docs-v3/get-course-api.html', header: "courses" },
 		{ name: 'Get Course Enrollment Info for User', type: 'GET', url: '/api/:version/course/:courseId/user/:userId',
-			doc: 'docs/get-course-user-status-api.html', header: "courses" },
+			doc: 'docs-v3/get-course-user-status-api.html', header: "courses" },
 		{ name: 'Get All Users in a Course', type: 'GET', url: '/api/:version/course/:courseId/user',
 			qs: [ 'status' ],
-			doc: 'docs/get-course-users-status-api.html', header: "courses" },
+			doc: 'docs-v3/get-course-users-status-api.html', header: "courses" },
 		{ name: 'Invite User to Course', type: 'POST', url: '/api/:version/course/:courseId/user/:userId/invite',
 			data: {'clientDatestamp': today, 'required': false},
-			doc: 'docs/invite-user-course-api.html', header: "courses" },
+			doc: 'docs-v3/invite-user-course-api.html', header: "courses" },
 		{ name: 'Invite Users to Course', type: 'POST', url: '/api/:version/course/:courseId/invite',
 			data: {'userIds': [], 'clientDatestamp': today, 'required': false},
-			doc: 'docs/invite-users-course-api.html', header: "courses" },
-		// Series
-		{ name: 'Get Series Info', type: 'GET', url: '/api/:version/series/:seriesId',
-			doc: 'docs/get-series-api.html', header: "series" },
-		{ name: 'Get Courses in a Series', type: 'GET', url: '/api/:version/series/:seriesId/course/:courseId',
-			doc: 'docs/get-series-courses-api.html', header: "series" },
-		{ name: 'Get Series Enrollment Info for User', type: 'GET', url: '/api/:version/series/:seriesId/user/:userId',
-			doc: 'docs/get-series-user-status-api.html', header: "series" },
-		{ name: 'Get All Users in a Series', type: 'GET', url: '/api/:version/series/:seriesId/user',
-			qs: [ 'status' ],
-			doc: 'docs/get-series-users-status-api.html', header: "series" },
-		{ name: 'Invite User to Series', type: 'POST', url: '/api/:version/series/:seriesId/user/:userId/invite',
-			data: {'clientDatestamp': today, 'required': false},
-			doc: 'docs/invite-user-series-api.html', header: "series" },
-		{ name: 'Invite Users to Series', type: 'POST', url: '/api/:version/series/:seriesId/invite',
-			data: {'userIds': [], 'clientDatestamp': today, 'required': false},
-			doc: 'docs/invite-users-series-api.html', header: "series" }
+			doc: 'docs-v3/invite-users-course-api.html', header: "courses" },
 	];
 
 	$scope.methodGroups = _.groupBy($scope.apiMethods, function (method) {
@@ -90,7 +74,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 
 	$scope.apiModel = {
 		apiKey: '',
-		version: 'v2'
+		version: 'v3'
 	};
 
 	$scope.queryString = "";
@@ -168,7 +152,7 @@ angular.module('mfApiExampleApp').controller('SandboxCtrl', function ($scope, $h
 		var p = getParams();
 		var httpConfig = {
 			method: $scope.currentMethod.type,
-			url: baseUrl + formattedUrl
+			url: $scope.baseUrl + formattedUrl
 		};
 
 		if (d) httpConfig.data = d;

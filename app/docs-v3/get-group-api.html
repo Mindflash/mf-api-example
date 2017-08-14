@@ -1,0 +1,130 @@
+<p>
+	Use this endpoint to get user group information. By omitting the <b>:groupId</b> parameter, a full list of all groups in
+	the organization is returned. By supplying the <b>:groupId</b> parameter, all user records in that group are returned.
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>:groupId</b></td>
+			<td>URL</td>
+			<td>YES</td>
+			<td>The <i>Mindflash</i> ID of the group to search for. If the value <b>0</b> is supplied, the result
+			will be all <i>ungrouped</i> users in the organization.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Get a list of all groups in organization
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/group</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+[
+  {
+    "id": 1662730984,
+    "name": "Test Group 1",
+    "userCount": 2
+  },
+  {
+    "id": 1662730985,
+    "name": "Test Group 2",
+    "userCount": 1
+  }
+]</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 2 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
+				Example: Get all users in a specific group.
+			</a>
+		</div>
+		<div id="example2" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/group/1662730985</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+[
+  {
+    "id": 1662730983,
+    "firstName": "Another",
+    "lastName": "Guy",
+    "email": "ag@yourorg.com",
+    "username": "aguy",
+    "status": "Active",
+    "permissions": "Trainee"
+  }
+]</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 3 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example3" href="#example3">
+				Example: Get all ungrouped users in the organization.
+			</a>
+		</div>
+		<div id="example3" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/group/0</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+[
+  {
+    "id": 1662427377,
+    "firstName": "Joe",
+    "lastName": "Black",
+    "email": "jblack@yourorg.com",
+    "username": "jblack",
+    "status": "Active",
+    "permissions": "Administrator"
+  },
+  {
+    "id": 1662720884,
+    "firstName": "Rumple",
+    "lastName": "Stilskin",
+    "email": "rumple@yourorg.com",
+    "username": "rumple",
+    "status": "Active",
+    "permissions": "Trainee"
+  }
+]</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- end of examples -->
+
+</div>

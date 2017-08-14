@@ -1,0 +1,60 @@
+<div id="v2panel" class="row">
+	<div class="span4" ng-include="'v2/side-nav.tpl.html'"></div>
+	<div class="span8">
+		<section class="content" ng-show="currentMethod">
+			<div class="page-header">
+				<h2>{{currentMethod.name}}</h2>
+			</div>
+
+			<h4>Usage</h4>
+			<pre>{{currentMethod.type}} {{currentUsage}}</pre>
+
+			<div class="description">
+				<h4>Description</h4>
+				<div ng-include="currentMethod.doc"></div>
+			</div>
+			<h3>Try it!</h3>
+
+			<form class="form-inline">
+				<!-- Key -->
+				<label for="apikeyTxt">API Key:</label>
+				<input id="apikeyTxt" type="text" placeholder="Enter api key..." ng-model="apiModel.apiKey" ng-readonly="viewModel.keySaved" class="span4"/>
+				<button class="btn btn-primary" ng-hide="viewModel.keySaved" ng-click="enterApiInfo('save')">Save</button>
+				<button class="btn btn-success" ng-show="viewModel.keySaved" ng-click="enterApiInfo('edit')">Edit</button>
+			</form>
+
+			<h4>Generated</h4>
+			<pre>{{currentMethod.url | format : currentConfig.tokens}}{{ queryString }}</pre>
+
+			<!-- tokens -->
+			<div class="row">
+				<div class="span2" ng-repeat="key in repeater.tokenNames">
+					<input ng-model="currentConfig.tokens[key]" class="span2" type="text" placeholder=":{{key}}"/>
+				</div>
+			</div>
+			<!-- <pre>tokens: {{currentConfig.tokens | json}}</pre> -->
+
+			<!-- params -->
+			<h5>Query params:</h5>
+			<div class="row">
+				<div class="span2" ng-repeat="key in repeater.qs">
+					<input ng-model="currentConfig.params[key]" ng-change="updateQuery()" class="span2" type="text" placeholder="&{{key}}"/>
+				</div>
+			</div>
+			<!-- <pre>params: {{currentConfig.params | json}}</pre> -->
+
+
+			<!-- data -->
+			<div ng-show="currentMethod.data">
+				<h5>Edit message data:</h5>
+				<textarea ng-model="currentConfig.data" class="span8 textarea-code" rows="10"></textarea>
+			</div>
+
+			<form class="form-inline">
+				<button class="btn btn-primary" ng-click="sendCall()">Fetch</button>
+			</form>
+			<pre>HTTP Status Code: {{resultInfo.status}}</pre>
+			<pre class=".pre-scrollable">HTTP Response Data: {{resultInfo.data | json}}</pre>
+		</section>
+	</div>
+</div>
