@@ -7,5 +7,5 @@ angular.module('mfApiExampleApp', ['ui.bootstrap', 'ui.utils']).config(function(
 	$routeProvider
 		.when('/v2', {templateUrl: 'v2/sandbox.tpl.html',controller: 'V2Ctrl'})
 		.when('/v3', {templateUrl: 'v3/sandbox.tpl.html',controller: 'V3Ctrl'})
-		.otherwise({redirectTo: '/v2'});
+		.otherwise({redirectTo: '/v3'});
 });
