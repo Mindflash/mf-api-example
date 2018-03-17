@@ -2,7 +2,9 @@
 	Use this endpoint to get user information. By omitting the <b>:userId</b> parameter, a full list of all users in
 	the organization is returned. By supplying the <b>:userId</b> parameter, a specific user is returned. When a single
 	user is returned, much more detailed information comes with it including group information and course enrollment
-	information.
+	information.<br/><br/>
+  <b>Note:</b> This endpoint does not currently accept email or username lookup to check if a user exists. You may
+  use the Authorize User endpoint to accomplish this.
 </p>
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
