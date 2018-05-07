@@ -1,0 +1,246 @@
+<p>
+	Use this endpoint to get a list of all user course and module information for a given time period (optionally filtered by course status).
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>status</b></td>
+			<td>Querystring</td>
+			<td>YES</td>
+			<td>Filter results by course status. Can be one of:<br/>Completed<br/>Invited<br/>Passed<br/>Failed<br/>Started<br/>MissedDeadline<br/>Default (includes all statuses above)</td>
+		</tr>
+		<tr>
+			<td><b>start</b></td>
+			<td>Querystring</td>
+			<td>NO</td>
+			<td>Query start time, UTC timestamp down to the second (Unix epoch).</td>
+		</tr>
+		<tr>
+			<td><b>end</b></td>
+			<td>Querystring</td>
+			<td>YES</td>
+			<td>Query end time, UTC timestamp down to the second (Unix epoch).  If end is not provided, endpoint will return all data from start until UTC now.  Start and end must be no greater than 15 days apart.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Get a list of users who have completed any courses within the start and end time window.
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/course/users?status=Completed&start=1523750400&end=1525046400</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+[
+    {
+        "id": 111,
+        "name": "Smith, John",
+        "firstName": "John",
+        "lastName": "Smith",
+        "email": "john.smith@fakeEmail.com",
+        "username": "johnsmith1",
+        "permissions": "Trainee",
+        "courses": [
+            {
+                "id": 222,
+                "name": "My Course",
+                "courseStatus": "Passed",
+                "invited": "2018-04-19T21:40:42.000Z",
+                "started": "2018-04-19T21:42:48.000Z",
+                "completed": "2018-04-19T22:08:04.000Z",
+                "completionDeadline": null,
+                "finalGrade": 67,
+                "required": 1,
+                "lastActivity": "2018-04-19T21:42:48.000Z",
+                "progress": 100,
+                "duration": 408000,
+                "modules": [
+                    {
+                        "name": "My Module",
+                        "moduleStatus": "Failed",
+                        "invited": "2018-04-19T21:40:42.000Z",
+                        "started": "2018-04-19T21:42:48.000Z",
+                        "completed": "2018-04-19T21:48:04.000Z",
+                        "completionDeadline": null,
+                        "finalGrade": 59,
+                        "courseModuleSequence": 0,
+                        "lastActivity": "2018-04-19T21:48:07.000Z",
+                        "progress": 100,
+                        "duration": 248000
+                    },
+                    {
+                        "name": "My Module",
+                        "moduleStatus": "Passed",
+                        "invited": "2018-04-19T21:40:42.000Z",
+                        "started": "2018-04-19T21:48:14.000Z",
+                        "completed": "2018-04-19T21:54:31.000Z",
+                        "completionDeadline": null,
+                        "finalGrade": 75,
+                        "courseModuleSequence": 1,
+                        "lastActivity": "2018-04-19T21:54:31.000Z",
+                        "progress": 100,
+                        "duration": 124000
+                    }
+                ]
+            },
+            {
+                "id": 333,
+                "name": "My Other Course",
+                "courseStatus": "Passed",
+                "invited": "2018-04-23T17:12:38.000Z",
+                "started": "2018-04-23T17:12:59.000Z",
+                "completed": "2018-04-23T17:14:10.000Z",
+                "completionDeadline": null,
+                "finalGrade": 92,
+                "required": 0,
+                "lastActivity": "2018-04-23T17:12:59.000Z",
+                "progress": 100,
+                "duration": 79000,
+                "modules": [
+                    {
+                        "name": "My Other Module",
+                        "moduleStatus": "Passed",
+                        "invited": "2018-04-23T17:12:38.000Z",
+                        "started": "2018-04-23T17:12:59.000Z",
+                        "completed": "2018-04-23T17:13:04.000Z",
+                        "completionDeadline": null,
+                        "finalGrade": 92,
+                        "courseModuleSequence": 0,
+                        "lastActivity": "2018-04-23T17:13:10.000Z",
+                        "progress": 100,
+                        "duration": 6000
+                    }
+                ]
+            }
+        ]
+    }
+]</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 2 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
+				Example: Get a list of users who have been invited to any courses within the start and end (default end of UTC now).
+			</a>
+		</div>
+		<div id="example2" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/course/users?start=1523750400</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+[
+    {
+        "id": 111,
+        "name": "Smith, John",
+        "firstName": "John",
+        "lastName": "Smith",
+        "email": "john.smith@fakeEmail.com",
+        "username": "johnsmith1",
+        "permissions": "Trainee",
+        "courses": [
+            {
+                "id": 222,
+                "name": "My Course",
+                "courseStatus": "Passed",
+                "invited": "2018-04-19T21:40:42.000Z",
+                "started": "2018-04-19T21:42:48.000Z",
+                "completed": "2018-04-19T22:08:04.000Z",
+                "completionDeadline": null,
+                "finalGrade": 67,
+                "required": 1,
+                "lastActivity": "2018-04-19T21:42:48.000Z",
+                "progress": 100,
+                "duration": 408000,
+                "modules": [
+                    {
+                        "name": "My Module",
+                        "moduleStatus": "Failed",
+                        "invited": "2018-04-19T21:40:42.000Z",
+                        "started": "2018-04-19T21:42:48.000Z",
+                        "completed": "2018-04-19T21:48:04.000Z",
+                        "completionDeadline": null,
+                        "finalGrade": 59,
+                        "courseModuleSequence": 0,
+                        "lastActivity": "2018-04-19T21:48:07.000Z",
+                        "progress": 100,
+                        "duration": 248000
+                    },
+                    {
+                        "name": "My Module",
+                        "moduleStatus": "Passed",
+                        "invited": "2018-04-19T21:40:42.000Z",
+                        "started": "2018-04-19T21:48:14.000Z",
+                        "completed": "2018-04-19T21:54:31.000Z",
+                        "completionDeadline": null,
+                        "finalGrade": 75,
+                        "courseModuleSequence": 1,
+                        "lastActivity": "2018-04-19T21:54:31.000Z",
+                        "progress": 100,
+                        "duration": 124000
+                    }
+                ]
+            },
+            {
+                "id": 333,
+                "name": "My Other Course",
+                "courseStatus": "Passed",
+                "invited": "2018-04-23T17:12:38.000Z",
+                "started": "2018-04-23T17:12:59.000Z",
+                "completed": "2018-04-23T17:14:10.000Z",
+                "completionDeadline": null,
+                "finalGrade": 92,
+                "required": 0,
+                "lastActivity": "2018-04-23T17:12:59.000Z",
+                "progress": 100,
+                "duration": 79000,
+                "modules": [
+                    {
+                        "name": "My Other Module",
+                        "moduleStatus": "Passed",
+                        "invited": "2018-04-23T17:12:38.000Z",
+                        "started": "2018-04-23T17:12:59.000Z",
+                        "completed": "2018-04-23T17:13:04.000Z",
+                        "completionDeadline": null,
+                        "finalGrade": 92,
+                        "courseModuleSequence": 0,
+                        "lastActivity": "2018-04-23T17:13:10.000Z",
+                        "progress": 100,
+                        "duration": 6000
+                    }
+                ]
+            }
+        ]
+    }
+]</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- end of examples -->
+
+</div>
