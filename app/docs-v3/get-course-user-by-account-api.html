@@ -1,5 +1,5 @@
 <p>
-	Use this endpoint to get a list of all users course and module information for a given time period (optionally by course status).
+	Use this endpoint to get a list of all user course and module information for a given time period (optionally filtered by course status).
 </p>
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
@@ -16,7 +16,7 @@
 			<td><b>status</b></td>
 			<td>Querystring</td>
 			<td>YES</td>
-			<td>Filter results by course status. Can be one of:<br/>Completed<br/>Invited<br/>Passed<br/>Failed<br/>Started<br/>MissedDeadline.  Defaults to Invited.</td>
+			<td>Filter results by course status. Can be one of:<br/>Completed<br/>Invited<br/>Passed<br/>Failed<br/>Started<br/>MissedDeadline<br/>Default (includes all statuses above)</td>
 		</tr>
 		<tr>
 			<td><b>start</b></td>
@@ -28,7 +28,7 @@
 			<td><b>end</b></td>
 			<td>Querystring</td>
 			<td>YES</td>
-			<td>Query end time, UTC timestamp down to the second (Unix epoch).  If end is not provided, endpoint will return all data from start to now.  Start and end must be no greater than 15 days apart.</td>
+			<td>Query end time, UTC timestamp down to the second (Unix epoch).  If end is not provided, endpoint will return all data from start until UTC now.  Start and end must be no greater than 15 days apart.</td>
 		</tr>
 		</tbody>
 	</table>
@@ -40,7 +40,7 @@
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
-				Example: Get a list users who have completed a course within the start and end time window.
+				Example: Get a list of users who have completed any courses within the start and end time window.
 			</a>
 		</div>
 		<div id="example1" class="accordion-body collapse">
@@ -143,13 +143,13 @@ Response: 200
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
-				Example: Get a list of users who have been invited within the start and end time window.
+				Example: Get a list of users who have been invited to any courses within the start and end (default end of UTC now).
 			</a>
 		</div>
 		<div id="example2" class="accordion-body collapse">
 			<div class="accordion-inner">
 				<div class="bs-docs-example bs-docs-example-tag">
-					<pre>GET https://api.mindflash.com/api/v3/course/users?start=1523750400&end=1525046400</pre>
+					<pre>GET https://api.mindflash.com/api/v3/course/users?start=1523750400</pre>
 				</div>
 				<pre class="prettyprint">
 Response: 200
