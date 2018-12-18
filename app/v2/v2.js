@@ -2,7 +2,7 @@
 
 angular.module('mfApiExampleApp').controller('V2Ctrl', function ($scope, $http, $filter) {
 
-	$scope.baseUrl = 'https://api-pa.mindflash.com';
+	$scope.baseUrl = 'https://api.mindflash.com';
 	var formatFilter = $filter('format');
 	var tokenRegEx = /(\:)(\w+)(\/{0,1})/gi;
 
