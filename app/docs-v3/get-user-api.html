@@ -33,7 +33,8 @@
 			<td><b>_type</b></td>
 			<td>Query String</td>
 			<td>YES</td>
-			<td>Filter by user type. Possible values are:<br/>Trainee<br/>Trainer<br/>Manager<b/>Administrator<br/>All <i>(Default)</i></td>
+			<td>Filter by user type. Possible values
+                are:<br/>Trainee<br/>Trainer<br/>Manager<br/>Administrator<br/>All <i>(Default)</i></td>
 		</tr>
 		<tr>
 			<td><b>&lt;custom&gt;</b></td>
@@ -41,6 +42,42 @@
 			<td>YES</td>
 			<td>Filter by a custom field. Custom fields are setup in the account settings page. For example, if there
 			is a custom field called Department, the query string part would look like "?Department=Sales"</td>
+		</tr>
+		<tr>
+			<td><b>_createdAfter</b></td>
+			<td>Query String</td>
+			<td>YES</td>
+            <td>Filter by date user was created. All and only those users
+                created on or after the specified date will be returned. Dates
+                must be in ISO 8601 format.<br/><br/>
+                Examples of valid ISO 8601 dates include:<br/>
+                <code>2017-01-21</code><br/>
+                <code>2017-01-21T09:30:00</code><br/>
+                <code>2017-01-21T09:30:00Z</code><br/>
+                <code>2017-01-21T09:30:00+7:00</code><br/>
+                Dates will be assumed to be in UTC unless an offset (e.g.
+                <code>+7:00</code> is provided.<br/>
+                Date strings may be quoted, and must be properly escaped for use
+                in HTML GET queries. For example, the second example above would
+                be rendered as <code>2017-01-21T09%3A30%3A00</code><br/>
+		</tr>
+		<tr>
+			<td><b>_modifiedAfter</b></td>
+			<td>Query String</td>
+			<td>YES</td>
+            <td>Filter by date user was modified. All and only those users
+                modified on or after the specified date will be returned. Dates
+                must be in ISO 8601 format.<br/><br/>
+                Examples of valid ISO 8601 dates include:<br/>
+                <code>2017-01-21</code><br/>
+                <code>2017-01-21T09:30:00</code><br/>
+                <code>2017-01-21T09:30:00Z</code><br/>
+                <code>2017-01-21T09:30:00+7:00</code><br/>
+                Dates will be assumed to be in UTC unless an offset (e.g.
+                <code>+7:00</code> is provided.
+                Date strings may be quoted, and must be properly escaped for use
+                in HTML GET queries. For example, the second example above would
+                be rendered as <code>2017-01-21T09%3A30%3A00</code><br/>
 		</tr>
 		</tbody>
 	</table>

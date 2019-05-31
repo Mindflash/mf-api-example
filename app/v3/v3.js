@@ -14,7 +14,7 @@ angular.module('mfApiExampleApp').controller('V3Ctrl', function ($scope, $http, 
 			qs: [ 'id', 'username', 'email', 'courses' ],
 			doc: 'docs-v3/auth-api.html', header: "users" },
 		{ name: 'Get User Info', type: 'GET', url: '/api/:version/user/:userId',
-			qs: [ '_type', '_status' ],
+			qs: [ '_type', '_status', '_createdAfter', '_modifiedAfter' ],
 			doc: 'docs-v3/get-user-api.html', header: "users" },
 		{ name: 'Add Users', type: 'POST', url: '/api/:version/user',
 			data: {'users': [
