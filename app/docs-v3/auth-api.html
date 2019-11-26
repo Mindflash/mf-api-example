@@ -41,6 +41,13 @@
 				<td>A comma delimited list of Mindflash course IDs. Specifying this will return links that will enroll
 				the user into these courses if they are clicked. They will be placed directly into the course.</td>
 			</tr>
+			<tr>
+				<td><b>catalogs</b></td>
+				<td>Querystring</td>
+				<td>YES</td>
+				<td>A comma delimited list of Mindflash catalog IDs. Specifying this will return links that will allow
+				the user into the catalog if they are clicked. They will be placed directly into the catalog view.</td>
+			</tr>
 		</tbody>
 	</table>
 </div>
@@ -190,6 +197,44 @@ Response: 200
     {
       id: 999,
       error: "That course does not exist or is unavailable"
+    }
+  ]
+}</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 6 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example5" href="#example5">
+				Example: Catalog and Missing Catalog
+			</a>
+		</div>
+		<div id="example5" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/auth?id=9999&catalogs=123,789</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  userId: 9999,
+  userDisplayName: "Joe Black",
+  userEmail: "joe.black@yourorganization.com",
+  userFirstName: "Joe",
+  userLastName: "Black",
+  dashboardUrl: "http://yourorg.mindflash.com/CreateCookie.aspx?sessionID2=AcAVGBh34343SD"
+  catalogs: [
+    {
+      id: 123,
+      name: "How to Hang a Door",
+      url: "https://yourorg.mindflash.com/CreateCookie.aspx?sessionID2=B4dawfjkCVCFct"
+    },
+    {
+      id: 789,
+      error: "That catalog does not exist or is unavailable"
     }
   ]
 }</pre>
