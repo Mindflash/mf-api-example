@@ -14,7 +14,7 @@
     "grunt-contrib-clean": "~0.4.0",
     "grunt-contrib-htmlmin": "~0.1.1",
     "grunt-contrib-imagemin": "~0.1.2",
-	"grunt-contrib-watch": "~0.4.4",
+	  "grunt-contrib-watch": "~0.4.4",
     "grunt-bower-requirejs": "~0.4.1",
     "grunt-usemin": "~0.1.10",
     "grunt-rev": "~0.1.0",

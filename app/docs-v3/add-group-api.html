@@ -1,0 +1,43 @@
+<p>
+	Use this endpoint to add user group information.
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+</div>
+<div class="bs-docs-example bs-docs-post-tag">
+	<pre>
+{
+  "groupName": "{a group name}"
+}</pre>
+	<div class="well">
+		<span class="label label-info">Note</span> When posting json data in the body of the request,
+		the <code style="background-color: #FFFFFF;">Content-Type</code> must be set to <code style="background-color: #FFFFFF;">application/json</code>.
+	</div>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Add User Group to an organization
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+<pre>POST https://api.mindflash.com/api/v3/group
+
+{
+  "groupName" : "a group name"
+}
+</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+</pre>
+			</div>
+		</div>
+	</div>
+
+</div>
