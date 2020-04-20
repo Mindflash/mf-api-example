@@ -1,6 +1,10 @@
 <b>Note:</b> This example application can be run interactively at: http://mindflash.github.io/mf-api-example
 
-Mindflash Public API - Documentation 
+<b>Note:</b> This example can be run locally if you have apache or nginx installed locally. Just create a host that points to _**'app/index.html'**_.
+
+<b>Note:</b> [Documentation](https://mindflash.atlassian.net/wiki/spaces/MD/pages/56262657/Updating+API+Documentation) on merge, deploy process.
+
+Mindflash Public API - Documentation
 ==============
 
 The Mindflash API is a simple REST service that allows clients to carry out simple tasks within their own account
@@ -44,7 +48,7 @@ application by simply requesting a session directly. This allows users to log in
 users and credentials on their own internal network. Here is a sample workflow:
 
 ![SSO Simple Example](api-sso-simple.png?raw=true)
-<b>1.</b> User logs in to private intranet website.  
+<b>1.</b> User logs in to private intranet website.
 <b>2.</b> After authenticating user on private network, webserver makes request to Mindflash API to get Mindflash session ID
 and URL for user to login to the Mindflash application. The request and response look something like this:
 
@@ -58,7 +62,7 @@ and URL for user to login to the Mindflash application. The request and response
 	  dashboardUrl: "http://yourorg.mindflash.com/CreateCookie.aspx?sessionID2=AcAVGBh34343SD"
 	}
 
-<b>3.</b> Webserver serves page to intranet user which contains a the link returned by the Mindflash API.  
+<b>3.</b> Webserver serves page to intranet user which contains a the link returned by the Mindflash API.
 <b>4.</b> Intranet user clicks link, which directs browser to the Mindflash application. The Mindflash session is attached
 to the URL, so user is automatically authenticated and logged into the Mindflash application.
 
