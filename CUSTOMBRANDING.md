@@ -1,19 +1,19 @@
-Custom Branding Collateral
+# Custom Branding Collateral
 
 
 With this guide and the sections provided in this file you’ll be able to customize the portal.Using this guide you can easily configure your custom branding based on given components/Elements color/background-color from excel sheet
 
--->For changing the background image put images in the assets folder.
+->For changing the background image put images in the assets folder.
 
--->For changing the text label color replace the css of elements/components inside custom.css
+->For changing the text label color replace the css of elements/components inside custom.css
 
 Look at the below sections provided to see which number matches which element you can change, reference from excel sheet
 
-Public Pages(Login Page)
+#### Public Pages(Login Page)
 
 ![login_image](https://user-images.githubusercontent.com/10574792/98499369-5bb16a00-226f-11eb-8312-5bdcab9c1514.png)
 
-Public Pages(Forgot password page)
+#### Public Pages(Forgot password page)
 
 Customization of Forgot password text label put the color inside custom.css.
 
@@ -22,20 +22,20 @@ Customization of Forgot password text label put the color inside custom.css.
 
 
 
-Trainee App Page
+#### Trainee App Page
 
 The Trainee App consists of the trainee dashboard and the trainee player. The blue labels will identify the specifics of what will be customizable within your Mindflash account.
 
 ![course_dashboard](https://user-images.githubusercontent.com/10574792/98499072-82bb6c00-226e-11eb-8dc8-37fbe03f7ebf.png)
 
 
-Course Access Page
+#### Course Access Page
 
 <img width="471" alt="coursepage" src="https://user-images.githubusercontent.com/10574792/98498391-a8477600-226c-11eb-8927-a0f30c4eb0b7.png">
 
 
 
-Favicon Icon
+#### Favicon Icon
 
 For customization of favicon need to put favicon.ico file within the favicon folder.
 
