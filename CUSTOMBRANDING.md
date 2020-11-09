@@ -41,3 +41,7 @@ For customization of favicon need to put favicon.ico file within the favicon fol
 
 
 ![favicon](https://user-images.githubusercontent.com/10574792/98499097-96ff6900-226e-11eb-821b-29aa47092ae4.png)
+
+
+If you have any questions please contact your Customer Success Manager directly or email us at help@mindflash.com.
+
