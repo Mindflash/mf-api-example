@@ -36,7 +36,7 @@ The Trainee App consists of the trainee dashboard and the trainee player. The bl
 
 
 ##### trainee-player-page
-<img width="1026" alt="Screenshot 2020-11-11 at 1 26 30 PM" src="https://user-images.githubusercontent.com/10574792/98784728-8cd19c00-2421-11eb-99cd-5904c3de9ef3.png">
+<img width="600" alt="Screenshot 2020-11-11 at 1 26 30 PM" src="https://user-images.githubusercontent.com/10574792/98784728-8cd19c00-2421-11eb-99cd-5904c3de9ef3.png">
 
 
 #### Course Access Page
