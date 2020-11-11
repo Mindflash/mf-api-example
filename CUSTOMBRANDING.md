@@ -12,7 +12,7 @@ Look at the below sections provided to see which number matches which element yo
 ## PublicPage
 1>Below is the various places you can update for a trainee experience related to the public pages.  This will allow you to update your login page, public course, series and catalog pages.
 
-Look at the example provided to see which number matches which element you can change inside excel sheet.
+Look at the example provided to see which number matches which element then fill color inside excel sheet.
 Ex-green label number  match the element inside excel sheet and enter the color code.
 
 
