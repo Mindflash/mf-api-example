@@ -8,6 +8,7 @@ With this guide and the sections provided in this file you’ll be able to custo
 ->For changing the text label color replace the css of elements/components inside custom.css
 
 Look at the below sections provided to see which number matches which element you can change, reference from excel sheet
+
 ## PublicPage
 1>Below is the various places you can update for a trainee experience related to the public pages.  This will allow you to update your login page, public course, series and catalog pages.
 
