@@ -41,8 +41,8 @@ The Trainee App consists of the trainee dashboard and the trainee player. The bl
 
 
  ## To configure Background image:
-  1.put images in the assets folder
-  2.open the backgroundImage sheet in the excel and paste image-url in the url column.
+  1. Put images in the assets folder
+  2. Open the backgroundImage sheet in the excel and paste image-url in the url column.
   
   
 ## To configure Favicon:
@@ -52,12 +52,12 @@ The Trainee App consists of the trainee dashboard and the trainee player. The bl
 ![favicon](https://user-images.githubusercontent.com/10574792/98499097-96ff6900-226e-11eb-821b-29aa47092ae4.png)
 
 ## To configure SMTP:
-  1.Go to the SMTP sheet in the excel.
-  2.Fill the relevant information in the value column.
+  1. Go to the SMTP sheet in the excel.
+  2. Fill the relevant information in the value column.
   
 ## To configure EmailTemplates:
-  1.Go to the EmailTempltes sheet in the excel
-  2.Fill the relevant information in course name column.
+  1. Go to the EmailTempltes sheet in the excel
+  2. Fill the relevant information in course name column.
   
 
 
@@ -65,10 +65,10 @@ The Trainee App consists of the trainee dashboard and the trainee player. The bl
  Suppose we have login page and we want to change the Login button background color/text color
  Steps to do that
 
-1>Go to login page 
-2>See the green number label
-3>Match the number label in css file 
-4>Enter the color code 
+1. Go to login page 
+2. See the green number label
+3. Match the number label in css file 
+4. Enter the color code 
 
 
 If you have any questions please contact your Customer Success Manager directly or email us at help@mindflash.com.
