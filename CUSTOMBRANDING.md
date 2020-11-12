@@ -40,28 +40,28 @@ The Trainee App consists of the trainee dashboard and the trainee player. The bl
 
 
 
- #### To configure Background image:
+ ## To configure Background image:
   1.put images in the assets folder
   2.open the backgroundImage sheet in the excel and paste image-url in the url column.
   
   
-#### To configure Favicon:
+## To configure Favicon:
   
   1. please keep the favicon.ico file in the favicon folder.
   
 ![favicon](https://user-images.githubusercontent.com/10574792/98499097-96ff6900-226e-11eb-821b-29aa47092ae4.png)
 
-##### To configure SMTP:
+## To configure SMTP:
   1.Go to the SMTP sheet in the excel.
   2.Fill the relevant information in the value column.
   
-#### To configure EmailTemplates:
+## To configure EmailTemplates:
   1.Go to the EmailTempltes sheet in the excel
   2.Fill the relevant information in course name column.
   
 
 
-#### Scenario -
+## Scenario -
  Suppose we have login page and we want to change the Login button background color/text color
  Steps to do that
 
