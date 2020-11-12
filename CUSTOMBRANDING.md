@@ -3,6 +3,9 @@
 
 With this guide and the sections provided in this file you’ll be able to customize the portal.Using this guide and the related Excel sheet you can easily configure your custom branding.
 
+### Note:  The Excel is to make the branding easier for customers who do not know how to complete CSS stylesheets. If they know how to utilize CSS stylesheets, they can ignore the excel document. 
+
+
 To configure your custom branding:
   1. Open Custom Branding collateral excel sheet.
   2. Find the name of the page that you are willing to customize in the excel sheet by referencing the screenshots provided below.
@@ -33,7 +36,7 @@ To configure your custom branding:
 
 
  ## To configure Background image:
-  1. Put images in the assets folder
+  1. Put images in the assets folder of the selected section.
   2. Open the backgroundImage sheet in the excel and paste image-url in the url column.
   
   
