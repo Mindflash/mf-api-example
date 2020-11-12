@@ -3,7 +3,7 @@
 
 With this guide and the sections provided in this file you’ll be able to customize the portal.
 
-### Note:  The Excel is to make the branding easier for customers who do not know how to complete CSS stylesheets. If they know how to utilize CSS stylesheets, they can ignore the excel document. 
+### Note:  The Excel is to make the branding easier for customers who do not know how to complete CSS stylesheets. If you know how to utilize CSS stylesheets, they can ignore the excel document. 
 
 ## Custom Branding using excel sheet
 
