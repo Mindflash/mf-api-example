@@ -63,8 +63,9 @@ ex- You have been invited to <%- courseName%>
 Replace the courseName to New Product Training
 
 
-Scenario --Suppose we have login page and we want to change the Login button background color/text color
-Steps to do that
+#### Scenario -
+ Suppose we have login page and we want to change the Login button background color/text color
+ Steps to do that
 
 1>Go to login page 
 2>See the green number label
