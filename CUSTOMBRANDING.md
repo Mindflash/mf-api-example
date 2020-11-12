@@ -7,7 +7,7 @@ With this guide and the sections provided in this file you’ll be able to custo
 
 ## Custom Branding using excel sheet
 
-To configure your product branding:
+## To configure your product branding:
   1. Open Custom Branding collateral excel sheet.
   2. Find the name of the page that you are willing to customize in the excel sheet by referencing the screenshots provided below.
   3. Go to the selected section and find the element in the excel sheet based on numbering provided in the screenshots below.
@@ -60,7 +60,7 @@ To configure your product branding:
 ## Example -
  Scenario: Change the Login button background color/text color in public-login-page
  
- Steps to do that
+ Steps:
 
 1. Remember the number assigned to login button in the screenshot
 2. Find the public-login-page section in the excel sheet 
