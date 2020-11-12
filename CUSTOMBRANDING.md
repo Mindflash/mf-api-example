@@ -27,7 +27,7 @@ Ex-green label number  match the element inside excel sheet and enter the color 
 
 ## TraineeAppCSS
 
-##### trainee-dashboard-page
+##### course-dashboard-page
 
 
 The Trainee App consists of the trainee dashboard and the trainee player. The blue labels will identify the specifics of what will be customizable within your Mindflash account.
