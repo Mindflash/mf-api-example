@@ -10,14 +10,8 @@ To configure your custom branding:
   4. Fill the color code column with the desired color.
   
 
-
-Look at the below sections provided to see which number matches which element you can change, reference from excel sheet
-
-## PublicPage
-1>Below is the various places you can update for a trainee experience related to the public pages.  This will allow you to update your login page, public course, series and catalog pages.
-
-Look at the example provided to see which number matches which element then fill color inside excel sheet.
-Ex-green label number  match the element inside excel sheet and enter the color code.
+  ## Screenshots
+## PublicPage(sheet1)
 
 
 #### public-login-page
@@ -29,12 +23,10 @@ Ex-green label number  match the element inside excel sheet and enter the color 
 <img width="471" alt="coursepage" src="https://user-images.githubusercontent.com/10574792/98498391-a8477600-226c-11eb-8927-a0f30c4eb0b7.png">
 
 
-## TraineeAppCSS
+## TraineeAppCSS(sheet2)
 
 ##### course-dashboard-page
 
-
-The Trainee App consists of the trainee dashboard and the trainee player. The blue labels will identify the specifics of what will be customizable within your Mindflash account.
 
 ![v1-dashboard](https://user-images.githubusercontent.com/10574792/98908394-60338800-24e6-11eb-9577-d8370dcde6a2.png)
 
@@ -61,14 +53,14 @@ The Trainee App consists of the trainee dashboard and the trainee player. The bl
   
 
 
-## Scenario -
- Suppose we have login page and we want to change the Login button background color/text color
+## Example -
+ Scenario: Change the Login button background color/text color in public-login-page
  Steps to do that
 
-1. Go to login page 
-2. See the green number label
-3. Match the number label in css file 
-4. Enter the color code 
+
+1. Remember the number assigned to login button in the screenshot
+2. Find the public-login-page section in the excel sheet 
+3. Beside the number, in the color code column, enter the desired color code/fill the column with desired color
 
 
 If you have any questions please contact your Customer Success Manager directly or email us at help@mindflash.com.
