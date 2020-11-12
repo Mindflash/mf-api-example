@@ -37,7 +37,7 @@ To configure your product branding:
 
 
  ## To configure Background image:
-  1. Put images in the assets folder of the selected section.
+  1. Put images in the assets folder of the relevant section.
   2. Open the backgroundImage sheet in the excel and paste image-url in the url column.
   
   
@@ -52,7 +52,7 @@ To configure your product branding:
   2. Fill the relevant information in the value column.
   
 ## To configure EmailTemplates:
-  1. Go to the EmailTempltes sheet in the excel
+  1. Go to the EmailTemplates sheet in the excel
   2. Fill the relevant information in course name column.
   
 
