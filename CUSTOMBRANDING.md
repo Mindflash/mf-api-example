@@ -22,7 +22,7 @@ To configure your product branding:
 
 ![login_image](https://user-images.githubusercontent.com/10574792/98499369-5bb16a00-226f-11eb-8312-5bdcab9c1514.png)
 
-#### public-course-page/ #### public-catalog-page
+#### public-course-page/public-catalog-page
 
 <img width="471" alt="coursepage" src="https://user-images.githubusercontent.com/10574792/98498391-a8477600-226c-11eb-8927-a0f30c4eb0b7.png">
 
