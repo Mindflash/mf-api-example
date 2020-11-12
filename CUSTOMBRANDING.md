@@ -53,7 +53,12 @@ we need are the following:
 • From email address
 • Reply to email address
 
+#### EmailTemplates
 
+To update the subject of any of these emails please place the text you would like in the corresponding subject file. For example
+courseInvitationSubject.ejs is where you would update the subject of all courseinvitation emails
+ex- You have been invited to <%- courseName%> 
+Replace the courseName to New Product Training
 
 If you have any questions please contact your Customer Success Manager directly or email us at help@mindflash.com.
 
