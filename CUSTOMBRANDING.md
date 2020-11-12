@@ -1,13 +1,13 @@
 # Custom Branding Collateral
 
 
-With this guide and the sections provided in this file you’ll be able to customize the portal.Using this guide and the related Excel sheet you can easily configure your custom branding.
+With this guide and the sections provided in this file you’ll be able to customize the portal.
 
 ### Note:  The Excel is to make the branding easier for customers who do not know how to complete CSS stylesheets. If they know how to utilize CSS stylesheets, they can ignore the excel document. 
 
 ## Custom Branding using excel sheet
 
-To configure your product custom branding:
+To configure your product branding:
   1. Open Custom Branding collateral excel sheet.
   2. Find the name of the page that you are willing to customize in the excel sheet by referencing the screenshots provided below.
   3. Go to the selected section and find the element in the excel sheet based on numbering provided in the screenshots below.
