@@ -2,6 +2,9 @@
   "name": "mf-api-example",
   "version": "0.0.0",
   "dependencies": {},
+  "scripts": {
+    "api": "node node_modules/izy-proxy/cli.js call api?request"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-contrib-copy": "~0.4.0",
@@ -20,6 +23,7 @@
     "grunt-rev": "~0.1.0",
     "grunt-karma": "~0.3.0",
     "grunt-open": "~0.2.0",
+    "izy-proxy": "latest",
     "matchdep": "~0.1.1",
     "grunt-google-cdn": "~0.1.1",
 	"connect-livereload": "~0.2.0",
