@@ -70,6 +70,27 @@ Request Limits
 --------------
 API usage is subject to rate limits of 10 requests per 10 seconds per API key.
 
-More Documentation
-------------------
+Command Line Interface
+--------------
+You can try testing your API key using the terminal window:
+
+	npm install;
+	npm run api queryObject.key xxxx-xxxx-xxxx-xxxx queryObject.method POST|GET queryObject.path path queryObject.body.key1 value1 ...
+
+For example, to get the list of users:
+
+	npm run api queryObject.key xxxx-xxxx-xxxx-xxxx queryObject.path /api/v3/user
+
+To update a custom field for a user (for example user called Alex with id: 5056086330525)
+
+	npm run api queryObject.key xxxx-xxxx-xxxx-xxxx queryObject.method POST queryObject.path /api/v3/user/5056086330525 queryObject.body.customField0 "Alex Arbass"
+
+To add group:
+
+	npm run api queryObject.key xxxx-xxxx-xxxx-xxxx queryObject.method POST queryObject.path /api/v3/group queryObject.body.groupName "Alex Arbass Group"
+
+To get user group with id 5064332596370:
+
+	npm run api queryObject.key xxxx-xxxx-xxxx-xxxx queryObject.path /api/v3/group/5064332596370
+
 If you would like call-by-call documentation with examples, please go to http://mindflash.github.io/mf-api-example.
