@@ -1,7 +1,7 @@
 const modtask = () => {};
 modtask.request = (queryObject, cb) => {
-    const domain = queryObject.domain || 'api.mindflash.com';
-    const url = `https://${domain}${queryObject.path}`;
+    const domain = queryObject.domain || 'https://api.mindflash.com';
+    const url = `${domain}${queryObject.path}`;
     const method = queryObject.method || 'GET';
     let { body } = queryObject;
     if (typeof(body) == 'object') {
