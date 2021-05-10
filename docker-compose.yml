@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  api-example-nginx:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - ./app:/usr/share/nginx/html

@@ -1,7 +1,7 @@
 <div id="v3panel" class="row">
 	<div class="span4" ng-include="'v3/side-nav.tpl.html'"></div>
 	<div class="span8">
-		<section class="content" ng-show="currentMethod">
+		<section class="content" ng-show="currentMethod && !currentMethod.extras">
 			<div class="page-header">
 				<h2>{{currentMethod.name}}</h2>
 			</div>
@@ -55,6 +55,14 @@
 			</form>
 			<pre>HTTP Status Code: {{resultInfo.status}}</pre>
 			<pre class=".pre-scrollable">HTTP Response Data: {{resultInfo.data | json}}</pre>
+		</section>
+		<section class="content" ng-show="currentMethod && currentMethod.extras">
+			<div class="page-header">
+				<h2>{{currentMethod.name}}</h2>
+			</div>
+			<div class="description">
+				<div ng-include="currentMethod.doc"></div>
+			</div>
 		</section>
 	</div>
 </div>

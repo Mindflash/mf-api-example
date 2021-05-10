@@ -30,9 +30,9 @@ angular.module('mfApiExampleApp').controller('V3Ctrl', function ($scope, $http, 
 			data: {'userIds': []},
 			doc: 'docs-v3/archive-users-api.html', header: "users"},
 		// Groups
-    { name: 'Add Group', type: 'POST', url: '/api/:version/group',
-      data: {'groupName': ''},
-      doc: 'docs-v3/add-group-api.html', header: "groups"},
+		{ name: 'Add Group', type: 'POST', url: '/api/:version/group',
+			data: {'groupName': ''},
+			doc: 'docs-v3/add-group-api.html', header: "groups"},
 		{ name: 'Get User Groups', type: 'GET', url: '/api/:version/group/:groupId',
 			doc: 'docs-v3/get-group-api.html', header: "groups"},
 		{ name: 'Add User to Group', type: 'POST', url: '/api/:version/group/:groupId/user/:userId',
@@ -63,6 +63,24 @@ angular.module('mfApiExampleApp').controller('V3Ctrl', function ($scope, $http, 
 		{ name: 'Invite Users to Course', type: 'POST', url: '/api/:version/course/:courseId/invite',
 			data: {'userIds': [], 'clientDatestamp': today, 'required': false},
 			doc: 'docs-v3/invite-users-course-api.html', header: "courses" },
+		{
+			name: 'User Status Mapping',
+			type: '',
+			url: '',
+			data: {},
+			doc: 'extras/user-status-map.html',
+			header:'extras',
+			extras: true
+		},
+		{
+			name: 'Course Status Mapping',
+			type: '',
+			url: '',
+			data: {},
+			doc: 'extras/course-status-map.html',
+			header:'extras',
+			extras: true
+		},
 	];
 
 	$scope.methodGroups = _.groupBy($scope.apiMethods, function (method) {
