@@ -1,0 +1,123 @@
+/* Below is the various places you can update for a trainee experience related to the trainee dashboard and player. 
+
+
+Look at the example provided to see which number matches which element you can change. 
+
+If you have any questions please contact your CSM directly or email us at help@mindflash.com.
+
+*/
+
+
+/* #1 Background. Place your background image in the assets folder */
+html,body {
+background: !important;  /* Keep the !important  */
+
+}
+
+
+/* #2 username/header_user_name_text_color */
+.username {
+color: ;
+}
+
+/* #3 course description/course_description_text_color */
+p {
+color: ;
+}
+
+/* #4 header/heder_background_color */
+header {
+background-color: ;
+color: ;
+}
+
+/* #5 header_company_name_text_color */
+#company-name {
+ color: ;
+
+}
+
+/* description text style */
+header p {
+color:  !important; /* Keep the !important  */
+}
+
+/* #6 Course_Title_text_color  */
+#course-title h3{
+
+color: ;
+}
+
+/* #7/#13  Page title text color*/
+h3 {
+
+color: !important; /* Keep the !important  */
+}
+
+
+
+/* #8 button style/ review_course_button_background_color */
+.btn-primary {
+
+background-color: ;
+color: ;
+text-decoration: ;
+border-color:;
+
+}
+
+/* #8 button hover style/ review_course_button_background_color */
+
+.btn-primary:hover {
+
+background-color: ;
+color: ;
+border-color:;
+
+}
+
+.btn:focus {
+
+background-color:  !important; /* Keep the !important  */
+color: !important; /* Keep the !important  */
+border-color:!important; /* Keep the !important  */
+
+}
+
+
+/* #9 Nav selector/ nav_button_my_courses_background_color */
+.page-toggle .selected {
+
+background-color: !important; /* Keep the !important  */
+color: ;
+
+}
+
+/* #10 nav buttons / navigationcourse_title__background_color */
+.active {
+
+background-color:!important; /* Keep the !important  */
+color: ;
+
+}
+
+.active:hover {
+
+background-color: !important; /* Keep the !important  */
+color: ;
+
+}
+
+/* #11 Link style / user_email_link_color*/
+a {
+color: ;
+text-decoration:;
+
+}
+
+a:hover {
+color: ;
+text-decoration:;
+
+}
+

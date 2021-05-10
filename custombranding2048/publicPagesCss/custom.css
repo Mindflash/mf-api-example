@@ -1,0 +1,105 @@
+/* Below is the various places you can update for a trainee experience related to the public pages.  This will allow you to update your login page, public course, series and catalog pages.
+
+Look at the example provided to see which number matches which element you can change. 
+
+If you have any questions please contact your Customer Success Manager directly or email us at help@mindflash.com.
+
+*/
+
+
+/*  #1 Company Name /Company_Name_On_Header */
+#company-name {
+color: 
+
+}
+
+/*  #2 header / Header_Background_color*/
+header {
+background-color:  !important;
+color:
+}
+
+header p {
+color:  !important;
+}
+
+/* #3 background image/ Page_Background_color */
+
+html,body {
+background: !important
+}
+
+/*  #4 Login_text_Label_color */
+h3 {
+
+color: 
+}
+
+/* #5 Email_Password_text_label_color */
+label
+{
+color: 
+
+}
+
+
+/* #6 Forgot_password_text_label_color Link style */
+a {
+color: 
+text-decoration:
+
+}
+
+a:hover {
+color: 
+text-decoration:
+
+}
+
+/* #7 button color/ Login_Button_Background_color */
+.button.primary {
+
+background-color: 
+color: 
+text-decoration: 
+
+}
+
+.button.primary:hover {
+
+background-color:
+color: 
+
+}
+
+/* #8 background/ Login_Box_Background_color */
+
+.callout {
+background-color: 
+border: 
+}
+
+/* #9Course/Series/Catalog title text color */
+h3#title {
+
+color: !important;
+}
+
+/* #10 course/series/catalog subtext description */
+p {
+color: 
+}
+
+
+/* #11 Trainer Name for Public Course/Series page */
+
+h5#trainer-name {
+
+color:  !important;
+}
+
+/* #11 Trainer Name for Public catalog page */
+h4 {
+
+color:  !important;
+}
