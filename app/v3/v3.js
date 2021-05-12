@@ -64,20 +64,11 @@ angular.module('mfApiExampleApp').controller('V3Ctrl', function ($scope, $http, 
 			data: {'userIds': [], 'clientDatestamp': today, 'required': false},
 			doc: 'docs-v3/invite-users-course-api.html', header: "courses" },
 		{
-			name: 'User Status Mapping',
+			name: 'Status Names Mapping',
 			type: '',
 			url: '',
 			data: {},
-			doc: 'extras/user-status-map.html',
-			header:'extras',
-			extras: true
-		},
-		{
-			name: 'Course Status Mapping',
-			type: '',
-			url: '',
-			data: {},
-			doc: 'extras/course-status-map.html',
+			doc: 'extras/status-map.html',
 			header:'extras',
 			extras: true
 		},
