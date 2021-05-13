@@ -1,6 +1,6 @@
 <b>Note:</b> This example application can be run interactively at: http://mindflash.github.io/mf-api-example
 
-<b>Note:</b> This example can be run locally if you have apache or nginx installed locally. Just create a host that points to _**'app/index.html'**_.
+<b>Note:</b> Run `docker-compose up` to run this example locally in development mode.
 
 <b>Note:</b> [Documentation](https://mindflash.atlassian.net/wiki/spaces/MD/pages/56262657/Updating+API+Documentation) on merge, deploy process.
 
