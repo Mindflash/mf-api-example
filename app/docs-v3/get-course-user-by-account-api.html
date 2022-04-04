@@ -4,37 +4,50 @@
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
 		<thead>
-		<tr>
-			<th>Name</th>
-			<th>Type</th>
-			<th>Optional</th>
-			<th>Value</th>
-		</tr>
+            <tr>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Optional</th>
+                <th>Value</th>
+            </tr>
 		</thead>
 		<tbody>
-		<tr>
-			<td><b>status</b></td>
-			<td>Querystring</td>
-			<td>YES</td>
-			<td>Filter results by course status. Can be one of:<br/>Completed<br/>Invited<br/>Passed<br/>Failed<br/>Started<br/>MissedDeadline<br/>Default (includes all statuses above)</td>
-		</tr>
-		<tr>
-			<td><b>start</b></td>
-			<td>Querystring</td>
-			<td>NO</td>
-			<td>Query start time, UTC timestamp down to the second (Unix epoch).</td>
-		</tr>
-		<tr>
-			<td><b>end</b></td>
-			<td>Querystring</td>
-			<td>YES</td>
-			<td>Query end time, UTC timestamp down to the second (Unix epoch).  If end is not provided, endpoint will return all data from start until UTC now.  Start and end must be no greater than 15 days apart.</td>
-        </tr>
+            <tr>
+                <td><b>start</b></td>
+                <td>Querystring</td>
+                <td>NO</td>
+                <td>The start time to search from. The format must be a UTC timestamp down to the second (Unix epoch). </td>
+            </tr>
+            <tr>
+                <td><b>end</b></td>
+                <td>Querystring</td>
+                <td>YES</td>
+                <td>The end time to search to. The format must be a UTC timestamp down to the second (Unix epoch). If end is not provided, it will default to "NOW". Start and end must be no greater than 15 days apart.</td>
+            </tr>
+            <tr>
+                <td><b>status</b></td>
+                <td>Querystring</td>
+                <td>YES</td>
+                <td>Filter results by course status. Can be one of:<br/>
+                    <ul>
+                        <li>Invited <span style="color:red" !important;>(default)</span></li>
+                        <li>Started</li>
+                        <li>Completed</li>
+                        <li>Passed</li>
+                        <li>Failed</li>
+                        <li>MissedDeadline</li>
+                    </ul>
+                </td>
+            </tr>
         <tr>
             <td colspan="4">
-                Note: Depending on the "status" Querystring the query will look for different events in the date range, For Example: If the "status" Querystring is "completed"
-                the time span will look for users that "completed" courses and modules in the given timespan.  If the "status" Querystring is "invited"
-                the time span will look for users "invited" to courses and modules in the given timespan.  The default event for this "invited".
+                <span style="color:red">NOTE: Depending on the "status" Querystring, the query will look for different events in the date range.</span><br/><br/>
+                Examples:<br/><br/>
+                <ol>
+                    <li>If the "status" Querystring is "completed", the time span will look for users that "completed" courses in the given timespan.</li><br/>
+                    <li>If the "status" Querystring is "invited", the time span will look for users "invited" to courses in the given timespan.</li><br/>
+                    <li>If the "status" Querystring is not provided, the time span will default to looking for users "invited" to courses in the given timespan.</li>
+                </ol>
             </td>
         </tr>
 		</tbody>

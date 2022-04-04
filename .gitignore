@@ -11,6 +11,7 @@ lib-cov
 *.idea
 *.iml
 *.sass-cache*
+*.DS_Store
 pids
 logs
 results
