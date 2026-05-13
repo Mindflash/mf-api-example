@@ -10,7 +10,19 @@
     {
       "firstName": "",
       "lastName": "",
-      "email": ""
+      "email": "",
+      "username": "",
+      "permissions": 169000100,
+      "customfield0": "",
+      "customfield1": "",
+      "customfield2": "",
+      "customfield3": "",
+      "customfield4": "",
+      "customfield5": "",
+      "customfield6": "",
+      "customfield7": "",
+      "customfield8": "",
+      "customfield9": ""
     }
   ],
   "requiredCourseIds": [],
@@ -80,7 +92,13 @@
 						<td><i>permissions</i></td>
 						<td>YES</td>
 						<td>N/A</td>
-						<td>One of:<br/>administrator<br/>manager<br/>trainer<br/>trainee <i>(Default)</i></td>
+						<td>One of:<br/>169000100 &mdash; Trainee <i>(Default)</i><br/>169000200 &mdash; Manager<br/>169000300 &mdash; Trainer<br/>169000400 &mdash; Administrator<br/>169000500 &mdash; Reporter<br/>169000600 &mdash; Team Lead</td>
+					</tr>
+					<tr>
+						<td><i>customfield0,<br/>customfield1,<br/>...<br/>customfield9</i></td>
+						<td>YES</td>
+						<td>N/A</td>
+						<td>Custom fields for the user. Fields are named <code>customfield0</code> through <code>customfield9</code> (10 fields total). Supply only the fields you wish to set.</td>
 					</tr>
 					<tr>
 						<td><i>yammerId</i></td>
