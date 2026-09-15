@@ -29,6 +29,7 @@
   "email": "",
   "username": "",
   "password" : "",
+  "permissions": 169000100,
   "customfield0": "",
   "customfield1": "",
   "customfield2": "",
@@ -88,6 +89,12 @@
 			<td>A login password. Passwords allow the user to login via the Mindflash website.</td>
 		</tr>
 		<tr>
+			<td><b>permissions</b></td>
+			<td>YES</td>
+			<td>N/A</td>
+			<td>One of:<br/>169000100 &mdash; Trainee<br/>169000200 &mdash; Manager<br/>169000300 &mdash; Trainer<br/>169000400 &mdash; Administrator<br/>169000500 &mdash; Reporter<br/>169000600 &mdash; Team Lead<br/>If omitted, the user's existing role is left unchanged.</td>
+		</tr>
+		<tr>
 			<td><b>customfield0,<br/>customfield1,<br/>...<br/>customfield9</b></td>
 			<td>YES</td>
 			<td>N/A</td>
@@ -115,6 +122,32 @@ POST https://api.mindflash.com/api/v3/user/333
 {
   "email": "tjones.new@yourorg.com",
   "password" : "newpass"
+}
+					</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 2 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
+				Example: Edit a user, change their role.
+			</a>
+		</div>
+		<div id="example2" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>
+POST https://api.mindflash.com/api/v3/user/333
+
+{
+  "permissions": 169000300
 }
 					</pre>
 				</div>
