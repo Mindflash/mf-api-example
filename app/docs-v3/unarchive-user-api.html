@@ -1,0 +1,107 @@
+<p>
+	Use this endpoint to unarchive a user. Unarchiving restores a user's ability to take courses
+	and login to the Trakstar Learn site. The target user must currently be archived, and the account
+	must have an available user seat.
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>:userId</b></td>
+			<td>URL</td>
+			<td>NO</td>
+			<td>The ID of the user to unarchive.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<!-- example 1 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Unarchive a user.
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>
+POST https://api.mindflash.com/api/v3/user/333/unarchive
+
+					</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 2 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
+				Example: User not found
+			</a>
+		</div>
+		<div id="example2" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>
+POST https://api.mindflash.com/api/v3/user/999999/unarchive
+
+					</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 404
+{
+  "code": "user_not_found",
+  "message": "User not found: 999999.",
+  "type": "unarchive_user"
+}</pre>
+			</div>
+		</div>
+	</div>
+
+	<!-- example 3 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example3" href="#example3">
+				Example: User is not archived
+			</a>
+		</div>
+		<div id="example3" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>
+POST https://api.mindflash.com/api/v3/user/333/unarchive
+
+					</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 400
+{
+  "code": "user_not_archived",
+  "message": "You cannot unarchive a user who is not archived: Jane Doe.",
+  "type": "unarchive_user"
+}</pre>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- end examples -->
+</div>
