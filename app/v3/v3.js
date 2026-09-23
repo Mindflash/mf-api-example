@@ -29,6 +29,8 @@ angular.module('mfApiExampleApp').controller('V3Ctrl', function ($scope, $http, 
 		{ name: 'Archive Users', type: 'POST', url: '/api/:version/user/archive',
 			data: {'userIds': []},
 			doc: 'docs-v3/archive-users-api.html', header: "users"},
+		{ name: 'Unarchive User', type: 'POST', url: '/api/:version/user/:userId/unarchive',
+			doc: 'docs-v3/unarchive-user-api.html', header: "users"},
 		// Groups
 		{ name: 'Add Group', type: 'POST', url: '/api/:version/group',
 			data: {'groupName': ''},
