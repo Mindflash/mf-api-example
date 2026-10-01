@@ -1,0 +1,151 @@
+<p>
+	Use this endpoint to mark an In-Person module complete for one or more users. The module must exist and be an
+	In-Person module. Each successful item completes the module for the matched user and course; item-level failures are
+	returned as warnings. A missing module returns 404 with code <code>module_not_found</code>; an invalid module type
+	returns 400 with code <code>cModule_type_invalid</code>. Missing identifiers use code
+	<code>user_identifier_required</code>, a future completion date uses <code>cModule_invalid_completion_date</code>,
+	and a required score uses <code>cModule_score_required</code>.
+</p>
+<div class="bs-docs-example bs-docs-post-tag">
+	<pre>
+{
+  "completions": [
+    {
+      "userId": 456,
+      "courseId": 123,
+      "completionDate": "2020-01-01T12:00:00.000Z",
+      "score": 100
+    }
+  ]
+}</pre>
+	<div class="well">
+		<span class="label label-info">Note</span> When posting json data in the body of the request,
+		the <code style="background-color: #FFFFFF;">Content-Type</code> must be set to <code style="background-color: #FFFFFF;">application/json</code>.
+	</div>
+</div>
+<div class="prettyprint">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Field</th>
+			<th>Optional</th>
+			<th>Notes</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>completions</b></td>
+			<td>NO</td>
+			<td>Required array with at most 100 completion items.</td>
+		</tr>
+		<tr>
+			<td><b>userId</b></td>
+			<td>YES*</td>
+			<td>Numeric Mindflash user ID.</td>
+		</tr>
+		<tr>
+			<td><b>email</b></td>
+			<td>YES*</td>
+			<td>User email address.</td>
+		</tr>
+		<tr>
+			<td><b>username</b></td>
+			<td>YES*</td>
+			<td>User name.</td>
+		</tr>
+		<tr>
+			<td><b>courseId</b></td>
+			<td>YES</td>
+			<td>Numeric course ID. If omitted, matching module assignments are considered across courses.</td>
+		</tr>
+		<tr>
+			<td><b>completionDate</b></td>
+			<td>YES</td>
+			<td>ISO-8601 date/time that is not in the future. Defaults to the current time.</td>
+		</tr>
+		<tr>
+			<td><b>score</b></td>
+			<td>YES</td>
+			<td>Number from 0 through 100. Required when the module has a passing score enabled. If omitted when only quiz scores matter, the handler defaults the score to 100.</td>
+		</tr>
+		<tr>
+			<td colspan="3">* Each completion item must include at least one of <code>userId</code>, <code>email</code>, or <code>username</code>.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>:moduleId</b></td>
+			<td>URL</td>
+			<td>NO</td>
+			<td>The integration module ID.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Complete a module for a user
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>POST https://api.mindflash.com/api/v3/integration/module/9876/complete
+
+{
+  "completions": [
+    {
+      "userId": 456,
+      "courseId": 123,
+      "completionDate": "2020-01-01T12:00:00.000Z",
+      "score": 100
+    }
+  ]
+}</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  "completions": [
+    {
+      "userId": 456,
+      "courseId": 123,
+      "cModuleId": 9876
+    }
+  ],
+  "warnings": []
+}</pre>
+				<pre class="prettyprint">
+Response: 200
+{
+  "completions": [],
+  "warnings": [
+    {
+      "details": {
+        "userId": 456,
+        "courseId": 123
+      },
+      "status": "failed",
+      "message": "User is not assigned to the module"
+    }
+  ]
+}</pre>
+			</div>
+		</div>
+	</div>
+</div>

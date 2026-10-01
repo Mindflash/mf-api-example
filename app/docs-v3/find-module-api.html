@@ -1,0 +1,72 @@
+<p>
+	Use this endpoint to find integration modules by matching configured custom-field values. Provide at least one of
+	<code>customField0</code> or <code>customField1</code>; each supplied value is a string of at most 256 characters.
+	Using <code>customField0</code> requires the account's WebinarIntegration feature toggle. A
+	<code>customField1</code>-only lookup does not require that toggle.
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>customField0</b></td>
+			<td>Querystring</td>
+			<td>YES*</td>
+			<td>String, maximum 256 characters. Using this field requires the WebinarIntegration feature toggle.</td>
+		</tr>
+		<tr>
+			<td><b>customField1</b></td>
+			<td>Querystring</td>
+			<td>YES*</td>
+			<td>String, maximum 256 characters.</td>
+		</tr>
+		<tr>
+			<td colspan="4">* At least one of <code>customField0</code> or <code>customField1</code> must be provided.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Find a module by custom-field values
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/integration/module?customField0=event-123&amp;customField1=west</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  "modules": [
+    {
+      "id": 12345,
+      "name": "Example module"
+    }
+  ]
+}</pre>
+				<pre class="prettyprint">
+Response: 400
+{
+  "message": "The WebinarIntegration feature toggle must be on and either the customField0 and/or customField1 parameter(s) must be provided."
+}</pre>
+				<pre class="prettyprint">
+Response: 404
+{
+  "message": "not found"
+}</pre>
+			</div>
+		</div>
+	</div>
+</div>

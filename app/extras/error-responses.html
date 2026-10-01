@@ -1,0 +1,63 @@
+<h3>Error Responses</h3>
+<p>
+	All public API requests require the <code>x-mindflash-apikey</code> request header. Errors are returned with an HTTP
+	status code and a JSON body. The common error formats are:
+</p>
+<table class="table table-condensed">
+	<thead>
+		<tr>
+			<th width="20%">HTTP Status</th>
+			<th>Response body</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>400 Bad Request</td>
+			<td><pre>{
+  "type": "bad_input",
+  "message": "Bad input.",
+  "param": "no_param",
+  "code": "no_code"
+}</pre></td>
+		</tr>
+		<tr>
+			<td>401 Unauthorized</td>
+			<td><pre>{
+  "type": "not_authorized",
+  "message": "You are not authorized to perform that action.",
+  "code": "no_code"
+}</pre></td>
+		</tr>
+		<tr>
+			<td>404 Not Found</td>
+			<td><pre>{
+  "type": "resource_not_found",
+  "message": "Resource not found.",
+  "param": "no_param",
+  "code": "no_code"
+}</pre></td>
+		</tr>
+		<tr>
+			<td>500 Internal Server Error</td>
+			<td><pre>{
+  "type": "server_error",
+  "message": "A server error has occurred."
+}</pre></td>
+		</tr>
+	</tbody>
+</table>
+<h3>API key validation errors</h3>
+<p>
+	API-key availability failures are returned as HTTP 400 errors with type <code>api_key_validation</code>. The code
+	identifies the failure:
+</p>
+<pre>{
+  "type": "api_key_validation",
+  "message": "The Mindflash API is not available for your account.",
+  "code": "api_not_available"
+}</pre>
+<pre>{
+  "type": "api_key_validation",
+  "message": "The Mindflash API is not available for your account.",
+  "code": "account_inactive"
+}</pre>

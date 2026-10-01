@@ -1,0 +1,60 @@
+<p>
+	Use this endpoint to get the active users attending an integration module. The response includes their associated course
+	and module status. <code>moduleStatus</code> is one of <code>Completed</code>, <code>Invited</code>,
+	<code>Started</code>, or <code>MissedDeadline</code>.
+</p>
+<div class="bs-docs-example bs-docs-parameters-tag">
+	<table class="table table-condensed">
+		<thead>
+		<tr>
+			<th>Name</th>
+			<th>Type</th>
+			<th>Optional</th>
+			<th>Value</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr>
+			<td><b>:moduleId</b></td>
+			<td>URL</td>
+			<td>NO</td>
+			<td>The integration module ID.</td>
+		</tr>
+		</tbody>
+	</table>
+</div>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Get attendees for a module
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/integration/module/12345/attendees</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  "attendees": [
+    {
+      "courseId": 123,
+      "userId": 456,
+      "userEmail": "person@example.com",
+      "userName": "Example Person",
+      "moduleStatus": "Started"
+    }
+  ]
+}</pre>
+				<pre class="prettyprint">
+Response: 404
+{
+  "message": "module not found"
+}</pre>
+			</div>
+		</div>
+	</div>
+</div>

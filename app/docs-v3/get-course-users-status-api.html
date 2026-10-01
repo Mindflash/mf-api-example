@@ -23,7 +23,7 @@
 			<td><b>status</b></td>
 			<td>Querystring</td>
 			<td>YES</td>
-			<td>Filter results by course status. Can be one of:<br/>Completed<br/>Invited<br/>Passed<br/>Failed<br/>Started</td>
+			<td>Filter results by course status. Can be one of:<br/>All <i>(Default)</i><br/>Completed<br/>Passed<br/>Failed<br/>Invited<br/>Started<br/>MissedDeadline</td>
 		</tr>
 		</tbody>
 	</table>
@@ -66,7 +66,7 @@ Response: 200
     "username": null,
     "status": "Active",
     "permissions": "Administrator",
-    "courseStatus": "Completed",
+    "courseStatus": "Passed",
     "completedDate": "2015-08-20T22:39:03.000Z",
     "finalGrade": 100
   }
@@ -99,7 +99,7 @@ Response: 200
     "username": null,
     "status": "Active",
     "permissions": "Administrator",
-    "courseStatus": "Completed",
+    "courseStatus": "Passed",
     "completedDate": "2015-08-20T22:39:03.000Z",
     "finalGrade": 100
   }

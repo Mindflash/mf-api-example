@@ -1,5 +1,6 @@
 <p>
-	Use this endpoint to invite multiple users to a specific course.
+	Use this endpoint to replace the app records associated with a user. Each request replaces all existing apps for that
+	user with the apps in the request.
 </p>
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
@@ -13,10 +14,10 @@
 		</thead>
 		<tbody>
 		<tr>
-			<td><b>:courseId</b></td>
+			<td><b>:userId</b></td>
 			<td>URL</td>
 			<td>NO</td>
-			<td>The <i>Mindflash</i> ID of the course to invite the users to.</td>
+			<td>The Mindflash user ID.</td>
 		</tr>
 		</tbody>
 	</table>
@@ -24,9 +25,12 @@
 <div class="bs-docs-example bs-docs-post-tag">
 	<pre>
 {
-  "userIds": [],
-  "clientDatestamp": "2013-07-17",
-  "required": false
+  "consoleCustomerId": 123,
+  "apps": [
+    {
+      "appType": "trakstar_learn"
+    }
+  ]
 }</pre>
 	<div class="well">
 		<span class="label label-info">Note</span> When posting json data in the body of the request,
@@ -38,77 +42,57 @@
 		<thead>
 		<tr>
 			<th>Field</th>
-			<th>Type</th>
 			<th>Optional</th>
 			<th>Notes</th>
 		</tr>
 		</thead>
 		<tbody>
 		<tr>
-			<td><b>userIds</b></td>
-			<td>Body</td>
+			<td><b>consoleCustomerId</b></td>
 			<td>NO</td>
-			<td>An array of Mindflash user IDs to invite to the course.</td>
+			<td>Required numeric customer ID.</td>
 		</tr>
 		<tr>
-			<td><b>clientDatestamp</b></td>
-			<td>Body</td>
+			<td><b>apps</b></td>
 			<td>NO</td>
-			<td>Defaults to the current date if omitted. All dates must be in the format <i>YYYY-MM-DD</i>.</td>
+			<td>Required array containing 1 through 10 app entries.</td>
 		</tr>
 		<tr>
-			<td><b>required</b></td>
-			<td>Body</td>
-			<td>YES</td>
-			<td>Set <i>true</i> to make the course required for the users. Default is <i>false</i>.</td>
-		</tr>
-		<tr>
-			<td><b>invitedBy</b></td>
-			<td>Body</td>
-			<td>YES</td>
-			<td>Mindflash user ID recorded as the inviter. If omitted, the API's default inviter ID is used.</td>
-		</tr>
-		<tr>
-			<td><b>inviteType</b></td>
-			<td>Body</td>
-			<td>YES</td>
-			<td>Numeric invitation type code. The handler does not define a public list of values.</td>
+			<td><b>appType</b></td>
+			<td>NO</td>
+			<td>One of <code>trakstar_console</code>, <code>trakstar_hire</code>, <code>trakstar_learn</code>, or <code>trakstar_perform</code>.</td>
 		</tr>
 		</tbody>
 	</table>
 </div>
 <h4>Examples</h4>
 <div class="accordion" id="examples">
-	<!-- example 1 -->
-
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
-				Example: Invite 3 users to a course.
+				Example: Save a user's app
 			</a>
 		</div>
 		<div id="example1" class="accordion-body collapse">
 			<div class="accordion-inner">
 				<div class="bs-docs-example bs-docs-example-tag">
-					<pre>
-POST https://api.mindflash.com/api/v3/course/1662438386/invite
+					<pre>POST https://api.mindflash.com/api/v3/integration/user/456/app
 
 {
-  "userIds": [4567, 7898, 9988],
-  "clientDatestamp": "2013-07-17",
-  "required" : false,
-  "invitedBy": 1662427377,
-  "inviteType": 1
-}
-					</pre>
+  "consoleCustomerId": 123,
+  "apps": [
+    {
+      "appType": "trakstar_learn"
+    }
+  ]
+}</pre>
 				</div>
 				<pre class="prettyprint">
 Response: 200
-</pre>
+{
+  "success": true
+}</pre>
 			</div>
 		</div>
 	</div>
-
-
-	<!-- end examples -->
 </div>
