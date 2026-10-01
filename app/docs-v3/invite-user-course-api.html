@@ -53,13 +53,13 @@
 		<tr>
 			<td><b>clientDatestamp</b></td>
 			<td>Body</td>
-			<td>NO</td>
+			<td>YES</td>
 			<td>Defaults to the current date if omitted. All dates must be in the format <i>YYYY-MM-DD</i>.</td>
 		</tr>
 		<tr>
 			<td><b>required</b></td>
 			<td>Body</td>
-			<td>NO</td>
+			<td>YES</td>
 			<td>Set <i>true</i> to make the course required for the user. Defaults to <i>false</i> if omitted.</td>
 		</tr>
 		<tr>
@@ -78,7 +78,7 @@
 			<td><b>inviteDate</b></td>
 			<td>Body</td>
 			<td>YES</td>
-			<td>Invitation date accepted by Joi as a date value.</td>
+			<td>Invitation date (ISO 8601 date or date/time).</td>
 		</tr>
 		</tbody>
 	</table>
@@ -96,13 +96,12 @@
 		<div id="example1" class="accordion-body collapse">
 			<div class="accordion-inner">
 				<div class="bs-docs-example bs-docs-example-tag">
-					<pre>POST https://api.mindflash.com/api/v3/user/1662427377/course/1662438386/invite
+					<pre>POST https://api.mindflash.com/api/v3/course/1662438386/user/1662427377/invite
 
 {
   "clientDatestamp": "2013-07-17",
   "required" : false,
   "invitedBy": 1662427377,
-  "inviteType": 1,
   "inviteDate": "2013-07-17T18:47:52.000Z"
 }</pre>
 				</div>
