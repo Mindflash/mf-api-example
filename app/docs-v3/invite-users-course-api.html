@@ -38,6 +38,7 @@
 		<thead>
 		<tr>
 			<th>Field</th>
+			<th>Type</th>
 			<th>Optional</th>
 			<th>Notes</th>
 		</tr>
@@ -45,18 +46,33 @@
 		<tbody>
 		<tr>
 			<td><b>userIds</b></td>
+			<td>Body</td>
 			<td>NO</td>
 			<td>An array of Mindflash user IDs to invite to the course.</td>
 		</tr>
 		<tr>
 			<td><b>clientDatestamp</b></td>
+			<td>Body</td>
 			<td>YES</td>
-			<td>The current date. All dates must be in the format <i>YYYY-MM-DD</i>.</td>
+			<td>Defaults to the current date if omitted. All dates must be in the format <i>YYYY-MM-DD</i>.</td>
 		</tr>
 		<tr>
 			<td><b>required</b></td>
+			<td>Body</td>
 			<td>YES</td>
 			<td>Set <i>true</i> to make the course required for the users. Default is <i>false</i>.</td>
+		</tr>
+		<tr>
+			<td><b>invitedBy</b></td>
+			<td>Body</td>
+			<td>YES</td>
+			<td>Mindflash user ID recorded as the inviter. If omitted, the API's default inviter ID is used.</td>
+		</tr>
+		<tr>
+			<td><b>inviteType</b></td>
+			<td>Body</td>
+			<td>YES</td>
+			<td>Numeric invitation type code. The handler does not define a public list of values.</td>
 		</tr>
 		</tbody>
 	</table>
@@ -80,7 +96,8 @@ POST https://api.mindflash.com/api/v3/course/1662438386/invite
 {
   "userIds": [4567, 7898, 9988],
   "clientDatestamp": "2013-07-17",
-  "required" : false
+  "required" : false,
+  "invitedBy": 1662427377
 }
 					</pre>
 				</div>

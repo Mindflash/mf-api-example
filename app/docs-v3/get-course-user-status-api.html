@@ -1,5 +1,7 @@
 <p>
-	Use this endpoint to get detailed course enrollment information for a specific user in a specific course.
+	Use this endpoint to get detailed course enrollment information for a specific user in a specific course. The route
+	<code>GET /api/v3/user/:userId/course/:courseId</code> is an alias for
+	<code>GET /api/v3/course/:courseId/user/:userId</code>.
 </p>
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
@@ -64,7 +66,9 @@ Response: 200
   "finalGrade": null,
   "modules": [
     {
-      "moduleStatus": "Passed",
+      "id": 1662438588,
+      "name": "How To Succeed",
+      "moduleStatus": "Completed",
       "courseModuleSequence": 0,
       "required": 1,
       "lastActivity": "2013-07-15T21:32:17.000Z",
@@ -83,6 +87,8 @@ Response: 200
       ]
     },
     {
+      "id": 1662438589,
+      "name": "Second module",
       "moduleStatus": "Started",
       "courseModuleSequence": 1,
       "required": 1,

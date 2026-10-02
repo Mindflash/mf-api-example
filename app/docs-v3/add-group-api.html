@@ -16,7 +16,13 @@
 			<td><b>responseFormat</b></td>
 			<td>Query String</td>
 			<td>YES</td>
-			<td>Format the response. Possible values are:<br/>array<br/>json<br/></td>
+			<td>Format the response. Possible values are <code>array</code> (default) and <code>json</code>.</td>
+		</tr>
+		<tr>
+			<td><b>groupName</b></td>
+			<td>Body</td>
+			<td>NO</td>
+			<td>Name of the group as a string. This handler does not validate a maximum length.</td>
 		</tr>
 		</tbody>
 	</table>
@@ -55,7 +61,34 @@
 				</div>
 				<pre class="prettyprint">
 Response: 200
+[12345, null, "a group name", null, 1662730986]</pre>
+			</div>
+		</div>
+	</div>
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
+				Example: Add a group and request a JSON response
+			</a>
+		</div>
+		<div id="example2" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+<pre>POST https://api.mindflash.com/api/v3/group?responseFormat=json
+
+{
+  "groupName": "a group name"
+}
 </pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  "id": 1662730986,
+  "accountId": 12345,
+  "name": "a group name"
+}</pre>
 			</div>
 		</div>
 	</div>
