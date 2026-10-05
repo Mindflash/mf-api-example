@@ -1,6 +1,6 @@
 <p>
-	Use this endpoint to get a list of all users enrolled in a specific course. Some extra information will be returned including
-	the status in the course and basic completion information if applicable.
+	Use this endpoint to get a list of all active users enrolled in a specific course (archived users are not included).
+	Some extra information will be returned including the status in the course and basic completion information if applicable.
 </p>
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
@@ -35,7 +35,7 @@
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
-				Example: Get a list of users enrolled in a specific course.
+				Example: Get a list of active users enrolled in a specific course.
 			</a>
 		</div>
 		<div id="example1" class="accordion-body collapse">
@@ -80,7 +80,7 @@ Response: 200
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
-				Example: Get a list of users enrolled in a specific course that have completed the course.
+				Example: Get a list of active users enrolled in a specific course that have completed the course.
 			</a>
 		</div>
 		<div id="example2" class="accordion-body collapse">
