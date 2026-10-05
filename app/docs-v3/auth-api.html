@@ -1,7 +1,7 @@
 <p>
 	The Authorize User endpoint will allow your organization to request pre-formed URLs that will automatically log any user
-	into the Mindflash application. One typical use of this is when an organization has an intranet of their own that would
-	want to allow their employees to log into Mindflash using their internal login (usually called <b>Single Sign On</b>, or
+	into the Trakstar Learn application. One typical use of this is when an organization has an intranet of their own that would
+	want to allow their employees to log into Trakstar Learn using their internal login (usually called <b>Single Sign On</b>, or
 	<b>Federated login</b>).<br/><br/>
   <b>Note:</b> This endpoint is useful to check if a user exists by email address or username.
 </p>
@@ -20,32 +20,32 @@
 				<td><b>id</b></td>
 				<td>Querystring</td>
 				<td>YES</td>
-				<td>The <i>Mindflash</i> ID of the user to be logged in.</td>
+				<td>The <i>Trakstar Learn</i> ID of the user to be logged in.</td>
 			</tr>
 			<tr>
 				<td><b>username</b></td>
 				<td>Querystring</td>
 				<td>YES</td>
-				<td>The <i>Mindflash</i> username of the user to be logged in.</td>
+				<td>The <i>Trakstar Learn</i> username of the user to be logged in.</td>
 			</tr>
 			<tr>
 				<td><b>email</b></td>
 				<td>Querystring</td>
 				<td>YES</td>
-				<td>The email address of of the user to be logged in. (Must match the email in their Mindflash account)</td>
+				<td>The email address of the user to be logged in. (Must match the email in their Trakstar Learn account)</td>
 			</tr>
 			<tr>
 				<td><b>courses</b></td>
 				<td>Querystring</td>
 				<td>YES</td>
-				<td>A comma delimited list of Mindflash course IDs. Specifying this will return links that will enroll
+				<td>A comma delimited list of Trakstar Learn course IDs. Specifying this will return links that will enroll
 				the user into these courses if they are clicked. They will be placed directly into the course.</td>
 			</tr>
 			<tr>
 				<td><b>catalogs</b></td>
 				<td>Querystring</td>
 				<td>YES</td>
-				<td>A comma delimited list of Mindflash catalog IDs. Specifying this will return links that will allow
+				<td>A comma delimited list of Trakstar Learn catalog IDs. Specifying this will return links that will allow
 				the user into the catalog if they are clicked. They will be placed directly into the catalog view.</td>
 			</tr>
 		</tbody>
