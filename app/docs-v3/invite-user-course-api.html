@@ -72,7 +72,7 @@
 			<td><b>inviteType</b></td>
 			<td>Body</td>
 			<td>YES</td>
-			<td>Numeric invitation type code. The handler does not define a public list of values.</td>
+			<td>Initial course status for the invited users. Supported values: <code>116000050</code> (Invited, the default) or <code>116000700</code> (Pending). A Pending invitation does not set a completion deadline and does not start the normal invitation processing. The API only checks that the value is a number, so do not send other codes.</td>
 		</tr>
 		<tr>
 			<td><b>inviteDate</b></td>
