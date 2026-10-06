@@ -16,7 +16,7 @@
 			<td><b>:userId</b></td>
 			<td>URL</td>
 			<td>NO</td>
-			<td>The <i>Mindflash</i> ID of the user to edit.</td>
+			<td>The <i>Trakstar Learn</i> ID of the user to edit.</td>
 		</tr>
 		</tbody>
 	</table>
@@ -30,16 +30,16 @@
   "username": "",
   "password" : "",
   "permissions": 169000100,
-  "customfield0": "",
-  "customfield1": "",
-  "customfield2": "",
-  "customfield3": "",
-  "customfield4": "",
-  "customfield5": "",
-  "customfield6": "",
-  "customfield7": "",
-  "customfield8": "",
-  "customfield9": ""
+  "customField0": "",
+  "customField1": "",
+  "customField2": "",
+  "customField3": "",
+  "customField4": "",
+  "customField5": "",
+  "customField6": "",
+  "customField7": "",
+  "customField8": "",
+  "customField9": ""
 }
 	</pre>
 	<div class="well">
@@ -86,7 +86,7 @@
 			<td><b>password</b></td>
 			<td>YES</td>
 			<td>35</td>
-			<td>A login password. Passwords allow the user to login via the Mindflash website.</td>
+			<td>A login password, 8 to 35 characters, containing an uppercase letter, lowercase letter, number, and symbol.</td>
 		</tr>
 		<tr>
 			<td><b>permissions</b></td>
@@ -95,10 +95,10 @@
 			<td>One of:<br/>169000100 &mdash; Trainee<br/>169000200 &mdash; Manager<br/>169000300 &mdash; Trainer<br/>169000400 &mdash; Administrator<br/>169000500 &mdash; Reporter<br/>169000600 &mdash; Team Lead<br/>If omitted, the user's existing role is left unchanged.</td>
 		</tr>
 		<tr>
-			<td><b>customfield0,<br/>customfield1,<br/>...<br/>customfield9</b></td>
+			<td><b>customField0,<br/>customField1,<br/>...<br/>customField9</b></td>
 			<td>YES</td>
-			<td>N/A</td>
-			<td>Custom fields for the user. Fields are named <code>customfield0</code> through <code>customfield9</code> (10 fields total). Supply only the fields you wish to update.</td>
+			<td>200</td>
+			<td>Custom fields for the user. Fields are named <code>customField0</code> through <code>customField9</code> (10 fields total). Supply only fields configured for the account that you wish to update.</td>
 		</tr>
 		</tbody>
 	</table>
@@ -121,7 +121,7 @@ POST https://api.mindflash.com/api/v3/user/333
 
 {
   "email": "tjones.new@yourorg.com",
-  "password" : "newpass"
+  "password" : "Newpass123!"
 }
 					</pre>
 				</div>

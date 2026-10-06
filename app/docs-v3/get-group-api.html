@@ -1,6 +1,6 @@
 <p>
 	Use this endpoint to get user group information. By omitting the <b>:groupId</b> parameter, a full list of all groups in
-	the organization is returned. By supplying the <b>:groupId</b> parameter, all user records in that group are returned.
+	the organization is returned. By supplying the <b>:groupId</b> parameter, active user records in that group are returned.
 </p>
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
@@ -17,8 +17,8 @@
 			<td><b>:groupId</b></td>
 			<td>URL</td>
 			<td>YES</td>
-			<td>The <i>Mindflash</i> ID of the group to search for. If the value <b>0</b> is supplied, the result
-			will be all <i>ungrouped</i> users in the organization.</td>
+			<td>The <i>Trakstar Learn</i> ID of the group to search for. If the value <b>0</b> is supplied, the result
+			will be all active <i>ungrouped</i> users in the organization (archived users are not included).</td>
 		</tr>
 		</tbody>
 	</table>
@@ -91,7 +91,7 @@ Response: 200
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example3" href="#example3">
-				Example: Get all ungrouped users in the organization.
+				Example: Get all active ungrouped users in the organization.
 			</a>
 		</div>
 		<div id="example3" class="accordion-body collapse">

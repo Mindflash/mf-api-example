@@ -1,0 +1,37 @@
+<p>
+	Use this endpoint to retrieve the account's mapping from the ten API custom-field keys to configured user-field names.
+	Each value is the configured name or <code>null</code> if that field is not configured. These keys correspond to
+	<code>customField0</code> through <code>customField9</code> used when adding or editing a user. User responses expose
+	configured names for custom fields when the account's custom-field mapping is applied.
+</p>
+<h4>Examples</h4>
+<div class="accordion" id="examples">
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
+				Example: Get custom-field mappings
+			</a>
+		</div>
+		<div id="example1" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>GET https://api.mindflash.com/api/v3/customFieldMapping</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  "customField0": null,
+  "customField1": null,
+  "customField2": null,
+  "customField3": null,
+  "customField4": null,
+  "customField5": null,
+  "customField6": null,
+  "customField7": null,
+  "customField8": null,
+  "customField9": null
+}</pre>
+			</div>
+		</div>
+	</div>
+</div>

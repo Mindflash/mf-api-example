@@ -5,6 +5,8 @@
 	information.<br/><br/>
   <b>Note:</b> This endpoint does not currently accept email or username lookup to check if a user exists. You may
   use the Authorize User endpoint to accomplish this.
+  <br/><b>Collection filters</b> (_status, _type, _createdAfter, _modifiedAfter, and custom-field filters) apply only
+  when <b>:userId</b> is omitted.
 </p>
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
@@ -21,7 +23,7 @@
 			<td><b>:userId</b></td>
 			<td>URL</td>
 			<td>YES</td>
-			<td>The <i>Mindflash</i> ID of the user to search for.</td>
+			<td>The <i>Trakstar Learn</i> ID of the user to search for.</td>
 		</tr>
 		<tr>
 			<td><b>_status</b></td>
@@ -33,8 +35,7 @@
 			<td><b>_type</b></td>
 			<td>Query String</td>
 			<td>YES</td>
-			<td>Filter by user type. Possible values
-                are:<br/>Trainee<br/>Trainer<br/>Manager<br/>Administrator<br/>All <i>(Default)</i></td>
+			<td>Filter by user type. Possible values are:<br/>All <i>(Default)</i><br/>Trainee<br/>Manager<br/>Trainer<br/>Reporter<br/>Team Lead<br/>Administrator</td>
 		</tr>
 		<tr>
 			<td><b>&lt;custom&gt;</b></td>
@@ -61,6 +62,7 @@
                 in HTML GET queries. For example, the second example above would
                 be rendered as <code>2017-01-21T09%3A30%3A00</code>, and with
                 quotes would be rendered as <code>"2017-01-21T09%3A30%3A00"</code>.<br/>
+            </td>
 		</tr>
 		<tr>
 			<td><b>_modifiedAfter</b></td>
@@ -80,6 +82,7 @@
                 in HTML GET queries. For example, the second example above would
                 be rendered as <code>2017-01-21T09%3A30%3A00</code>, and with
                 quotes would be rendered as <code>"2017-01-21T09%3A30%3A00"</code>.<br/>
+            </td>
 		</tr>
 		</tbody>
 	</table>
@@ -108,7 +111,7 @@ Response: 200
     "lastName": "Black",
     "email": "jblack@yourorg.com",
     "userName": "jblack",
-    "status": 109000200,
+    "status": "Active",
     "type": "Administrator"
   },
   {
@@ -117,7 +120,7 @@ Response: 200
     "lastName": "Doe",
     "email": "jdoe@yourorg.com",
     "userName": "jdoe",
-    "status": 109000200,
+    "status": "Active",
     "type": "Trainer"
   },
   {
@@ -126,7 +129,7 @@ Response: 200
     "lastName": "Eggo",
     "email": "seggo@yourorg.com",
     "userName": null,
-    "status": 109000700,
+    "status": "Archived",
     "type": "Trainee"
   }
 ]</pre>
@@ -186,7 +189,7 @@ Response: 200
   "lastName": "Eggo",
   "username": null,
   "email": "seggo@yourorg.com",
-  "status": "Active",
+  "status": "Archived",
   "type": "Trainee",
   "isOwner": 0,
   "groups": [],
@@ -194,7 +197,6 @@ Response: 200
     {
       "id": 1662438386,
       "name": "Course A",
-      "type": "Online",
       "status": "Completed",
       "required": 1,
       "lastActivity": "2013-07-15T21:32:17.000Z",
@@ -217,7 +219,6 @@ Response: 200
     {
       "id": 1662438387,
       "name": "Course B",
-      "type": "Online",
       "status": "Completed",
       "required": 1,
       "lastActivity": "2013-07-15T21:33:25.000Z",
@@ -236,6 +237,24 @@ Response: 200
       "completionEmailSent": "2013-07-15T21:33:00.000Z",
       "finalGrade": 50,
       "gradeStatus": "Failed"
+    }
+  ],
+  "modules": [
+    {
+      "moduleId": 1662438387,
+      "courseId": 1662438386,
+      "name": "Module A",
+      "moduleStatus": "Completed",
+      "invited": "2013-07-15T18:47:52.000Z",
+      "started": "2013-07-15T18:50:00.000Z",
+      "completed": "2013-07-15T21:31:57.000Z",
+      "completionDeadline": null,
+      "finalGrade": 100,
+      "gradeStatus": "Passed",
+      "courseModuleSequence": 0,
+      "lastActivity": "2013-07-15T21:32:17.000Z",
+      "progress": 100,
+      "duration": 12000
     }
   ]
 }</pre>

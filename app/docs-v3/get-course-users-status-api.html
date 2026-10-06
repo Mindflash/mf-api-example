@@ -1,6 +1,6 @@
 <p>
-	Use this endpoint to get a list of all users enrolled in a specific course. Some extra information will be returned including
-	the status in the course and basic completion information if applicable.
+	Use this endpoint to get a list of all active users enrolled in a specific course (archived users are not included).
+	Some extra information will be returned including the status in the course and basic completion information if applicable.
 </p>
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
@@ -17,13 +17,13 @@
 			<td><b>:courseId</b></td>
 			<td>URL</td>
 			<td>NO</td>
-			<td>The <i>Mindflash</i> ID of the course the to query for user information.</td>
+			<td>The <i>Trakstar Learn</i> ID of the course to query for user information.</td>
 		</tr>
 		<tr>
 			<td><b>status</b></td>
 			<td>Querystring</td>
 			<td>YES</td>
-			<td>Filter results by course status. Can be one of:<br/>Completed<br/>Invited<br/>Passed<br/>Failed<br/>Started</td>
+			<td>Filter results by course status. Can be one of:<br/>All <i>(Default)</i><br/>Completed<br/>Passed<br/>Failed<br/>Invited<br/>Started<br/>MissedDeadline</td>
 		</tr>
 		</tbody>
 	</table>
@@ -35,7 +35,7 @@
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
-				Example: Get a list of users enrolled in a specific course.
+				Example: Get a list of active users enrolled in a specific course.
 			</a>
 		</div>
 		<div id="example1" class="accordion-body collapse">
@@ -66,7 +66,7 @@ Response: 200
     "username": null,
     "status": "Active",
     "permissions": "Administrator",
-    "courseStatus": "Completed",
+    "courseStatus": "Passed",
     "completedDate": "2015-08-20T22:39:03.000Z",
     "finalGrade": 100
   }
@@ -80,7 +80,7 @@ Response: 200
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
-				Example: Get a list of users enrolled in a specific course that have completed the course.
+				Example: Get a list of active users enrolled in a specific course that have completed the course.
 			</a>
 		</div>
 		<div id="example2" class="accordion-body collapse">
@@ -99,7 +99,7 @@ Response: 200
     "username": null,
     "status": "Active",
     "permissions": "Administrator",
-    "courseStatus": "Completed",
+    "courseStatus": "Passed",
     "completedDate": "2015-08-20T22:39:03.000Z",
     "finalGrade": 100
   }

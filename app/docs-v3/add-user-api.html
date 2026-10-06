@@ -1,7 +1,7 @@
 <p>
-	Use this endpoint to add users to the Mindflash system. The user information supplied must contain the basic
+	Use this endpoint to add users to the Trakstar Learn system. The user information supplied must contain the basic
 	information, but can optionally include group information and course enrollment information.
-	<br/><b>Note:</b> A maximum of <b>200</b> users may be added per api call.
+	<br/><b>Note:</b> Between 1 and <b>200</b> users may be submitted per API call.
 </p>
 <div class="bs-docs-example bs-docs-post-tag">
 	<pre>
@@ -13,23 +13,25 @@
       "email": "",
       "username": "",
       "permissions": 169000100,
-      "customfield0": "",
-      "customfield1": "",
-      "customfield2": "",
-      "customfield3": "",
-      "customfield4": "",
-      "customfield5": "",
-      "customfield6": "",
-      "customfield7": "",
-      "customfield8": "",
-      "customfield9": ""
+      "customField0": "",
+      "customField1": "",
+      "customField2": "",
+      "customField3": "",
+      "customField4": "",
+      "customField5": "",
+      "customField6": "",
+      "customField7": "",
+      "customField8": "",
+      "customField9": ""
     }
   ],
   "requiredCourseIds": [],
   "courseIds": [],
   "groupIds": [],
+  "groupRestrictionIds": [],
   "clientDatestamp": "",
-  "batchId" : 1
+  "batchId" : 1,
+  "mode": "import"
 }
 	</pre>
 	<div class="well">
@@ -50,7 +52,7 @@
 		<tr>
 			<td rowspan="2"><b>users</b></td>
 			<td>NO</td>
-			<td>A list of all users information to be added to the Mindflash system.</td>
+			<td>A list of all users information to be added to the Trakstar Learn system.</td>
 		</tr>
 		<tr>
 			<td colspan="2">
@@ -95,10 +97,10 @@
 						<td>One of:<br/>169000100 &mdash; Trainee <i>(Default)</i><br/>169000200 &mdash; Manager<br/>169000300 &mdash; Trainer<br/>169000400 &mdash; Administrator<br/>169000500 &mdash; Reporter<br/>169000600 &mdash; Team Lead</td>
 					</tr>
 					<tr>
-						<td><i>customfield0,<br/>customfield1,<br/>...<br/>customfield9</i></td>
+						<td><i>customField0,<br/>customField1,<br/>...<br/>customField9</i></td>
 						<td>YES</td>
-						<td>N/A</td>
-						<td>Custom fields for the user. Fields are named <code>customfield0</code> through <code>customfield9</code> (10 fields total). Supply only the fields you wish to set.</td>
+						<td>200</td>
+						<td>Custom fields for the user. Fields are named <code>customField0</code> through <code>customField9</code> (10 fields total). Supply only the fields you wish to set.</td>
 					</tr>
 					<tr>
 						<td><i>yammerId</i></td>
@@ -110,7 +112,7 @@
 						<td><i>password</i></td>
 						<td>YES</td>
 						<td>35</td>
-						<td>A login password. Passwords allow the user to login via the Mindflash website.</td>
+						<td>A login password, 8 to 35 characters, containing an uppercase letter, lowercase letter, number, and symbol.</td>
 					</tr>
 					<tr>
 						<td colspan="4"><b>* Note:</b> At least one of <i>email</i> or <i>username</i> must be supplied.
@@ -123,30 +125,40 @@
 		<tr>
 			<td><b>requiredCourseIds</b></td>
 			<td>YES</td>
-			<td>A list of Mindflash course IDs to enroll the users in. All users will be enrolled in these courses with
+			<td>A list of Trakstar Learn course IDs to enroll the users in. All users will be enrolled in these courses with
 			the <i>required</i> option enabled.</td>
 		</tr>
 		<tr>
 			<td><b>courseIds</b></td>
 			<td>YES</td>
-			<td>A list of Mindflash course IDs to enroll the users in. All users will be enrolled in these courses with
+			<td>A list of Trakstar Learn course IDs to enroll the users in. All users will be enrolled in these courses with
 				the <i>required</i> option disabled.</td>
 		</tr>
 		<tr>
 			<td><b>groupIds</b></td>
 			<td>YES</td>
-			<td>A list of Mindflash group IDs to place the users in. All users will be placed into these groups.</td>
+			<td>A list of Trakstar Learn group IDs to place the users in. All users will be placed into these groups.</td>
+		</tr>
+		<tr>
+			<td><b>groupRestrictionIds</b></td>
+			<td>YES</td>
+			<td>A list of group IDs restricting which existing users may be updated by the import.</td>
 		</tr>
 		<tr>
 			<td><b>clientDatestamp</b></td>
-			<td>NO</td>
-			<td>The current date. All dates must be in the format <i>YYYY-MM-DD</i>.</td>
+			<td>YES</td>
+			<td>Defaults to the current date if omitted. All dates must be in the format <i>YYYY-MM-DD</i>.</td>
 		</tr>
 		<tr>
 			<td><b>batchId</b></td>
 			<td>YES</td>
-			<td>This must be a unique number (preferably sequential) you must generate to identify this specific api call.
-			Upon success, this number will be returned in the response.</td>
+			<td>An identifier for this specific API call. If omitted, the handler uses a default value. Upon success, the value
+			is returned in the response.</td>
+		</tr>
+		<tr>
+			<td><b>mode</b></td>
+			<td>YES</td>
+			<td>Defaults to <code>import</code>, which updates existing users matched by email or username. With any other value, the request fails if a submitted user matches an existing user by email or username.</td>
 		</tr>
 		</tbody>
 	</table>
@@ -184,6 +196,7 @@ POST https://api.mindflash.com/api/v3/user
   "requiredCourseIds": [ 1234 ],
   "courseIds": [ 6789, 6543 ],
   "groupIds": [],
+  "groupRestrictionIds": [],
   "clientDatestamp": "2013-07-17",
   "batchId" : 122
 }

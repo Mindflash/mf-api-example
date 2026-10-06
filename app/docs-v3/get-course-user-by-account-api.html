@@ -30,7 +30,8 @@
                 <td>YES</td>
                 <td>Filter results by course status. Can be one of:<br/>
                     <ul>
-                        <li>Invited <span style="color:red" !important;>(default)</span></li>
+                        <li>Default <span style="color:red">(default)</span></li>
+                        <li>Invited</li>
                         <li>Started</li>
                         <li>Completed</li>
                         <li>Passed</li>
@@ -46,7 +47,7 @@
                 <ol>
                     <li>If the "status" Querystring is "completed", the time span will look for users that "completed" courses in the given timespan.</li><br/>
                     <li>If the "status" Querystring is "invited", the time span will look for users "invited" to courses in the given timespan.</li><br/>
-                    <li>If the "status" Querystring is not provided, the time span will default to looking for users "invited" to courses in the given timespan.</li>
+                    <li>If "status" is omitted or set to "Default", the time span uses each enrollment's invitation date and does not add a course-status filter.</li>
                 </ol>
             </td>
         </tr>
