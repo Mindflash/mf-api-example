@@ -115,6 +115,14 @@
 						<td>A login password, 8 to 35 characters, containing an uppercase letter, lowercase letter, number, and symbol.</td>
 					</tr>
 					<tr>
+						<td><i>forcePasswordChange</i></td>
+						<td>YES</td>
+						<td>N/A</td>
+						<td>Boolean, defaults to <code>false</code>. When <code>true</code>, the user is prompted to choose a new password the first time they log in with the supplied <i>password</i>.
+							Requires a <i>password</i> in the same user entry. Applies to both new and existing users.
+							When omitted or <code>false</code>, the supplied password follows the account's normal password-expiration policy.</td>
+					</tr>
+					<tr>
 						<td colspan="4"><b>* Note:</b> At least one of <i>email</i> or <i>username</i> must be supplied.
 							Both may be supplied.</td>
 					</tr>
@@ -206,6 +214,46 @@ POST https://api.mindflash.com/api/v3/user
 Response: 200
 {
   "batchId": 122
+}</pre>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- example 2 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
+				Example: Add a trainee with an initial password they must change at first login.
+			</a>
+		</div>
+		<div id="example2" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>
+POST https://api.mindflash.com/api/v3/user
+
+{
+  "users": [
+    {
+      "firstName": "Tom",
+      "lastName": "Jones",
+      "email": "tjones@yourorg.com",
+      "password": "Initial-Passw0rd!",
+      "forcePasswordChange": true
+    }
+  ],
+  "courseIds": [ 6789 ],
+  "clientDatestamp": "2013-07-17",
+  "batchId" : 123
+}
+					</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+{
+  "batchId": 123
 }</pre>
 			</div>
 		</div>
