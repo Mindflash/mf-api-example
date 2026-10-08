@@ -2,7 +2,7 @@
 
 <b>Note:</b> Run `docker-compose up` to run this example locally in development mode.
 
-<b>Note:</b> [Documentation](https://mindflash.atlassian.net/wiki/spaces/MD/pages/56262657/Updating+API+Documentation) on merge, deploy process.
+<b>Note:</b> [Documentation](https://hrsolutionsdev.atlassian.net/wiki/x/h4K6AQ) on merge, deploy process.
 
 Mindflash Public API - Documentation
 ==============
