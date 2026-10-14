@@ -92,7 +92,7 @@
 			<td><b>forcePasswordChange</b></td>
 			<td>YES</td>
 			<td>N/A</td>
-			<td>Boolean, defaults to <code>false</code>. When <code>true</code>, the user is prompted to set a new password at their next login. May be sent with a <i>password</i>, in which case the new password is stored already expired, or without one, in which case the user's existing password is expired but still works for one more login.</td>
+			<td>Boolean, defaults to <code>false</code>. When <code>true</code>, the user is prompted to set a new password at their next login. May be sent with a <i>password</i> (the new password is expired) or without one (the existing password is expired). Either way, that password still logs the user in once, and they must then set a new one.</td>
 		</tr>
 		<tr>
 			<td><b>permissions</b></td>
