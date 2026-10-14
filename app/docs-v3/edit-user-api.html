@@ -89,6 +89,12 @@
 			<td>A login password, 8 to 35 characters, containing an uppercase letter, lowercase letter, number, and symbol.</td>
 		</tr>
 		<tr>
+			<td><b>forcePasswordChange</b></td>
+			<td>YES</td>
+			<td>N/A</td>
+			<td>Boolean, defaults to <code>false</code>. When <code>true</code>, the user is prompted to set a new password at their next login. May be sent with a <i>password</i> (the new password is expired) or without one (the existing password is expired). Either way, the expired password still logs the user in once, and they must then set a new one.</td>
+		</tr>
+		<tr>
 			<td><b>permissions</b></td>
 			<td>YES</td>
 			<td>N/A</td>
@@ -110,7 +116,7 @@
 	<div class="accordion-group">
 		<div class="accordion-heading">
 			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example1" href="#example1">
-				Example: Edit a user, change username and password.
+				Example: Edit a user, change username and password, and require a new password at next login.
 			</a>
 		</div>
 		<div id="example1" class="accordion-body collapse">
@@ -121,7 +127,8 @@ POST https://api.mindflash.com/api/v3/user/333
 
 {
   "email": "tjones.new@yourorg.com",
-  "password" : "Newpass123!"
+  "password" : "Newpass123!",
+  "forcePasswordChange": true
 }
 					</pre>
 				</div>
@@ -158,6 +165,31 @@ Response: 200
 		</div>
 	</div>
 
+	<!-- example 3 -->
+
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example3" href="#example3">
+				Example: Require a user to change their existing password at next login.
+			</a>
+		</div>
+		<div id="example3" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>
+POST https://api.mindflash.com/api/v3/user/333
+
+{
+  "forcePasswordChange": true
+}
+					</pre>
+				</div>
+				<pre class="prettyprint">
+Response: 200
+</pre>
+			</div>
+		</div>
+	</div>
 
 	<!-- end examples -->
 </div>
