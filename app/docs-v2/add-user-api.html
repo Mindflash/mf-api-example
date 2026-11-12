@@ -1,7 +1,7 @@
 <p>
-	Use this endpoint to add users to the Mindflash system. The user information supplied must contain the basic
+	Use this endpoint to add users to the Trakstar Learn system. The user information supplied must contain the basic
 	information, but can optionally include group information and course/series enrollment information.
-	<br/><b>Note:</b> A maximum of <b>200</b> users may be added per api call.
+	<br/><b>Note:</b> Between 1 and <b>200</b> users may be submitted per API call.
 </p>
 <div class="bs-docs-example bs-docs-post-tag">
 	<pre>
@@ -10,7 +10,9 @@
     {
       "firstName": "",
       "lastName": "",
-      "email": ""
+      "email": "",
+      "username": "",
+      "permissions": 169000100
     }
   ],
   "requiredCourseIds": [],
@@ -39,7 +41,7 @@
 		<tr>
 			<td rowspan="2"><b>users</b></td>
 			<td>NO</td>
-			<td>A list of all users information to be added to the Mindflash system.</td>
+			<td>A list of all users information to be added to the Trakstar Learn system.</td>
 		</tr>
 		<tr>
 			<td colspan="2">
@@ -81,11 +83,7 @@
 						<td><i>permissions</i></td>
 						<td>YES</td>
 						<td>N/A</td>
-						<td>One of the following role names (case-insensitive):<br/>administrator<br/>manager<br/>trainer<br/>trainee <i>(Default)</i><br/>
-							Numeric role values, or strings containing these values, are also accepted:<br/>
-							169000400 (administrator)<br/>169000200 (manager)<br/>169000300 (trainer)<br/>169000100 (trainee)<br/>
-							0 (none)<br/>169000500 (reporter)<br/>169000600 (teamLead).<br/>
-							For new users, 0 defaults to trainee.</td>
+						<td>One of:<br/>169000100 &mdash; Trainee <i>(Default)</i><br/>169000200 &mdash; Manager<br/>169000300 &mdash; Trainer<br/>169000400 &mdash; Administrator<br/>169000500 &mdash; Reporter<br/>169000600 &mdash; Team Lead</td>
 					</tr>
 					<tr>
 						<td><i>yammerId</i></td>
@@ -97,12 +95,12 @@
 						<td><i>password</i></td>
 						<td>YES</td>
 						<td>35</td>
-						<td>A login password of at least 8 and at most 35 characters, containing an uppercase letter, a lowercase letter, a number and a symbol. Passwords allow the user to login via the Trakstar Learn website. A supplied password is subject to the account's password-expiry policy: it expires once the account's password lifetime elapses, and the user is then prompted to set a new password at their next login.</td>
+						<td>A login password, 8 to 35 characters, containing an uppercase letter, lowercase letter, number, and symbol. A supplied password is subject to the account's password-expiry policy: it expires once the account's password lifetime elapses, and the user is then prompted to set a new password at their next login.</td>
 					</tr>
 					<tr>
 						<td colspan="4"><b>* Note:</b> At least one of <i>email</i> or <i>username</i> must be supplied.
-							Both may be supplied. When <i>permissions</i> explicitly specifies trainee (by name or numeric value), supplying <i>username</i> requires <i>password</i>.
-							When <i>permissions</i> explicitly specifies a non-Trainee role other than 0, supplying both <i>username</i> and <i>password</i> also requires <i>email</i>.</td>
+							Both may be supplied. When <i>permissions</i> explicitly specifies Trainee (169000100), supplying <i>username</i> requires <i>password</i>.
+							When <i>permissions</i> explicitly specifies another documented role, supplying both <i>username</i> and <i>password</i> also requires <i>email</i>.</td>
 					</tr>
 					</tbody>
 				</table>
@@ -111,35 +109,35 @@
 		<tr>
 			<td><b>requiredCourseIds</b></td>
 			<td>YES</td>
-			<td>A list of Mindflash course IDs to enroll the users in. All users will be enrolled in these courses with
+			<td>A list of Trakstar Learn course IDs to enroll the users in. All users will be enrolled in these courses with
 			the <i>required</i> option enabled.</td>
 		</tr>
 		<tr>
 			<td><b>courseIds</b></td>
 			<td>YES</td>
-			<td>A list of Mindflash course IDs to enroll the users in. All users will be enrolled in these courses with
+			<td>A list of Trakstar Learn course IDs to enroll the users in. All users will be enrolled in these courses with
 				the <i>required</i> option disabled.</td>
 		</tr>
 		<tr>
 			<td><b>seriesIds</b></td>
 			<td>YES</td>
-			<td>A list of Mindflash series IDs to enroll the users in. All users will be enrolled in these series.</td>
+			<td>A list of Trakstar Learn series IDs to enroll the users in. All users will be enrolled in these series.</td>
 		</tr>
 		<tr>
 			<td><b>groupIds</b></td>
 			<td>YES</td>
-			<td>A list of Mindflash group IDs to place the users in. All users will be placed into these groups.</td>
+			<td>A list of Trakstar Learn group IDs to place the users in. All users will be placed into these groups.</td>
 		</tr>
 		<tr>
 			<td><b>clientDatestamp</b></td>
-			<td>NO</td>
-			<td>The current date. All dates must be in the format <i>YYYY-MM-DD</i>.</td>
+			<td>YES</td>
+			<td>Defaults to the current date if omitted. All dates must be in the format <i>YYYY-MM-DD</i>.</td>
 		</tr>
 		<tr>
 			<td><b>batchId</b></td>
 			<td>YES</td>
-			<td>This must be a unique number (preferably sequential) you must generate to identify this specific api call.
-			Upon success, this number will be returned in the response.</td>
+			<td>An identifier for this specific API call. If omitted, the handler uses a default value. Upon success, the value
+			is returned in the response.</td>
 		</tr>
 		</tbody>
 	</table>
