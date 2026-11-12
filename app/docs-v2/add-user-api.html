@@ -139,11 +139,16 @@
 			<td>An identifier for this specific API call. If omitted, a default value is used. Upon success, the value
 			is returned in the response.</td>
 		</tr>
+		<tr>
+			<td><b>mode</b></td>
+			<td>YES</td>
+			<td>Defaults to <code>import</code>, which updates existing users matched by email or username. With any other truthy value, the request fails if a submitted user matches an existing user by email or username.</td>
+		</tr>
 		</tbody>
 	</table>
 </div>
 <br/>
-<p>The Trainee default applies only to new users. When updating an existing user matched by email or username, omitting <i>permissions</i> preserves the user's existing role.</p>
+<p>The Trainee default applies only to new users. When updating an existing user matched by email or username, omitting <i>permissions</i> preserves the user's existing role. Updating a matched archived user reactivates the user and consumes a seat, so the request can fail with HTTP 400 and code <code>max_users_reached</code> if the account has insufficient capacity.</p>
 <h4>Response</h4>
 <p>
 	A successful response includes <i>batchId</i>, an <i>added</i> list of new users and an <i>updated</i> list of existing users that were updated.
@@ -211,7 +216,7 @@ Response: 200
 		</div>
 		<div id="example2" class="accordion-body collapse">
 			<div class="accordion-inner">
-				<p>When an existing user is matched by email or username, the response lists that user under <i>updated</i> instead:</p>
+				<p>With the default <code>import</code> mode, when an existing user is matched by email or username, the response lists that user under <i>updated</i> instead:</p>
 				<div class="bs-docs-example bs-docs-example-tag">
 					<pre>
 POST https://api.mindflash.com/api/v2/user
