@@ -136,17 +136,18 @@
 		<tr>
 			<td><b>batchId</b></td>
 			<td>YES</td>
-			<td>An identifier for this specific API call. If omitted, the handler uses a default value. Upon success, the value
+			<td>An identifier for this specific API call. If omitted, a default value is used. Upon success, the value
 			is returned in the response.</td>
 		</tr>
 		</tbody>
 	</table>
 </div>
 <br/>
+<p>The Trainee default applies only to new users. When updating an existing user matched by email or username, omitting <i>permissions</i> preserves the user's existing role.</p>
 <h4>Response</h4>
 <p>
 	A successful response includes <i>batchId</i>, an <i>added</i> list of new users and an <i>updated</i> list of existing users that were updated.
-	Each entry contains the user's <i>id</i> and available <i>email</i> and <i>username</i>. A missing username may be null or omitted.
+	Each entry contains the user's <i>id</i> and available <i>email</i> and <i>username</i>. A missing email or username may be null or omitted.
 	Either list is empty when no users were added or updated, respectively.
 </p>
 <h4>Examples</h4>
@@ -201,8 +202,33 @@ Response: 200
 		</div>
 	</div>
 
-	<p>When an existing user is matched by email or username, the response lists that user under <i>updated</i> instead:</p>
-	<pre class="prettyprint">
+	<!-- example 2 -->
+	<div class="accordion-group">
+		<div class="accordion-heading">
+			<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#example2" href="#example2">
+				Updating an existing user
+			</a>
+		</div>
+		<div id="example2" class="accordion-body collapse">
+			<div class="accordion-inner">
+				<p>When an existing user is matched by email or username, the response lists that user under <i>updated</i> instead:</p>
+				<div class="bs-docs-example bs-docs-example-tag">
+					<pre>
+POST https://api.mindflash.com/api/v2/user
+
+{
+  "users": [
+    {
+      "firstName": "Thomas",
+      "lastName": "Jones",
+      "email": "tjones@yourorg.com"
+    }
+  ],
+  "batchId": 123
+}
+					</pre>
+				</div>
+				<pre class="prettyprint">
 Response: 200
 {
   "batchId": 123,
@@ -211,5 +237,8 @@ Response: 200
     { "id": 12345, "email": "tjones@yourorg.com" }
   ]
 }</pre>
+			</div>
+		</div>
+	</div>
 	<!-- end examples -->
 </div>
