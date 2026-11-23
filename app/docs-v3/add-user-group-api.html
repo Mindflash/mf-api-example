@@ -1,6 +1,7 @@
 <p>
 	Use this endpoint to add a single user to a group. The alias
 	<code>POST /api/v3/user/:userId/group/:groupId</code> is also supported.
+	Adding a user who is already a member of the group changes nothing and doesn't trigger the group's course auto-enrollment.
 </p>
 <div class="bs-docs-example bs-docs-parameters-tag">
 	<table class="table table-condensed">
